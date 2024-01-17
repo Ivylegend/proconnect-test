@@ -1,0 +1,26 @@
+.application-completed {
+  display: flex;
+  height: 72px;
+  padding: 20.544px 45.653px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  border: 1.5px solid #db251a;
+  color: #db251a;
+  text-align: center;
+  /* font-family: Sk-Modernist; */
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px; /* 133.333% */
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.check {
+  color: #1f384c;
+  /* font-family: Poppins; */
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 23px; /* 127.778% */
+  letter-spacing: 0.5px;
+}

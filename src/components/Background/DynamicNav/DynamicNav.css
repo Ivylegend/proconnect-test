@@ -1,0 +1,49 @@
+.dynamic {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1.6rem 2rem 1.6rem 4rem;
+  min-width: 80vw;
+  border-bottom: 1px solid rgba(102, 102, 102, 0.12);
+}
+
+.dynamic h2 {
+  color: #1f384c;
+  /* font-family: Poppins; */
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 23px; /* 127.778% */
+  letter-spacing: 0.5px;
+}
+
+.dynamic-end {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dynamic img {
+  cursor: pointer;
+}
+
+.dynamic-end p {
+  color: #1f384c;
+  /* SK Modern/bold/label */
+  /* font-family: Sk-Modernist; */
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.profile-bg {
+  background-color: #d9d9d9;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}

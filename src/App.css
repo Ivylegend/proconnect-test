@@ -1,0 +1,42 @@
+.small-btn{
+  width: 163px;
+  height: 56px;
+  padding: 15.5px 0px 16.5px 0px;
+  align-items: center;
+  border: none;
+  border-radius: 13.7px;
+  background: #db251a;
+  color: white;
+  cursor: pointer;
+}
+
+.wide-btn{
+  width: 100%;
+  height: 56px;
+  padding: 15.5px 0px 16.5px 0px;
+  align-items: center;
+  border: none;
+  border-radius: 13.7px;
+  background: #db251a;
+  color: white;
+}
+
+.btn:hover{
+  cursor: pointer;
+}
+
+.underlined{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.center{
+  text-align: center;
+}
+
+.flex{
+  display: flex;
+  flex-direction: row;
+  /* gap: 17rem;
+  max-width: 100vw; */
+}

@@ -1,0 +1,31 @@
+.uni_name {
+  color: #333;
+  /* text-align: center; */
+  /* font-family: Montserrat; */
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 2rem 0 1rem;
+}
+
+.uni_category {
+  margin-left: 3rem;
+}
+
+.uni_category p {
+  color: #333;
+  /* font-family: Montserrat; */
+  font-weight: 500;
+  line-height: normal;
+}
+
+select {
+  height: 62px;
+  width: 100%;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin: 1rem 0 2rem;
+}

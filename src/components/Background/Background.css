@@ -1,0 +1,31 @@
+.circle-background{
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.one{
+    position: absolute;
+    top: 35%;
+    left: -2%;
+}
+
+.two{
+    position: absolute;
+    top: 70%;
+    left: 16%;
+}
+
+.three{
+    position: absolute;
+    top: 20%;
+    right: 16%;
+}
+
+.four{
+    position: absolute;
+    bottom: 10%;
+    right: -2%;
+}

@@ -1,0 +1,25 @@
+.navbar-home {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  height: 80px;
+  padding: 0 80px 0 0;
+  /* padding: 9.956px 80.517px 9.912px 80px; */
+}
+
+.nav-logo{
+  width: 200px;
+  height: 100%;
+  object-fit: cover;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-logo img{
+  width: 100%;
+  position: relative;
+  top: 28px;
+}
