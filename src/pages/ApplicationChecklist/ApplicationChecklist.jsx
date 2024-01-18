@@ -1,4 +1,4 @@
-import DynamicNav from "../../components/Background/DynamicNav/DynamicNav";
+import DynamicNav from "../../components/DynamicNav/DynamicNav";
 import SideNav from "../../containers/SideNav/SideNav";
 import Checkmark from '../../assets/images/checkmark.png'
 import './ApplicationChecklist.css';

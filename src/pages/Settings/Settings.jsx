@@ -1,4 +1,5 @@
-import DynamicNav from "../../components/Background/DynamicNav/DynamicNav"
+import DynamicNav from "../../components/DynamicNav/DynamicNav"
+import Tabs from "../../components/Tabs/Tabs"
 import SideNav from "../../containers/SideNav/SideNav"
 
 const Settings = () => {
@@ -6,9 +7,9 @@ const Settings = () => {
     <div className="flex">
       <SideNav />
       <div style={{ marginLeft: "16rem" }}>
-        <DynamicNav title="Application School Checklist" />
+        <DynamicNav title="Settings" />
         <div className="dashboard">
-          
+          <Tabs />
         </div>
       </div>
     </div>

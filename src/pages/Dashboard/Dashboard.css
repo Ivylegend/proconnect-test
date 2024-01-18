@@ -1,5 +1,6 @@
 .dashboard {
     padding: 1.6rem 2rem 1.6rem 4rem;
+    font-family: 'Poppins', sans-serif;
 }
 
 .complete-application {
@@ -8,7 +9,7 @@
   stroke: #dde4f0;
   border: 1px solid #dde4f0;
   height: 34px;
-  max-width: 400px;
+  max-width: 450px;
   display: flex;
   justify-content: flex-start;
   align-items: center;

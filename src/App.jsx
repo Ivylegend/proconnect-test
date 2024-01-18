@@ -5,6 +5,7 @@ import SignUp from "./pages/SignUp/SignUp";
 import SupportedSchools from "./pages/SupportedSchools/SupportedSchools";
 import Documents from "./pages/Documents/Documents";
 import Profile from "./pages/Profile/Profile";
+import Help from "./pages/Help/Help";
 import ApplicationChecklist from "./pages/ApplicationChecklist/ApplicationChecklist";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -24,7 +25,8 @@ function App() {
         <Route path="/supported-schools" element={<SupportedSchools />} />
         <Route path="/documents" element={<Documents />} />
         <Route path="/settings" element={<Settings />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<Settings />} />
+        <Route path="/help" element={<Help />} />
       </Routes>
     </BrowserRouter>
   );

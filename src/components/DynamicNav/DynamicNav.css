@@ -47,3 +47,19 @@
   justify-content: center;
   border-radius: 50%;
 }
+
+.notifs{
+  position: relative;
+  top: 1px;
+}
+
+.notif-circle{
+  width: 14px;
+  height: 14px;
+  border: 2px solid white;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  right: -7px;
+  top: -5px;
+}

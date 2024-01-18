@@ -1,7 +1,7 @@
 import "./DynamicNav.css";
-import Profile from "../../../assets/images/profile.png";
-import Down from "../../../assets/images/chevron_down.png";
-import Bell from "../../../assets/images/notification icon.png";
+import Profile from "../../assets/images/profile.png";
+import Down from "../../assets/images/chevron_down.png";
+import Bell from "../../assets/images/notification icon.png";
 
 const DynamicNav = (props) => {
   return (
@@ -13,8 +13,9 @@ const DynamicNav = (props) => {
         </span>
         <p>Samuel John</p>
         <img src={Down} alt="chevron-down" />
-        <span>
+        <span className="notifs">
             <img src={Bell} alt="notification-bell" />
+            <span className="notif-circle"></span>
         </span>
       </div>
     </div>

@@ -1,0 +1,45 @@
+.bloc-tabs {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  max-width: max-content;
+  border-bottom: 1px solid #717b8c;
+}
+
+.tabs {
+  /* font-family: Manrope; */
+  font-size: 18px;
+  font-weight: 500;
+  color: #717b8c;
+  cursor: pointer;
+}
+
+.active-tabs {
+  background: white;
+  border-bottom: 2px solid #db251a;
+  padding-bottom: 5px;
+  color: #db251a;
+  transition: all 0.2s;
+}
+
+.active-tabs::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% + 2px);
+  height: 5px;
+  background: rgb(88, 147, 241);
+}
+
+.content {
+  background-color: white;
+  padding: 1.5rem 0;
+  display: none;
+}
+
+.active-content {
+  display: block;
+}

@@ -1,4 +1,4 @@
-.small-btn{
+.small-btn {
   width: 163px;
   height: 56px;
   padding: 15.5px 0px 16.5px 0px;
@@ -8,9 +8,10 @@
   background: #db251a;
   color: white;
   cursor: pointer;
+  font-size: 18px;
 }
 
-.wide-btn{
+.wide-btn {
   width: 100%;
   height: 56px;
   padding: 15.5px 0px 16.5px 0px;
@@ -21,22 +22,24 @@
   color: white;
 }
 
-.btn:hover{
+.btn:hover {
   cursor: pointer;
 }
 
-.underlined{
+.underlined {
   text-decoration: underline;
   cursor: pointer;
 }
 
-.center{
+.center {
   text-align: center;
 }
 
-.flex{
+.flex {
   display: flex;
   flex-direction: row;
-  /* gap: 17rem;
-  max-width: 100vw; */
+}
+
+a {
+  text-decoration: none;
 }

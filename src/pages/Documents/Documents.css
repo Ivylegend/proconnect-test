@@ -80,4 +80,6 @@
     left: 0;
     opacity: 0;
     cursor: pointer;
+    width: 100%;
+    height: max-content;
 }

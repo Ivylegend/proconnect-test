@@ -1,5 +1,5 @@
 import SideNav from "../../containers/SideNav/SideNav";
-import DynamicNav from "../../components/Background/DynamicNav/DynamicNav";
+import DynamicNav from "../../components/DynamicNav/DynamicNav";
 import "./SupportedSchools.css";
 import { Link } from "react-router-dom";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import SideNav from "../../containers/SideNav/SideNav";
-import DynamicNav from "../../components/Background/DynamicNav/DynamicNav";
+import DynamicNav from "../../components/DynamicNav/DynamicNav";
 import Exclamation from "../../assets/images/exclaim.png";
 import "./Dashboard.css";
 

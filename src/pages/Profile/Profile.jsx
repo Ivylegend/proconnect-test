@@ -1,5 +1,5 @@
 import SideNav from "../../containers/SideNav/SideNav"
-import DynamicNav from "../../components/Background/DynamicNav/DynamicNav"
+import DynamicNav from "../../components/DynamicNav/DynamicNav"
 
 
 const Profile = () => {
