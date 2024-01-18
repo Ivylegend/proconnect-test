@@ -3,6 +3,7 @@ import SideNav from "../../containers/SideNav/SideNav";
 import DynamicNav from "../../components/DynamicNav/DynamicNav";
 import Exclamation from "../../assets/images/exclaim.png";
 import "./Dashboard.css";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   return (
@@ -16,7 +17,9 @@ const Dashboard = () => {
             <p>Complete your profile before you begin your application</p>
           </div>
           <div className="application_div">
-            <span className="application_box">Start School Application</span>
+            <span className="application_box">
+              <Link to="/school-application">Start School Application</Link>
+            </span>
             <span className="application_box">
               Skip School Application To Payment
             </span>

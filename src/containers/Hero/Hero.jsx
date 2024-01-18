@@ -1,8 +1,11 @@
-import React from "react";
+import { useState } from "react";
 import "./Hero.css";
 import { Link } from "react-router-dom";
 
 const Hero = () => {
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <div className="hero">
       {/* HERO-TEXT */}
@@ -59,7 +62,14 @@ const Hero = () => {
           <p className="remember">Remember me</p>
         </div>
         <div className="login-btn">
-          <button className="small-btn">Login</button>
+          <button
+            className="small-btn"
+            // onClick={(e) => {
+            //   e.preventDefault();
+            // }}
+          >
+            <Link to="/dashboard">Login</Link>
+          </button>
           <p>
             Don't have an account? <br />
             <Link to="/signup" className="underlined red-text">
