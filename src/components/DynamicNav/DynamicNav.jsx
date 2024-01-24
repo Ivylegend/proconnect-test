@@ -1,5 +1,5 @@
 import "./DynamicNav.css";
-import Profile from "../../assets/images/Profile.png";
+// import Profile from "../../assets/images/Profile.png";
 import Down from "../../assets/images/chevron_down.png";
 import Bell from "../../assets/images/notification icon.png";
 import { useAuth } from "../../utils/AuthContext";
