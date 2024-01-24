@@ -34,6 +34,10 @@
   color: #db251a;
 }
 
+.menu__list:hover svg path{
+  fill: #db251a;
+}
+
 .active-nav .menu__list {
   background-color: rgba(219, 37, 26, 0.1);
   color: #db251a;

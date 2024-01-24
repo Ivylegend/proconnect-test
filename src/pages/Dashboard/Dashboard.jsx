@@ -3,9 +3,12 @@ import SideNav from "../../containers/SideNav/SideNav";
 import DynamicNav from "../../components/DynamicNav/DynamicNav";
 import Exclamation from "../../assets/images/exclaim.png";
 import "./Dashboard.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Dashboard = () => {
+  // const location = useLocation();
+  // const user = location.state?.user;
+
   return (
     <div className="flex">
       <SideNav />

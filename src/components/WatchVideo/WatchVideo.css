@@ -1,0 +1,16 @@
+.app_video {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app_video h2{
+    width: 100%;
+    text-align: center;
+}
+
+.app_video video {
+  justify-content: center;
+  background-color: black;
+  border-radius: 20px;
+}

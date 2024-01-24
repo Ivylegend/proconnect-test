@@ -33,7 +33,7 @@
   height: 56px;
   padding: 15px 0 16px 0;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
   border-radius: 40px;
   border: 1px solid #333;
   background: #fff;
@@ -112,4 +112,8 @@ label {
 
 .login-btn p{
   font-size: 14px;
+}
+
+.small-btn a{
+  color: #ddd;
 }

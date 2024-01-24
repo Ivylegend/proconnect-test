@@ -46,6 +46,10 @@
   line-height: 36.523px;
 }
 
+.application_box a{
+  color: #db251a;
+}
+
 .application_box:hover {
   background-color: #f3cbc9;
 }

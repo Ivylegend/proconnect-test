@@ -22,6 +22,18 @@
   color: white;
 }
 
+.outline{
+  width: 100%;
+  height: 56px;
+  padding: 15.5px 0px 16.5px 0px;
+  align-items: center;
+  border: 1px solid #db251a;
+  border-radius: 13.7px;
+  background: white;
+  color: #db251a;
+  font-weight: 500;
+}
+
 .btn:hover {
   cursor: pointer;
 }
@@ -42,4 +54,23 @@
 
 a {
   text-decoration: none;
+}
+
+.form-nav-logo{
+  height: 80px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(102, 102, 102, 0.25);
+}
+
+.form-nav-logo img{
+  width: 100%;
+}
+
+.form-nav-logo img{
+  object-fit: contain;
+  height: 100%;
+  width: 200px;
+  position: relative;
+  top: 30px;
 }

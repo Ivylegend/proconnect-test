@@ -1,0 +1,73 @@
+.app_nin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 520px;
+  margin: 4rem auto;
+  z-index: 10;
+}
+
+.hidden{
+  display: none;
+}
+
+.nin-container {
+  width: 100%;
+}
+
+.nin-container h2 {
+  margin-bottom: 2rem;
+}
+
+.nin-container input {
+  width: 100%;
+  margin: 1rem 0;
+  height: 56px;
+  border-radius: 12px;
+  border: 1px solid rgba(102, 102, 102, 0.35);
+  padding: 1rem;
+}
+
+.nin-container button {
+  width: 100%;
+}
+
+.nin-error {
+  font-size: 14px;
+  color: #db251a;
+}
+
+.info_nin {
+  margin-top: 2rem;
+}
+
+.nin-info {
+  border-radius: 12px;
+  border: 1px solid rgba(102, 102, 102, 0.35);
+  height: 236px;
+  min-width: 520px;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.nin-text {
+  display: flex;
+}
+
+.title {
+  font-weight: bold;
+  width: 160px;
+}
+
+.active {
+  display: block;
+}
+
+.none {
+  display: none;
+}

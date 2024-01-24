@@ -1,0 +1,13 @@
+.app_apply{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: flex-start; */
+    max-width: 520px;
+    margin: 4rem auto 2rem;
+    z-index: 10;
+}
+
+.app_apply h2{
+    margin-bottom: 2rem;
+}

@@ -1,0 +1,20 @@
+.app_successful {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 520px;
+  margin: 4rem auto 2rem;
+}
+
+.app_successful .successful {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.successful img {
+  width: 100%;
+}

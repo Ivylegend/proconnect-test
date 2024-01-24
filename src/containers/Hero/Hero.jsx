@@ -1,6 +1,9 @@
 import { useState } from "react";
 import "./Hero.css";
 import { Link } from "react-router-dom";
+import TestGoogle from "../../pages/TestGoogle";
+import SignIn from "../../components/SignIn";
+import GoogleSignInButton from "../../components/GoogleSignInButton";
 
 const Hero = () => {
   const [name, setName] = useState("");
@@ -15,7 +18,7 @@ const Hero = () => {
           <span className="red-text small-text"> and Financing </span> <br />
           <span className="small-text">Processing AI Portal</span>
         </h1>
-        <button className="google btn">
+        {/* <button className="google btn">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="25"
@@ -41,11 +44,12 @@ const Hero = () => {
             />
           </svg>
           Sign up with your Google Account
-        </button>
+        </button> */}
+        <GoogleSignInButton />
       </div>
 
       {/* FORM */}
-      <form className="hero-form">
+      {/* <form className="hero-form">
         <p className="red-text header">Login Here</p>
         <div className="input-container">
           <label htmlFor="email">Email address or username</label>
@@ -78,7 +82,8 @@ const Hero = () => {
             here
           </p>
         </div>
-      </form>
+      </form> */}
+      <SignIn />
     </div>
   );
 };

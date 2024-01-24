@@ -1,9 +1,10 @@
 .circle-background{
-    position: relative;
+    position: fixed;
     height: 100vh;
     min-width: 90vw;
     /* overflow: hidden; */
     z-index: -1;
+    /* background-attachment: fixed; */
 }
 
 .one{

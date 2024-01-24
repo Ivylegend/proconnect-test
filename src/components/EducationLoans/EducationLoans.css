@@ -1,0 +1,39 @@
+.app_loan {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: flex-start; */
+  max-width: 900px;
+  margin: 4rem auto 2rem;
+  z-index: 10;
+}
+
+.app_loan h2{
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.loan_div {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.loan_options {
+  height: 170px;
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  border: 1px solid black;
+  background-color: white;
+  transition: all .5s;
+}
+
+.loan_options:hover{
+    border: 1px solid red;
+}

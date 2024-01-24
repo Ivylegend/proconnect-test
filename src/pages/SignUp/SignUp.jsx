@@ -1,15 +1,85 @@
 import Background from "../../components/Background/Background";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../assets/images/Eldanic-logo.png";
 import "./SignUp.css";
+import { useEffect, useState } from "react";
+import axios, { Axios } from "axios";
+import { gapi } from "gapi-script";
+import GoogleSignInButton from "../../components/GoogleSignInButton";
 
 const SignUp = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [user, setuser] = useState(null);
+
+  const history = useNavigate();
+
+  // useEffect(() => {
+  //   function start() {
+  //     gapi.client.init({
+  //       clientId: clientId,
+  //       scope: "",
+  //     });
+  //   }
+
+  //   gapi.load("client:auth2", start);
+  // });
+
+  // In SignUp.js
+  // history("/dashboard", { state: { user } });
+
+  const clientId =
+    "700918527543-o711lm59d7t83amp3ccmh5jhhcvreins.apps.googleusercontent.com";
+
+  // const handleReg = async () => {
+  //   try {
+  //     const response = await axios.post(
+  //       "https://dev-api.eldanic.com/api/v1/auth/login",
+  //       { email, password }
+  //     );
+  //     alert(`Registration successful: ${JSON.stringify(response.data)}`);
+  //   } catch (error) {
+  //     if (error.response) {
+  //       // The request was made, but the server responded with a status code that falls out of the range of 2xx
+  //       setError(`Server error: ${error.response.data.message}`);
+  //     } else if (error.request) {
+  //       // The request was made but no response was received
+  //       setError("No response from server");
+  //     } else {
+  //       // Something happened in setting up the request that triggered an Error
+  //       setError(`Error: ${error.message}`);
+  //     }
+  //   }
+  // };
+
+  const postData = (e) => {
+
+    e.preventDefault();
+
+    axios
+      .post(
+        "https://dev-api.eldanic.com/api/v1/auth/login/",
+        {
+          email: email,
+          password: password,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json '
+          }
+        }
+      )
+      .then((res) => console.log("posting data", res))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div>
       <div style={{ position: "absolute" }}>
         <Background />
       </div>
-      <div className="nav-logo">
+      <div className="form-nav-logo">
         <img src={Logo} alt="logo" />
       </div>
       <div className="signup__main">
@@ -17,13 +87,27 @@ const SignUp = () => {
         <form action="">
           <div className="input-container">
             <label htmlFor="email">Email address or user name</label>
-            <input type="text" id="email" />
-            <p className="error-message"></p>
+            <input
+              type="text"
+              id="email"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
+            <p className="error-message">{error}</p>
           </div>
           <div className="input-container">
             <label htmlFor="password">Password</label>
-            <input type="password" id="password" />
-            <p className="error-message"></p>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
+            <p className="error-message">{error}</p>
           </div>
           <div className="check-div">
             <input type="checkbox" className="check-box" />
@@ -35,9 +119,15 @@ const SignUp = () => {
             <span className="underlined">Privacy Policy</span>
           </p>
 
-          <Link to="/dashboard">
-            <button className="btn wide-btn sign__up">Sign Up</button>
-          </Link>
+          {/* <Link to="/dashboard"> */}
+          <button
+            type="button"
+            className="btn wide-btn sign__up"
+            onClick={postData}
+          >
+            Sign Up
+          </button>
+          {/* </Link> */}
         </form>
         <p className="center question">
           Do you have an account?{" "}
@@ -48,7 +138,7 @@ const SignUp = () => {
           <p className="continue center">Or continue with</p>
           <hr />
         </span>
-        <button type="button" className="btn google">
+        {/* <button type="button" className="btn google">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="25"
@@ -74,7 +164,8 @@ const SignUp = () => {
             />
           </svg>
           Sign in with your Google account
-        </button>
+        </button> */}
+        <GoogleSignInButton />
       </div>
     </div>
   );

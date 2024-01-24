@@ -1,0 +1,23 @@
+.form{
+    position: relative;
+}
+
+.prev-btn {
+  width: 40px;
+  position: absolute;
+  top: 8rem;
+  left: 5rem;
+  border: none;
+  background: transparent;
+}
+
+.prev-btn img{
+  width: 100%;
+  object-fit: cover;
+}
+
+.next-btn {
+  width: 520px;
+  margin: auto;
+  margin-bottom: 4rem;
+}

@@ -5,11 +5,13 @@ import SignUp from "./pages/SignUp/SignUp";
 import SupportedSchools from "./pages/SupportedSchools/SupportedSchools";
 import Documents from "./pages/Documents/Documents";
 import Profile from "./pages/Profile/Profile";
+import Form from "./components/Form/Form";
 import Help from "./pages/Help/Help";
 import ApplicationChecklist from "./pages/ApplicationChecklist/ApplicationChecklist";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import "./App.css";
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
 
 function App() {
   return (
@@ -27,6 +29,9 @@ function App() {
         <Route path="/settings" element={<Settings />} />
         <Route path="/profile" element={<Settings />} />
         <Route path="/help" element={<Help />} />
+        <Route path="/school-application" element={<Form />} />
+
+        <Route path="*" element={<ErrorPage />}/>
       </Routes>
     </BrowserRouter>
   );

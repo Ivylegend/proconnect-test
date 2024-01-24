@@ -1,0 +1,47 @@
+.app_payment {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 520px;
+  margin: 4rem auto 2rem;
+  z-index: 10;
+  width: 100%;
+}
+
+.app_payment h2 {
+  text-align: center;
+  margin: 0 auto 2rem;
+}
+
+.app_payment .payment_input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.app_payment input {
+  width: 100%;
+  margin-bottom: 1.2rem;
+  height: 56px;
+  border-radius: 12px;
+  border: 1px solid rgba(102, 102, 102, 0.35);
+  padding: 1rem;
+}
+
+.payment_details {
+  display: flex;
+  gap: 2rem;
+}
+
+.make_payment {
+  margin: 1rem 0;
+}
+
+.payment_text {
+  text-align: center;
+  width: 88%;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0 auto;
+}
