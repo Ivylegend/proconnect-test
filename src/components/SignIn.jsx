@@ -12,37 +12,33 @@ const SignIn = () => {
 
   const handleSignIn = async () => {
     try {
-      // Example: Perform your local sign-in logic
-      // This might involve making an API request to your server for authentication
-      // Replace this with your actual authentication logic
+      const response = await fetch(
+        "https://dev-api.eldanic.com/api/v1/auth/login/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email: email, password: password }),
+        }
+      );
 
-      const response = await fetch("your-auth-api-endpoint", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
+      // console.log(JSON.stringify({ email, password }));
 
       if (response.ok) {
-        // Example: Assume the response includes user data
         const userData = await response.json();
 
-        // Call the signIn function from your AuthContext
+        // Calling the signIn function from your AuthContext
         signIn({
-          isGoogleSignIn: false, // Indicate that this is a local sign-in
+          isGoogleSignIn: false,
           localUserId: userData.id,
           localUserName: userData.name,
           localUserEmail: userData.email,
         });
 
-        // Redirect to the dashboard or another page upon successful sign-in
-        // You can use react-router-dom's useHistory or useNavigate for navigation
-        // Replace '/dashboard' with your actual dashboard route
+        // Redirecting to the dashboard or another page upon successful sign-in
         history("/dashboard");
-        // history.push('/dashboard');
       } else {
-        // Handle authentication error, show an error message, etc.
         console.error("Sign-in failed");
       }
     } catch (error) {
@@ -95,9 +91,9 @@ const SignIn = () => {
         <p className="remember">Remember me</p>
       </div>
       <div className="login-btn">
-        <button className="small-btn" onClick={handleSignIn}>
-          <Link>Login</Link>
-        </button>
+        <Link to={"/dashboard"}>
+          <button className="small-btn">Login</button>
+        </Link>
         <p>
           Don't have an account? <br />
           <Link to="/signup" className="underlined red-text">
