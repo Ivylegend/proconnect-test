@@ -1,7 +1,7 @@
 import SideNav from "../../containers/SideNav/SideNav";
 import DynamicNav from "../../components/DynamicNav/DynamicNav";
 import "./SupportedSchools.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const schools = [
   "Covenant University",
@@ -13,6 +13,14 @@ const schools = [
 ];
 
 const SupportedSchools = () => {
+  const history = useNavigate();
+
+  useEffect(() => {
+    let email = sessionStorage.getItem("email");
+    if (email === "" || email === null) {
+      history("/");
+    }
+  }, []);
   return (
     <div className="flex">
       <SideNav />

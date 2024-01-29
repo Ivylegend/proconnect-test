@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../utils/AuthContext";
+import { toast } from "react-toastify";
 
 const SignIn = () => {
   const { signIn } = useAuth();
@@ -10,40 +11,81 @@ const SignIn = () => {
 
   const history = useNavigate();
 
-  const handleSignIn = async () => {
-    try {
-      const response = await fetch(
-        "https://dev-api.eldanic.com/api/v1/auth/login/",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email: email, password: password }),
+  const handleSignIn = async (e) => {
+    e.preventDefault();
+
+    if (validated()) {
+      try {
+        const response = await fetch(
+          "https://dev-api.eldanic.com/api/v1/auth/login/",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email: email, password: password }),
+          }
+        );
+
+        // console.log(JSON.stringify({ email, password }));
+
+        // if (Object.keys(response).length === 0) {
+        //   toast.error("Please enter a valid email address");
+        // } else {
+        //   if (response.password === password) {
+        //     toast.success("Log in successful");
+        //     history("/dashboard");
+        //   } else {
+        //     toast.error("Please enter a correct password");
+        //   }
+        // }
+
+        if (response.ok) {
+          const userData = await response.json();
+
+          sessionStorage.setItem("email", email);
+          toast.success("Sign in Succssful");
+
+          // Calling the signIn function from your AuthContext
+          signIn({
+            isGoogleSignIn: false,
+            localUserId: userData.id,
+            localUserName: userData.name,
+            localUserEmail: userData.email,
+          });
+
+          // Redirecting to the dashboard or another page upon successful sign-in
+          history("/dashboard");
+        } else {
+          toast.error("Sign-in failed");
         }
-      );
-
-      // console.log(JSON.stringify({ email, password }));
-
-      if (response.ok) {
-        const userData = await response.json();
-
-        // Calling the signIn function from your AuthContext
-        signIn({
-          isGoogleSignIn: false,
-          localUserId: userData.id,
-          localUserName: userData.name,
-          localUserEmail: userData.email,
-        });
-
-        // Redirecting to the dashboard or another page upon successful sign-in
-        history("/dashboard");
-      } else {
-        console.error("Sign-in failed");
+      } catch (error) {
+        toast.error("Error during sign-in:", error);
       }
-    } catch (error) {
-      console.error("Error during sign-in:", error);
     }
+  };
+
+  const validated = () => {
+    let result = true;
+    let errorMessage = "Please enter a value in ";
+    if (email === null || email === "") {
+      result = false;
+      errorMessage += "email";
+    }
+    if (password === null || password === "") {
+      result = false;
+      errorMessage += " password";
+    }
+    if (!result) {
+      toast.warning(errorMessage);
+    } else {
+      if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email)) {
+      } else {
+        result = false;
+        toast.warning("Please enter a valid email");
+      }
+    }
+    return result;
   };
 
   return (
@@ -91,9 +133,11 @@ const SignIn = () => {
         <p className="remember">Remember me</p>
       </div>
       <div className="login-btn">
-        <Link to={"/dashboard"}>
-          <button className="small-btn">Login</button>
-        </Link>
+        {/* <Link to={"/dashboard"}> */}
+        <button onClick={handleSignIn} className="small-btn">
+          Login
+        </button>
+        {/* </Link> */}
         <p>
           Don't have an account? <br />
           <Link to="/signup" className="underlined red-text">

@@ -1,6 +1,7 @@
 import "./SideNav.css";
 import Logo from "../../assets/images/Eldanic-logo.png";
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 
 const menuItems = [
   {
@@ -144,34 +145,36 @@ const menuItems = [
 ];
 
 const SideNav = () => {
-  return (
-    <div className="side-nav">
-      <NavLink to="/">
-        <div className="side-nav_logo">
-          <img src={Logo} alt="proconnect-logo" />
-        </div>
-      </NavLink>
 
-      <div className="menu">
-        <p>MENU</p>
-        {menuItems.map((item, index) => {
-          return (
-            <NavLink
-              to={item.link}
-              key={index}
-              className={({ isActive }) => {
-                return isActive ? "active-nav" : "active";
-              }}
-            >
-              <div className="menu__list">
-                {item.image}
-                <p>{item.name}</p>
-              </div>
-            </NavLink>
-          );
-        })}
+  return (
+    <>
+      <div className="side-nav">
+        <NavLink to="/">
+          <div className="side-nav_logo">
+            <img src={Logo} alt="proconnect-logo" />
+          </div>
+        </NavLink>
+        <div className="menu">
+          <p>MENU</p>
+          {menuItems.map((item, index) => {
+            return (
+              <NavLink
+                to={item.link}
+                key={index}
+                className={({ isActive }) => {
+                  return isActive ? "active-nav" : "active";
+                }}
+              >
+                <div className="menu__list">
+                  {item.image}
+                  <p>{item.name}</p>
+                </div>
+              </NavLink>
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -212,7 +212,7 @@ function Form() {
                   //   }
                   // }}
                   onClick={handleNextButtonClick}
-                  className="wide-btn"
+                  className="wide-btn btn"
                 >
                   {page === FormTitles.length - 1
                     ? "Submit Application Form"

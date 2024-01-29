@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import axios, { Axios } from "axios";
 import { gapi } from "gapi-script";
 import GoogleSignInButton from "../../components/GoogleSignInButton";
+import { toast } from "react-toastify";
+import GoogleAuth from "../../components/GoogleAuth";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -35,7 +37,7 @@ const SignUp = () => {
   // const handleReg = async () => {
   //   try {
   //     const response = await axios.post(
-  //       "https://dev-api.eldanic.com/api/v1/auth/login",
+  //       "https://dev-api.eldanic.com/api/v1/auth/register",
   //       { email, password }
   //     );
   //     alert(`Registration successful: ${JSON.stringify(response.data)}`);
@@ -53,25 +55,54 @@ const SignUp = () => {
   //   }
   // };
 
-  const postData = (e) => {
+  const isValidated = () => {
+    let isProceed = true;
+    let errorMessage = "Please enter a value in ";
+    if (email === null || email === "") {
+      isProceed = false;
+      errorMessage += "email";
+    }
+    if (password === null || password === "") {
+      isProceed = false;
+      errorMessage += " password";
+    }
+    if (!isProceed) {
+      toast.warning(errorMessage);
+    } else {
+      if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email)) {
+      } else {
+        isProceed = false;
+        toast.warning("Please enter a valid email");
+      }
+    }
+    return isProceed;
+  };
 
+  const postData = (e) => {
     e.preventDefault();
 
-    axios
-      .post(
-        "https://dev-api.eldanic.com/api/v1/auth/login/",
-        {
-          email: email,
-          password: password,
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json '
+    if (isValidated()) {
+      axios
+        .post(
+          "https://dev-api.eldanic.com/api/v1/auth/register/",
+          {
+            email: email,
+            password: password,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json ",
+            },
           }
-        }
-      )
-      .then((res) => console.log("posting data", res))
-      .catch((err) => console.log(err));
+        )
+        .then((res) => {
+          console.log("posting data", res);
+          toast.success("Registration successful");
+          // Redirect to dashboard after successful registration
+          history("/dashboard", { state: { user: res.data } });
+        })
+        .catch((err) => toast.error("failed " + err.message));
+    }
   };
 
   return (
@@ -84,7 +115,7 @@ const SignUp = () => {
       </div>
       <div className="signup__main">
         <p className="form-title">Sign Up</p>
-        <form action="">
+        <form>
           <div className="input-container">
             <label htmlFor="email">Email address or user name</label>
             <input
@@ -138,6 +169,7 @@ const SignUp = () => {
           <p className="continue center">Or continue with</p>
           <hr />
         </span>
+        <GoogleAuth />
         {/* <button type="button" className="btn google">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -165,7 +197,7 @@ const SignUp = () => {
           </svg>
           Sign in with your Google account
         </button> */}
-        <GoogleSignInButton />
+        {/* <GoogleSignInButton /> */}
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import TestGoogle from "../../pages/TestGoogle";
 import SignIn from "../../components/SignIn";
 import GoogleSignInButton from "../../components/GoogleSignInButton";
+import GoogleAuth from "../../components/GoogleAuth";
 
 const Hero = () => {
   const [name, setName] = useState("");
@@ -45,44 +46,11 @@ const Hero = () => {
           </svg>
           Sign up with your Google Account
         </button> */}
-        <GoogleSignInButton />
+        {/* <GoogleSignInButton /> */}
+        <GoogleAuth />
       </div>
 
       {/* FORM */}
-      {/* <form className="hero-form">
-        <p className="red-text header">Login Here</p>
-        <div className="input-container">
-          <label htmlFor="email">Email address or username</label>
-          <input type="email" required />
-          <p className="error-message"></p>
-        </div>
-        <div className="input-container">
-          <label htmlFor="password">Password</label>
-          <input type="password" required />
-          <p className="error-message"></p>
-        </div>
-        <div className="check-div">
-          <input type="checkbox" className="check-box" />
-          <p className="remember">Remember me</p>
-        </div>
-        <div className="login-btn">
-          <button
-            className="small-btn"
-            // onClick={(e) => {
-            //   e.preventDefault();
-            // }}
-          >
-            <Link to="/dashboard">Login</Link>
-          </button>
-          <p>
-            Don't have an account? <br />
-            <Link to="/signup" className="underlined red-text">
-              Sign up
-            </Link>{" "}
-            here
-          </p>
-        </div>
-      </form> */}
       <SignIn />
     </div>
   );

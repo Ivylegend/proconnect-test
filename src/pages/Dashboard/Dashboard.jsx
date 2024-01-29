@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SideNav from "../../containers/SideNav/SideNav";
 import DynamicNav from "../../components/DynamicNav/DynamicNav";
 import Exclamation from "../../assets/images/exclaim.png";
 import "./Dashboard.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   // const location = useLocation();
   // const user = location.state?.user;
+  const history = useNavigate();
+
+  useEffect(() => {
+    let email = sessionStorage.getItem("email");
+    if (email === "" || email === null) {
+      history("/");
+    }
+  }, []);
 
   return (
     <div className="flex">

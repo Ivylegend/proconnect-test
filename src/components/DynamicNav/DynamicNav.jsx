@@ -6,9 +6,9 @@ import { useAuth } from "../../utils/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 
 const DynamicNav = (props) => {
-  // const { user, signOut } = useAuth();
+  const { user, signOut } = useAuth();
 
-  // const history = useNavigate();
+  const history = useNavigate();
 
   // if (!user) {
   //   // Redirect unauthenticated users to the login page
@@ -22,17 +22,18 @@ const DynamicNav = (props) => {
       {/* {user && ( */}
       <div className="dynamic-end">
         <span className="profile-bg">
-          {/* <img src={user.picture} alt="profile-picture" /> */}
+          {/* <img src={picture} alt="profile-picture" /> */}
           <img src={Profile} alt="profile-picture" />
         </span>
-        {/* <p>{user.name}</p> */}
-        <p>Victory Icha</p>
+        <p>Icha Victory</p>
+        {/* <p>{email}</p> */}
+        {/* <p>Victory Icha</p> */}
         <img src={Down} alt="chevron-down" />
         <span className="notifs">
           <img src={Bell} alt="notification-bell" />
           <span className="notif-circle"></span>
         </span>
-        <button style={{display: "none"}}>Sign Out</button>
+        <button style={{display: "none"}} onClick={()=>signOut()}>Sign Out</button>
       </div>
       {/* )} */}
     </div>

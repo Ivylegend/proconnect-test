@@ -1,6 +1,7 @@
 import SideNav from "../../containers/SideNav/SideNav";
 import DynamicNav from "../../components/DynamicNav/DynamicNav";
 import "./Documents.css";
+import { useNavigate } from "react-router-dom";
 
 const docs = [
   {
@@ -31,6 +32,14 @@ const docs = [
 ];
 
 const Documents = () => {
+  const history = useNavigate();
+
+  useEffect(() => {
+    let email = sessionStorage.getItem("email");
+    if (email === "" || email === null) {
+      history("/");
+    }
+  }, []);
   return (
     <div className="flex">
       <SideNav />
