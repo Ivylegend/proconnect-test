@@ -117,3 +117,9 @@ label {
 .small-btn a{
   color: #ddd;
 }
+
+@media screen and (max-width: 768px) {
+  .hero{
+    flex-direction: column;
+  }
+}

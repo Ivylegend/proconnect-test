@@ -6,10 +6,6 @@
   margin: 4rem 0 0;
 }
 
-/* .result_title{
-    
-} */
-
 .result_page {
   margin: 1rem 0;
 }
@@ -43,4 +39,14 @@
     text-align: center;
     margin: 1rem 0;
     color:  #db251a;
+}
+
+@media screen and (max-width: 768px) {
+  .app_results{
+    padding: 0 3rem;
+  }
+
+  .result-div{
+    width: 100%;
+  }
 }

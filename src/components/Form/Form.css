@@ -17,7 +17,22 @@
 }
 
 .next-btn {
-  width: 520px;
+  max-width: 520px;
   margin: auto;
   margin-bottom: 4rem;
+}
+
+@media screen and (max-width: 768px) {
+  .next-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 3rem 3rem;
+  }
+
+  .prev-btn{
+    width: 30px;
+    left: 1rem;
+    top: 7rem;
+  }
 }

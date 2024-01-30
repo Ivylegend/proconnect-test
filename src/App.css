@@ -74,3 +74,9 @@ a {
   position: relative;
   top: 30px;
 }
+
+@media screen and (max-width: 426px) {
+  .wide-btn{
+    width: 100%;
+  }
+}

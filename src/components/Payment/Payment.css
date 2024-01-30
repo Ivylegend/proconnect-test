@@ -45,3 +45,9 @@
   font-weight: bold;
   margin: 0 auto;
 }
+
+@media screen and (max-width: 768px) {
+  .app_payment{
+    padding: 0 3rem;
+  }
+}

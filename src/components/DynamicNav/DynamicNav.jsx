@@ -8,34 +8,30 @@ import { Link, useNavigate } from "react-router-dom";
 const DynamicNav = (props) => {
   const { user, signOut } = useAuth();
 
-  const history = useNavigate();
-
-  // if (!user) {
-  //   // Redirect unauthenticated users to the login page
-  //   history('/');
-  //   return null; // Render nothing while redirecting
-  // }
+  // const profilePicture = user.isGoogleSignIn
+  //   ? user.googlePicture
+  //   : user.localPicture || Profile;
 
   return (
     <div className="dynamic">
       <h2>{props.title}</h2>
       {/* {user && ( */}
-      <div className="dynamic-end">
-        <span className="profile-bg">
-          {/* <img src={picture} alt="profile-picture" /> */}
-          <img src={Profile} alt="profile-picture" />
-        </span>
-        <p>Icha Victory</p>
-        {/* <p>{email}</p> */}
-        {/* <p>Victory Icha</p> */}
-        <img src={Down} alt="chevron-down" />
-        <span className="notifs">
-          <img src={Bell} alt="notification-bell" />
-          <span className="notif-circle"></span>
-        </span>
-        <button style={{display: "none"}} onClick={()=>signOut()}>Sign Out</button>
-      </div>
-      {/* )} */}
+        <div className="dynamic-end">
+          <span className="profile-bg">
+            {/* <img src={picture} alt="profile-picture" /> */}
+            <img src={Profile} alt="profile-picture" />
+          </span>
+          <p>Icha Victory</p>
+          {/* <p>{user.isGoogleSignIn ? user.googleName : user.localName}</p>
+          <p>{user.isGoogleSignIn ? user.googleEmail : user.localEmail}</p> */}
+          <img src={Down} alt="chevron-down" />
+          <span className="notifs">
+            <img src={Bell} alt="notification-bell" />
+            <span className="notif-circle"></span>
+          </span>
+          <button onClick={() => signOut()}>Sign Out</button>
+        </div>
+      {/* // )} */}
     </div>
   );
 };

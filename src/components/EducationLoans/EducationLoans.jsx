@@ -3,37 +3,43 @@ import Logo from "../../assets/images/Eldanic-logo.png";
 import Background from "../Background/Background";
 import { Link } from "react-router-dom";
 import UploadIcon from "../../assets/images/upload.png";
-import './EducationLoans.css';
+import Laptop from "../../assets/images/laptop.png";
+import bank from "../../assets/images/bank.png";
+import health from "../../assets/images/health.png";
+import living from "../../assets/images/living.png";
+import phone from "../../assets/images/phone.png";
+import miscellaneous from "../../assets/images/miscellaneous.png";
+import "./EducationLoans.css";
 
 const dataValue = [
   {
     name: "Health Insurance",
-    icon: "/",
+    icon: health,
     key: "1",
   },
   {
     name: "New Laptop",
-    icon: "/",
+    icon: Laptop,
     key: "2",
   },
   {
     name: "New Phone",
-    icon: "/",
+    icon: phone,
     key: "3",
   },
   {
     name: "Tuition",
-    icon: "/",
+    icon: bank,
     key: "4",
   },
   {
     name: "Miscellaneous Cost",
-    icon: "/",
+    icon: miscellaneous,
     key: "5",
   },
   {
     name: "Cost of living",
-    icon: "/",
+    icon: living,
     key: "6",
   },
 ];
@@ -58,7 +64,7 @@ const EducationLoans = ({ formData, setFormData }) => {
           {dataValue.map((data, key) => {
             return (
               <div key={key} className="loan_options">
-                <img src={UploadIcon} alt="" />
+                <img src={data.icon} alt="" />
                 <p>{data.name}</p>
               </div>
             );

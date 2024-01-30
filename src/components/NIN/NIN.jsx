@@ -5,28 +5,50 @@ import Background from "../Background/Background";
 import "./NIN.css";
 import { Link } from "react-router-dom";
 import Loading from "../../containers/Loading";
+import { toast } from "react-toastify";
 
 function NIN({ formData, setFormData, onButtonClick }) {
   const [validated, setValidated] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [nin, setNin] = useState("");
+  const [name, setName] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [houseAddress, setHouseAddress] = useState("");
+  const [gender, setGender] = useState("");
+  const [setstateOfOrigin, setSetstateOfOrigin] = useState("");
 
-  // const handleButtonClick = () => {
-  //   const isInputValid = validateNIN(formData.nin);
-
-  //   if (isInputValid) {
-  //     setSuccess(true);
-  //     setValidated(true); // Set validated to true when the input is valid
-  //     if (onButtonClick) {
-  //       onButtonClick();
-  //     }
-  //   } else {
-  //     // Handle invalid input case if needed
-  //     setValidated(false);
-  //   }
-  // };
-
+  const token = localStorage.getItem("authToken");
   const handleValidation = () => {
-    setTimeout( <Loading />, 1000);
+    fetch(
+      `https://dev-api.eldanic.com/api/v1/user/fetch-nin/?nin_number=${nin}&dob=2003-09-10`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      }
+    )
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setName(
+          data.data.first_name +
+            " " +
+            data.data.middle_name +
+            " " +
+            data.data.last_name
+        );
+        setDateOfBirth(data.data.date_of_birth);
+        setGender(data.data.gender);
+        toast.success(data.message);
+      })
+      .catch((error) => {
+        toast.error("There was a problem with the fetch operation:", error);
+      });
     setValidated(true);
   };
 
@@ -47,10 +69,8 @@ function NIN({ formData, setFormData, onButtonClick }) {
           <input
             type="text"
             placeholder=""
-            value={formData.nin}
-            onChange={(event) =>
-              setFormData({ ...formData, nin: event.target.value })
-            }
+            value={nin}
+            onChange={(e) => setNin(e.target.value)}
           />
           <p className="hidden">Wrong NIN</p>
 
@@ -67,11 +87,11 @@ function NIN({ formData, setFormData, onButtonClick }) {
             <div className="nin-info">
               <div className="nin-text">
                 <p className="title">Full Name</p>
-                <p className="nin-detail">Joy Chinonso</p>
+                <p className="nin-detail">{name}</p>
               </div>
               <div className="nin-text">
                 <p className="title">Date of Birth</p>
-                <p className="nin-detail">04-07-2003</p>
+                <p className="nin-detail">{dateOfBirth}</p>
               </div>
               <div className="nin-text">
                 <p className="title">House Address</p>
@@ -79,7 +99,7 @@ function NIN({ formData, setFormData, onButtonClick }) {
               </div>
               <div className="nin-text">
                 <p className="title">Gender</p>
-                <p className="nin-detail">Female</p>
+                <p className="nin-detail">{gender}</p>
               </div>
               <div className="nin-text">
                 <p className="title">State of Origin</p>
@@ -94,7 +114,3 @@ function NIN({ formData, setFormData, onButtonClick }) {
 }
 
 export default NIN;
-
-const validateNIN = (nin) => {
-  return nin.length === 11; // Example: NIN must be 11 characters long
-};

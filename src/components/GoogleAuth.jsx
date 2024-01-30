@@ -8,18 +8,25 @@ const GoogleAuth = () => {
   const { signIn } = useAuth();
   const history = useNavigate();
 
-  function handleCallback(response) {
+  // Function to make an API request to register the user
+  const handleCallback = (response) => {
     const userObject = jwtDecode(response.credential);
-    signIn(userObject);
+
+    // Just sign in the user with Google
+    signIn({
+      isGoogleSignIn: true,
+      googleUserId: userObject.sub,
+      googleUserName: userObject.name,
+      googleUserEmail: userObject.email,
+      // Add other fields as needed
+    });
+
+    // Redirect to the dashboard or another page upon successful sign-in
     history("/dashboard");
-  }
-
-  useEffect(() => {
-
-  }, [signIn, history]);
+  };
 
   const login = useGoogleLogin({
-    onSuccess: (tokenResponse) => console.log(tokenResponse),
+    onSuccess: handleCallback,
   });
 
   return (

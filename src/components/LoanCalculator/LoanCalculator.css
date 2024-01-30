@@ -6,6 +6,7 @@
   /* align-items: flex-start; */
   align-items: center;
   gap: 16px;
+  background-color: white;
 }
 
 .compute {

@@ -3,6 +3,7 @@ import SideNav from "../../containers/SideNav/SideNav";
 import Checkmark from '../../assets/images/checkmark.png'
 import './ApplicationChecklist.css';
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const ApplicationChecklist = () => {
   const history = useNavigate();

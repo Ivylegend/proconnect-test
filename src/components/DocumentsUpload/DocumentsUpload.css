@@ -33,3 +33,18 @@ background-color: white;
   border-radius: 7.867px;
   border: 0.656px solid rgba(102, 102, 102, 0.35);
 }
+
+.uploaded-doc{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5rem;
+  margin-top: 1rem;
+}
+
+.uploaded-doc small{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .5rem;
+}

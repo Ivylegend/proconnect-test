@@ -5,8 +5,87 @@ import "./Olevel.css";
 import { Link } from "react-router-dom";
 import Results from "../../containers/Results/Results";
 
+
+const courses = [
+  {
+    title: "Mathematics",
+    grade: "A1",
+  },
+  {
+    title: "English Language",
+    grade: "A1",
+  },
+  {
+    title: "Biology",
+    grade: "A1",
+  },
+  {
+    title: "Chemistry",
+    grade: "A1",
+  },
+  {
+    title: "Physics",
+    grade: "A1",
+  },
+  {
+    title: "Marketing",
+    grade: "A1",
+  },
+  {
+    title: "Further Mathematics",
+    grade: "A1",
+  },
+  {
+    title: "Civic Education",
+    grade: "A1",
+  },
+  {
+    title: "Book Keping",
+    grade: "A1",
+  },
+];
+
 const Olevel = ({ formData, setFormData }) => {
   const [validated, setValidated] = useState(true);
+
+  const courses = [
+    {
+      title: "Mathematics",
+      grade: "A1",
+    },
+    {
+      title: "English Language",
+      grade: "A1",
+    },
+    {
+      title: "Biology",
+      grade: "A1",
+    },
+    {
+      title: "Chemistry",
+      grade: "A1",
+    },
+    {
+      title: "Physics",
+      grade: "A1",
+    },
+    {
+      title: "Marketing",
+      grade: "A1",
+    },
+    {
+      title: "Further Mathematics",
+      grade: "A1",
+    },
+    {
+      title: "Civic Education",
+      grade: "A1",
+    },
+    {
+      title: "Book Keping",
+      grade: "A1",
+    },
+  ];
 
   return (
     <div className="sign-up-container">
@@ -84,7 +163,7 @@ const Olevel = ({ formData, setFormData }) => {
           </button>
         </div>
       ) : (
-        <Results title="WAEC RESULT" />
+        <Results title="WAEC RESULT" courses={courses}/>
       )}
     </div>
   );

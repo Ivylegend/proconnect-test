@@ -42,8 +42,10 @@ const SignIn = () => {
 
         if (response.ok) {
           const userData = await response.json();
+          const token = userData.data.token;
 
           sessionStorage.setItem("email", email);
+          localStorage.setItem("authToken", token);
           toast.success("Sign in Succssful");
 
           // Calling the signIn function from your AuthContext
@@ -51,7 +53,7 @@ const SignIn = () => {
             isGoogleSignIn: false,
             localUserId: userData.id,
             localUserName: userData.name,
-            localUserEmail: userData.email,
+            localUserEmail: userData.data.email,
           });
 
           // Redirecting to the dashboard or another page upon successful sign-in
@@ -89,23 +91,6 @@ const SignIn = () => {
   };
 
   return (
-    // <div>
-    //   {/* SignIn form */}
-    //   <input
-    //     type="email"
-    //     placeholder="Email"
-    //     value={email}
-    //     onChange={(e) => setEmail(e.target.value)}
-    //   />
-    //   <input
-    //     type="password"
-    //     placeholder="Password"
-    //     value={password}
-    //     onChange={(e) => setPassword(e.target.value)}
-    //   />
-    //   <button onClick={handleSignIn}>Sign In</button>
-    // </div>
-
     <form className="hero-form">
       <p className="red-text header">Login Here</p>
       <div className="input-container">

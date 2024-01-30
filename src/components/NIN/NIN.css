@@ -71,3 +71,10 @@
 .none {
   display: none;
 }
+
+
+@media screen and (max-width: 768px) {
+  .app_nin{
+    padding: 0 3rem;
+  }
+}

@@ -11,3 +11,9 @@
 .app_apply h2{
     margin-bottom: 2rem;
 }
+
+@media screen and (max-width: 768px) {
+    .app_apply{
+      padding: 0 3rem;
+    }
+  }
