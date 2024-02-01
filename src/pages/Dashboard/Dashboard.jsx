@@ -3,26 +3,19 @@ import SideNav from "../../containers/SideNav/SideNav";
 import DynamicNav from "../../components/DynamicNav/DynamicNav";
 import Exclamation from "../../assets/images/exclaim.png";
 import "./Dashboard.css";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
-  // const location = useLocation();
-  // const user = location.state?.user;
   const history = useNavigate();
 
-  useEffect(() => {
-    let email = sessionStorage.getItem("email");
-    let googleToken = sessionStorage.getItem("googleToken");
-  
-    // Check if user is not logged in or missing necessary tokens
-    if (!email || !googleToken) {
-      history("/");
-    }
-  
-    // Optional: Verify the validity of the Google token using Google API
-  
-  }, [history]);
-  
+  // useEffect(() => {
+  //   const email = sessionStorage.getItem("email");
+  //   const googleToken = sessionStorage.getItem("googleToken"); // Assuming sessionStorage is appropriate
+
+  //   if (!email || !googleToken) {
+  //     history("/");
+  //   }
+  // }, [history, email, googleToken]);
 
   return (
     <div className="flex">
@@ -35,12 +28,14 @@ const Dashboard = () => {
             <p>Complete your profile before you begin your application</p>
           </div>
           <div className="application_div">
-            <span className="application_box">
-              <Link to="/school-application">Start School Application</Link>
-            </span>
-            <span className="application_box">
-              Skip School Application To Payment
-            </span>
+            <Link to="/school-application">
+              <span className="application_box">Start School Application</span>
+            </Link>
+            <Link to="/school-application">
+              <span className="application_box">
+                Skip School Application To Payment
+              </span>
+            </Link>
           </div>
           <div className="dashboard_lower">
             <p className="explainer">Watch Explainer Video</p>

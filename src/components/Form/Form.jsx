@@ -112,7 +112,7 @@ function Form() {
 
   // FORM SUBMISSION
   const handleFormSubmission = () => {
-    toast.success("FORM SUBMITTED");
+    toast.success("APPLICATION SUBMITTED");
     console.log(formData);
     handlePageChange(page + 1);
   };
@@ -146,8 +146,8 @@ function Form() {
           >
             <img src={ReturnBtn} alt="" />
           </button>
-          <Link to={"/dashboard"} className="next-btn">
-            <button className="btn wide-btn">Return to Dashboard</button>
+          <Link to="/dashboard" className="next-btn">
+            <button className="wide-btn btn">Return to Dashboard</button>
           </Link>
         </>
       );
@@ -162,7 +162,7 @@ function Form() {
           </button>
           <div className="next-btn">
             {/* Existing "Next" button logic for other pages */}
-            <button onClick={handleNextButtonClick} className="btn next-btn">Next</button>
+            <button onClick={handleNextButtonClick} className="btn next-btn  wide-btn">Next</button>
           </div>
         </>
       );

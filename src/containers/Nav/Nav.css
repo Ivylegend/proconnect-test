@@ -23,3 +23,9 @@
   position: relative;
   top: 28px;
 }
+
+@media screen and (max-width: 470px) {
+  .navbar-home{
+    padding: 0 30px 0 0;
+  }
+}

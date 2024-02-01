@@ -32,8 +32,9 @@
   gap: 0.5rem;
   border: 1px solid black;
   background-color: white;
-  transition: all .5s;
+  transition: all .3s;
   position: relative;
+  text-align: center;
 }
 
 .loan_options:hover{

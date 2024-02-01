@@ -12,6 +12,22 @@ const DynamicNav = (props) => {
   //   ? user.googlePicture
   //   : user.localPicture || Profile;
 
+  const email = sessionStorage.getItem("email");
+
+  const history = useNavigate();
+  const handleSignOut = () => {
+
+    // Clear session storage
+    sessionStorage.removeItem("email");
+    sessionStorage.removeItem("googleToken"); // Clear other session data as needed
+
+    // Sign out using AuthContext
+    signOut();
+
+    // Redirect to the home page
+    history("/");
+  };
+
   return (
     <div className="dynamic">
       <h2>{props.title}</h2>
@@ -21,7 +37,7 @@ const DynamicNav = (props) => {
             {/* <img src={picture} alt="profile-picture" /> */}
             <img src={Profile} alt="profile-picture" />
           </span>
-          <p>Icha Victory</p>
+          <p>{email}</p>
           {/* <p>{user.isGoogleSignIn ? user.googleName : user.localName}</p>
           <p>{user.isGoogleSignIn ? user.googleEmail : user.localEmail}</p> */}
           <img src={Down} alt="chevron-down" />
@@ -29,7 +45,7 @@ const DynamicNav = (props) => {
             <img src={Bell} alt="notification-bell" />
             <span className="notif-circle"></span>
           </span>
-          <button onClick={() => signOut()}>Sign Out</button>
+          <button onClick={handleSignOut}>Sign Out</button>
         </div>
       {/* // )} */}
     </div>
