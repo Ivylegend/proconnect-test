@@ -1,9 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../../assets/images/Eldanic-logo.png";
 import Background from "../Background/Background";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
 const ReferenceInfo = ({ formData, setFormData }) => {
+  const [countriesData, setCountriesData] = useState([]);
+  const [age, setAge] = useState("");
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("https://restcountries.com/v3.1/all");
+        setCountriesData(response.data);
+      } catch (error) {
+        // console.error("Error fetching countries:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="sign-up-container">
       <div style={{ position: "absolute", zIndex: -1 }}>
@@ -37,15 +62,33 @@ const ReferenceInfo = ({ formData, setFormData }) => {
               }
             />
           </div>
+
           <div className="olevel_details">
             <label htmlFor="">Phone Number</label>
-            <input
-              type="text"
-              value={formData.number}
-              onChange={(event) =>
-                setFormData({ ...formData, number: event.target.value })
-              }
-            />
+            <div className="flags">
+              <div>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={age}
+                  label="Age"
+                  onChange={handleChange}
+                >
+                  {countriesData.map((countriesArray, index) => (
+                    <MenuItem className="flag-item" key={index}>
+                      <img src={countriesArray.flags.png} alt="" />
+                    </MenuItem>
+                  ))}
+                </Select>
+              </div>
+              <input
+                type="text"
+                value={formData.number}
+                onChange={(event) =>
+                  setFormData({ ...formData, number: event.target.value })
+                }
+              />
+            </div>
           </div>
           <div className="olevel_details">
             <label htmlFor="">Profession</label>

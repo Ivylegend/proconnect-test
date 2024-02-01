@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import OtherInfo from "../Success/Success";
+import Success from "../Success/Success";
 import NIN from "../NIN/NIN";
 import Payment from "../Payment/Payment";
 import "./Form.css";
@@ -17,6 +17,8 @@ import FinanceOptions from "../FinanceOptions/FinanceOptions";
 import EducationLoans from "../EducationLoans/EducationLoans";
 import LoanCalculator from "../LoanCalculator/LoanCalculator";
 import ApplicationForm from "../ApplicationForm/ApplicationForm";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function Form() {
   const [page, setPage] = useState(0);
@@ -39,11 +41,12 @@ function Form() {
     lastName: "",
     username: "",
     nationality: "",
-    other: "",
+    success: "true",
   });
-
   const [hasOwnButton, setHasOwnButton] = useState(false);
+  const [nextStep, setNextStep] = useState(1);
 
+  // FORM TITLES
   const FormTitles = [
     "Payment",
     "NIN",
@@ -60,9 +63,10 @@ function Form() {
     "Education Loan",
     "Loan Calculator",
     "Application Form",
-    "Other",
+    "Success",
   ];
 
+  // GETTING STORED DATA
   useEffect(() => {
     // Load saved form data and current page from localStorage on component mount
     const savedFormData = JSON.parse(localStorage.getItem("formData"));
@@ -79,6 +83,7 @@ function Form() {
     setHasOwnButton(savedHasOwnButton);
   }, []);
 
+  // STORING DATA TO LOCAL STORAGE
   useEffect(() => {
     // Save form data, current page, and hasOwnButton to localStorage whenever they change
     localStorage.setItem("formData", JSON.stringify(formData));
@@ -86,29 +91,94 @@ function Form() {
     localStorage.setItem("hasOwnButton", String(hasOwnButton));
   }, [formData, page, hasOwnButton]);
 
+  // HANDLE PAGE CHANGE
   const handlePageChange = (newPage) => {
     setPage(newPage);
-
     setHasOwnButton(false);
   };
 
+  // HANDLE NEXT BUTTON CLICKS
   const handleNextButtonClick = () => {
     if (hasOwnButton) {
-      // Handle button click logic for pages with their own buttons
-      // For example, set hasOwnButton to true and handle the button click
       setHasOwnButton(true);
       // Your additional logic for pages with their own buttons goes here
     } else {
-      // Handle "Next" button click logic for pages without their own buttons
       if (page === FormTitles.length - 1) {
-        alert("FORM SUBMITTED");
-        console.log(formData);
       } else {
         handlePageChange(page + 1);
       }
     }
   };
 
+  // FORM SUBMISSION
+  const handleFormSubmission = () => {
+    toast.success("FORM SUBMITTED");
+    console.log(formData);
+    handlePageChange(page + 1);
+  };
+
+  // BUTTON RENDERING
+  const renderButtons = () => {
+    if (page === 0) {
+      return;
+    } else if (page === FormTitles.length - 2) {
+      return (
+        <>
+          <button
+            onClick={() => handlePageChange(page - 1)}
+            className="prev-btn"
+          >
+            <img src={ReturnBtn} alt="return button" />
+          </button>
+          <div className="next-btn">
+            <button onClick={handleFormSubmission} className="btn wide-btn">
+              Submit
+            </button>
+          </div>
+        </>
+      );
+    } else if (page === FormTitles.length - 1) {
+      return (
+        <>
+          <button
+            onClick={() => handlePageChange(page - 1)}
+            className="prev-btn"
+          >
+            <img src={ReturnBtn} alt="" />
+          </button>
+          <Link to={"/dashboard"} className="next-btn">
+            <button className="btn wide-btn">Return to Dashboard</button>
+          </Link>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <button
+            onClick={() => handlePageChange(page - 1)}
+            className="prev-btn btn"
+          >
+            <img src={ReturnBtn} alt="previous-button" />
+          </button>
+          <div className="next-btn">
+            {/* Existing "Next" button logic for other pages */}
+            <button onClick={handleNextButtonClick} className="btn next-btn">Next</button>
+          </div>
+        </>
+      );
+    }
+  };
+
+  // HANDLE PAYMENT
+  const handlePayment = (paymentData) => {
+    // Integrate with payment gateway or processing logic here
+    // Handle success or failure scenarios
+    // Update form state and navigate accordingly
+    setPage(nextStep);
+    setNextStep(1);
+  };
+
+  // PAGE DISPLAY
   const PageDisplay = () => {
     let component;
     let hasOwnButton = false;
@@ -119,6 +189,7 @@ function Form() {
           formData={formData}
           setFormData={setFormData}
           onButtonClick={() => setHasOwnButton(true)}
+          handlePayment={handlePayment}
         />
       );
     } else if (page === 1) {
@@ -166,7 +237,7 @@ function Form() {
         <ApplicationForm formData={formData} setFormData={setFormData} />
       );
     } else {
-      component = <OtherInfo formData={formData} setFormData={setFormData} />;
+      component = <Success formData={formData} setFormData={setFormData} />;
     }
 
     return { component, hasOwnButton };
@@ -174,54 +245,9 @@ function Form() {
 
   return (
     <div className="form">
-      {/* <div className="progressbar">
-        <div
-          style={{ width: page === 0 ? "33.3%" : page == 1 ? "66.6%" : "100%" }}
-        ></div>
-      </div> */}
       <div className="form-container">
-        {/* <div className="header">
-          <h2>{FormTitles[page]}</h2>
-        </div> */}
         <div className="body">{PageDisplay().component}</div>
-        <div className="footer">
-          {PageDisplay().hasOwnButton ? (
-            /* Render the button from the component */
-            PageDisplay().component.props.children.props.children
-          ) : (
-            <>
-              <button
-                disabled={page == 0}
-                // onClick={() => {
-                //   setPage((currPage) => currPage - 1);
-                // }}
-                onClick={() => handlePageChange(page - 1)}
-                className="prev-btn"
-              >
-                <img src={ReturnBtn} alt="return-button" />
-              </button>
-              <div className="next-btn">
-                <button
-                  // onClick={() => {
-                  //   if (page === FormTitles.length - 1) {
-                  //     alert("FORM SUBMITTED");
-                  //     console.log(formData);
-                  //   } else {
-                  //     // setPage((currPage) => currPage + 1);
-                  //     handlePageChange(page + 1);
-                  //   }
-                  // }}
-                  onClick={handleNextButtonClick}
-                  className="wide-btn btn but"
-                >
-                  {page === FormTitles.length - 1
-                    ? "Submit Application Form"
-                    : "Next"}
-                </button>
-              </div>
-            </>
-          )}
-        </div>
+        <div className="footer">{renderButtons()}</div>
       </div>
     </div>
   );

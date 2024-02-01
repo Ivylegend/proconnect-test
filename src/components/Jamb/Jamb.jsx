@@ -107,7 +107,7 @@ const Jamb = ({ formData, setFormData }) => {
           </button>
         </div>
       ) : (
-        <Results title="JAMB RESULT" courses={courses}/>
+        <Results level={2} title="JAMB RESULT" courses={courses}/>
       )}
     </div>
   );

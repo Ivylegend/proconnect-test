@@ -15,12 +15,14 @@ function NIN({ formData, setFormData, onButtonClick }) {
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [houseAddress, setHouseAddress] = useState("");
   const [gender, setGender] = useState("");
+  const [selectedDate, setSelectedDate] = useState(null);
   const [setstateOfOrigin, setSetstateOfOrigin] = useState("");
 
   const token = localStorage.getItem("authToken");
   const handleValidation = () => {
+    const formattedDate = displayLocalDate();
     fetch(
-      `https://dev-api.eldanic.com/api/v1/user/fetch-nin/?nin_number=${nin}&dob=2003-09-10`,
+      `https://dev-api.eldanic.com/api/v1/user/fetch-nin/?nin_number=${nin}&dob=${formattedDate}`,
       {
         method: "GET",
         headers: {
@@ -52,6 +54,22 @@ function NIN({ formData, setFormData, onButtonClick }) {
     setValidated(true);
   };
 
+  const handleDateChange = (event) => {
+    // Extract the selected date from the event
+    const newDate = event.target.value;
+
+    // Update the state with the selected date
+    setSelectedDate(newDate);
+  };
+
+  const displayLocalDate = () => {
+    // Convert UTC date string to local date with time zone offset
+    const localDate = new Date(selectedDate + "T00:00:00");
+    const offset = localDate.getTimezoneOffset() * 60000; // in milliseconds
+    const localDateWithOffset = new Date(localDate - offset);
+    return localDateWithOffset.toISOString().split("T")[0];
+  };
+
   return (
     <div className="sign-up-container">
       <div style={{ position: "absolute", zIndex: -1 }}>
@@ -72,8 +90,16 @@ function NIN({ formData, setFormData, onButtonClick }) {
             value={nin}
             onChange={(e) => setNin(e.target.value)}
           />
+          <label htmlFor="">Date of Birth</label>
+          <input
+            type="date"
+            id="datePicker"
+            name="datePicker"
+            value={selectedDate}
+            onChange={handleDateChange}
+          />
+          {selectedDate && <p>Selected Date: {displayLocalDate()}</p>}
           <p className="hidden">Wrong NIN</p>
-
           {!validated && (
             <button className="wide-btn btn" onClick={handleValidation}>
               Validate

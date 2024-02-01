@@ -75,6 +75,17 @@ a {
   top: 30px;
 }
 
+.flags{
+  display: flex;
+
+}
+
+.flag-item img{
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
 @media screen and (max-width: 426px) {
   .wide-btn{
     width: 100%;

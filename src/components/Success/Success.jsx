@@ -5,7 +5,7 @@ import SuccessImg from "../../assets/images/successful.png"
 import { Link } from "react-router-dom";
 import './Success.css';
 
-function OtherInfo({ formData, setFormData }) {
+function Success({ formData, setFormData }) {
   return (
     <div className="sign-up-container">
       <div style={{ position: "absolute", zIndex: -1 }}>
@@ -26,4 +26,4 @@ function OtherInfo({ formData, setFormData }) {
   );
 }
 
-export default OtherInfo;
+export default Success;

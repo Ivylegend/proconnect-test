@@ -3,13 +3,13 @@ import "./Results.css";
 
 
 
-const Results = ({ title, courses }) => {
+const Results = ({ title, courses, level }) => {
   return (
     <div className="app_results">
       <div>
         <h2 className="result_title center">{title}</h2>
         <p className="result_page center">
-          <span>1</span>/<span>2</span>
+          <span>{level}</span>/<span>2</span>
         </p>
         <p>Your Result</p>
         <div className="result-div">

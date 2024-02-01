@@ -12,10 +12,17 @@ const Dashboard = () => {
 
   useEffect(() => {
     let email = sessionStorage.getItem("email");
-    if (email === "" || email === null) {
+    let googleToken = sessionStorage.getItem("googleToken");
+  
+    // Check if user is not logged in or missing necessary tokens
+    if (!email || !googleToken) {
       history("/");
     }
-  }, []);
+  
+    // Optional: Verify the validity of the Google token using Google API
+  
+  }, [history]);
+  
 
   return (
     <div className="flex">

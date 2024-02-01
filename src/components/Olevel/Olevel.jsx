@@ -5,7 +5,6 @@ import "./Olevel.css";
 import { Link } from "react-router-dom";
 import Results from "../../containers/Results/Results";
 
-
 const courses = [
   {
     title: "Mathematics",
@@ -163,7 +162,7 @@ const Olevel = ({ formData, setFormData }) => {
           </button>
         </div>
       ) : (
-        <Results title="WAEC RESULT" courses={courses}/>
+        <Results level={1} title="WAEC RESULT" courses={courses} />
       )}
     </div>
   );

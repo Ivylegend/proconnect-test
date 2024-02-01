@@ -3,30 +3,19 @@ import { useGoogleLogin } from "@react-oauth/google";
 import { useAuth } from "../utils/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+import { toast } from "react-toastify";
 
 const GoogleAuth = () => {
   const { signIn } = useAuth();
   const history = useNavigate();
 
-  // Function to make an API request to register the user
-  const handleCallback = (response) => {
-    const userObject = jwtDecode(response.credential);
-
-    // Just sign in the user with Google
-    signIn({
-      isGoogleSignIn: true,
-      googleUserId: userObject.sub,
-      googleUserName: userObject.name,
-      googleUserEmail: userObject.email,
-      // Add other fields as needed
-    });
-
-    // Redirect to the dashboard or another page upon successful sign-in
-    history("/dashboard");
-  };
-
   const login = useGoogleLogin({
-    onSuccess: handleCallback,
+    onSuccess: (tokenResponse) => {
+      console.log(tokenResponse);
+      const googleToken = tokenResponse.access_token;
+      sessionStorage.setItem("googleToken", googleToken);
+      history("/dashboard");
+    },
   });
 
   return (

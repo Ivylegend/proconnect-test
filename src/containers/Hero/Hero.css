@@ -122,4 +122,8 @@ label {
   .hero{
     flex-direction: column;
   }
+
+  .google{
+    max-width: 100%;
+  }
 }

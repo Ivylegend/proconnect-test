@@ -3,8 +3,14 @@ import Background from "../Background/Background";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/images/Eldanic-logo.png";
 import "./Payment.css";
+import { toast } from "react-toastify";
 
-const Payment = ({ formData, setFormData }) => {
+const Payment = ({ formData, setFormData, handlePayment }) => {
+  const handleMakePayment = () => {
+    toast.warning("Payment not yet integrated")
+    handlePayment(formData); // Pass the payment data to the parent component
+  };
+
   return (
     <div>
       <div style={{ position: "absolute", zIndex: -1 }}>
@@ -61,7 +67,12 @@ const Payment = ({ formData, setFormData }) => {
             <input type="text" placeholder="CVV" />
             <input type="text" placeholder="Expiry Date" />
           </div>
-          <button className="make_payment btn wide-btn">Make Payment</button>
+          <button
+            className="make_payment btn wide-btn"
+            onClick={handleMakePayment}
+          >
+            Make Payment
+          </button>
           <p className="payment_text">
             FINAL SUBMISSION AND ACKNOWLEDGEMENT EMAIL SENT TO LET YOU KNOW NEXT
             STEPS AND EXPECTATION
