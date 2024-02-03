@@ -29,6 +29,10 @@
   padding: 1rem;
 }
 
+.nin-container label{
+  display: block;
+}
+
 .nin-container button {
   width: 100%;
 }

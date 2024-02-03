@@ -3,13 +3,13 @@
   align-items: center;
   justify-content: space-between;
   background-color: white;
-  height: 80px;
+  height: 150px;
   padding: 0 80px 0 0;
+  overflow-y: hidden;
   font-family: "Montserrat", sans-serif;
 }
 
 .nav-logo{
-  width: 200px;
   height: 100%;
   object-fit: cover;
   background-color: transparent;
@@ -20,12 +20,14 @@
 
 .nav-logo img{
   width: 100%;
-  position: relative;
-  top: 28px;
 }
 
 @media screen and (max-width: 470px) {
   .navbar-home{
     padding: 0 30px 0 0;
+  }
+
+  .navbar-home{
+    height: 100px;
   }
 }

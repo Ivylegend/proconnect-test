@@ -38,12 +38,13 @@
   gap: 0.7rem;
 }
 
-.login{
-  color: #111;
+.login a {
   font-weight: 500;
+
+  color: #111;
 }
 
-.continue-div{
+.continue-div {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,7 +52,7 @@
   margin: 2rem 0 0;
 }
 
-.continue-div hr{
+.continue-div hr {
   width: 33%;
 }
 
@@ -63,4 +64,10 @@
   padding: 1rem;
   width: 100%;
   margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 568px) {
+  .signup__main {
+    padding: 0 2rem 2rem;
+  }
 }

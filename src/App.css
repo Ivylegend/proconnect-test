@@ -61,22 +61,15 @@ a {
 }
 
 .form-nav-logo {
-  height: 80px;
+  height: 150px;
+  overflow-y: hidden;
   display: flex;
   align-items: center;
   border-bottom: 1px solid rgba(102, 102, 102, 0.25);
 }
 
 .form-nav-logo img {
-  width: 100%;
-}
-
-.form-nav-logo img {
   object-fit: contain;
-  height: 100%;
-  width: 200px;
-  position: relative;
-  top: 30px;
 }
 
 .flags {
@@ -103,4 +96,14 @@ a {
     align-items: center;
     font-size: 14px;
   }
+
+   .form-nav-logo{
+    height: 100px;
+  }
+
+  .form-nav-logo img{
+    width: 300px;
+    position: relative;
+    left: -30px;
+  } 
 }

@@ -39,13 +39,14 @@
   height: 130px;
   border: 5px solid #e0e4ec;
   border-radius: 50%;
+  object-position: center;
 }
 
 .my-pics img {
   width: 100%;
   height: 100%;
   border-radius: inherit;
-  /* object-fit: cover; */
+  object-fit: cover;
 }
 
 .profile-line {

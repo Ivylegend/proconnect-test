@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../../assets/images/Eldanic-logo.png";
+import Logo from "../../assets/images/elda-logo.png";
 import Background from "../Background/Background";
 import SuccessImg from "../../assets/images/successful.png"
 import { Link } from "react-router-dom";

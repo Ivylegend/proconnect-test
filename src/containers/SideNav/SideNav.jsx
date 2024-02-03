@@ -1,5 +1,5 @@
 import "./SideNav.css";
-import Logo from "../../assets/images/Eldanic-logo.png";
+import Logo from "../../assets/images/elda-logo.png";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 

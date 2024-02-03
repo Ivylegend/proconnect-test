@@ -32,12 +32,6 @@ const Tabs = () => {
         >
           Notifications
         </div>
-        <div
-          className={toggleState === 4 ? "tabs active-tabs" : "tabs"}
-          onClick={() => toggleTab(4)}
-        >
-          Interface
-        </div>
       </div>
 
       {/* TAB CONTENTS */}
@@ -58,19 +52,7 @@ const Tabs = () => {
         >
           <h2>Notifications</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
-            illum nisi suscipit ipsum eveniet, porro perspiciatis facere atque
-            est hic!
-          </p>
-        </div>
-        <div
-          className={toggleState === 4 ? "content active-content" : "content"}
-        >
-          <h2>Interface</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
-            illum nisi suscipit ipsum eveniet, porro perspiciatis facere atque
-            est hic!
+            No Notifications yet
           </p>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import Background from "../Background/Background";
 import { Link } from "react-router-dom";
-import Logo from "../../assets/images/Eldanic-logo.png";
+import Logo from "../../assets/images/elda-logo.png";
 import "./Payment.css";
 import { toast } from "react-toastify";
 

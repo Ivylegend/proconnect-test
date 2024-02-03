@@ -4,13 +4,21 @@
   align-items: center;
 }
 
-.app_video h2{
-    width: 100%;
-    text-align: center;
+.app_video h2 {
+  width: 100%;
+  text-align: center;
 }
 
 .app_video video {
   justify-content: center;
   background-color: black;
   border-radius: 20px;
+  width: 400px;
+  height: 200px;
+}
+
+@media screen and (max-width: 500px) {
+  .app_video video {
+    max-width: 350px;
+  }
 }

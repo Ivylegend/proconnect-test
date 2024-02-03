@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Nav from "../../containers/Nav/Nav";
-import Logo from "../../assets/images/Eldanic-logo.png";
+import Logo from "../../assets/images/elda-logo.png";
 import Background from "../Background/Background";
 import "./NIN.css";
 import { Link } from "react-router-dom";

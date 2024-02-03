@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../../assets/images/Eldanic-logo.png";
+import Logo from "../../assets/images/elda-logo.png";
 import Background from "../Background/Background";
 import { Link } from "react-router-dom";
 import ChevronRight from '../../assets/images/Chevronright.png'

@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../../assets/images/Eldanic-logo.png";
+import Logo from "../../assets/images/elda-logo.png";
 import Background from "../Background/Background";
 import { Link } from "react-router-dom";
 import "./WatchVideo.css";
@@ -17,7 +17,7 @@ const WatchVideo = ({ formData, setFormData }) => {
       </div>
       <div className="app_apply app_video">
         <h2>Watch this video before choosing a course</h2>
-        <video controls={true} width={400} height={200} src=""></video>
+        <video controls={true} src=""></video>
       </div>
     </div>
   );

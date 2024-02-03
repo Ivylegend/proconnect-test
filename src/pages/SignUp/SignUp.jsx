@@ -1,6 +1,6 @@
 import Background from "../../components/Background/Background";
 import { Link, useNavigate } from "react-router-dom";
-import Logo from "../../assets/images/Eldanic-logo.png";
+import Logo from "../../assets/images/elda-logo.png";
 import "./SignUp.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -100,7 +100,7 @@ const SignUp = () => {
           // Redirect to home after successful registration
           history("/", { state: { user: res.data } });
         })
-        .catch((err) => toast.error("failed " + err.message));
+        .catch((err) => toast.error("Failed " + err.message));
     }
   };
 
@@ -145,7 +145,7 @@ const SignUp = () => {
           </div>
           <p className="terms">
             By continuing, you agree to the{" "}
-            <span className="underlined">Terms of use</span> and{" "}
+            <span className="underlined">Terms and conditions</span> and{" "}
             <span className="underlined">Privacy Policy</span>
           </p>
 

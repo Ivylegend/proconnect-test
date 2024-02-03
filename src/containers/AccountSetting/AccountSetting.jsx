@@ -1,15 +1,35 @@
 import { useState } from "react";
-import GalleryAdd from '../../assets/images/gallery-add.png'
+import GalleryAdd from "../../assets/images/gallery-add.png";
 import "./AccountSetting.css";
 
 const AccountSetting = () => {
   const [picture, setPicture] = useState(false);
   const [file, setFile] = useState();
 
+  // const getImage = (event) => {
+  //   setFile(URL.createObjectURL(event.target.files[0]));
+  //   setPicture(true);
+  // };
+
   const getImage = (event) => {
-    setFile(URL.createObjectURL(event.target.files[0]));
-    setPicture(true);
+    const reader = new FileReader();
+    reader.onload = () => {
+      setFile(reader.result); // Store the Data URL in the state
+    };
+    reader.readAsDataURL(event.target.files[0]);
   };
+
+  const handleUpdateProfile = () => {
+    localStorage.setItem("profilePicture", file);
+    setFile(localStorage.getItem("profilePicture")); // Fetch and set again to trigger re-render
+  };
+
+  // const handleUpdateProfile = () => {
+  //   localStorage.setItem("profilePicture", file)
+  //   console.log(file);
+  // };
+
+  const savedPicture = localStorage.getItem("profilePicture");
 
   return (
     <div>
@@ -53,7 +73,9 @@ const AccountSetting = () => {
         </div>
       </form>
       <div className="buttons">
-        <button className="update btn">Update Profile</button>
+        <button className="update btn" onClick={handleUpdateProfile}>
+          Update Profile
+        </button>
         <p className="reset btn">Reset</p>
       </div>
     </div>

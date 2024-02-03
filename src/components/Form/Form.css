@@ -5,8 +5,8 @@
 .prev-btn {
   width: 40px;
   position: absolute;
-  top: 8rem;
-  left: 5rem;
+  top: 12rem;
+  left: 8rem;
   border: none;
   background: transparent;
 }
@@ -39,7 +39,14 @@ a.next-btn {
 
   .prev-btn{
     width: 30px;
-    left: 1rem;
-    top: 7rem;
+    left: 5rem;
+    top: 12rem;
   }
+}
+
+@media screen and (max-width: 500px) {
+ .prev-btn{
+  left: 2rem;
+  top: 8rem;
+ } 
 }
