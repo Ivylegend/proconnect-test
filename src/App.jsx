@@ -13,6 +13,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import { ToastContainer } from "react-toastify";
+import PasswordReset from "./pages/PasswordReset/PasswordReset";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/profile" element={<Settings />} />
           <Route path="/help" element={<Help />} />
           <Route path="/school-application" element={<Form />} />
+          <Route path="/reset-password" element={<PasswordReset />} />
 
           <Route path="*" element={<ErrorPage />} />
         </Routes>

@@ -8,25 +8,31 @@ import { gapi } from "gapi-script";
 import GoogleSignInButton from "../../components/GoogleSignInButton";
 import { toast } from "react-toastify";
 import GoogleAuth from "../../components/GoogleAuth";
+import {
+  FaEye,
+  FaEyeSlash,
+  FaExclamationCircle,
+  FaRegCheckCircle,
+  FaRegCircle,
+} from "react-icons/fa";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [user, setuser] = useState(null);
-
+  const [visibility, setVisibility] = useState(false);
+  const [validationResults, setValidationResults] = useState({
+    length: false,
+    uppercase: false,
+    lowercase: false,
+    specialChar: false,
+  });
   const history = useNavigate();
 
-  // useEffect(() => {
-  //   function start() {
-  //     gapi.client.init({
-  //       clientId: clientId,
-  //       scope: "",
-  //     });
-  //   }
-
-  //   gapi.load("client:auth2", start);
-  // });
+  const passwordShow = () => {
+    setVisibility((prev) => !prev);
+  };
 
   // In SignUp.js
   // history("/dashboard", { state: { user } });
@@ -34,48 +40,43 @@ const SignUp = () => {
   const clientId =
     "700918527543-o711lm59d7t83amp3ccmh5jhhcvreins.apps.googleusercontent.com";
 
-  // const handleReg = async () => {
-  //   try {
-  //     const response = await axios.post(
-  //       "https://dev-api.eldanic.com/api/v1/auth/register",
-  //       { email, password }
-  //     );
-  //     alert(`Registration successful: ${JSON.stringify(response.data)}`);
-  //   } catch (error) {
-  //     if (error.response) {
-  //       // The request was made, but the server responded with a status code that falls out of the range of 2xx
-  //       setError(`Server error: ${error.response.data.message}`);
-  //     } else if (error.request) {
-  //       // The request was made but no response was received
-  //       setError("No response from server");
-  //     } else {
-  //       // Something happened in setting up the request that triggered an Error
-  //       setError(`Error: ${error.message}`);
-  //     }
-  //   }
-  // };
+  const updateValidationResults = () => {
+    const lengthValid = password.length >= 8;
+    const uppercaseValid = /[A-Z]/.test(password);
+    const lowercaseValid = /[a-z]/.test(password);
+    const specialCharValid = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+    setValidationResults({
+      length: lengthValid,
+      uppercase: uppercaseValid,
+      lowercase: lowercaseValid,
+      specialChar: specialCharValid,
+    });
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  useEffect(() => {
+    updateValidationResults();
+  }, [password]);
 
   const isValidated = () => {
-    let isProceed = true;
-    let errorMessage = "Please enter a value in ";
-    if (email === null || email === "") {
-      isProceed = false;
-      errorMessage += "email";
+    const isEmailValid = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email);
+    const isPasswordValid = Object.values(validationResults).every(
+      (valid) => valid
+    );
+
+    if (!isEmailValid) {
+      toast.warning("Please enter a valid email");
     }
-    if (password === null || password === "") {
-      isProceed = false;
-      errorMessage += " password";
+
+    if (!isPasswordValid) {
+      toast.warning("Password does not meet the criteria");
     }
-    if (!isProceed) {
-      toast.warning(errorMessage);
-    } else {
-      if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email)) {
-      } else {
-        isProceed = false;
-        toast.warning("Please enter a valid email");
-      }
-    }
-    return isProceed;
+
+    return isEmailValid && isPasswordValid && email !== "" && password !== "";
   };
 
   const postData = (e) => {
@@ -128,15 +129,60 @@ const SignUp = () => {
             <p className="error-message">{error}</p>
           </div>
           <div className="input-container">
-            <label htmlFor="password">Password</label>
+            <span className="password-visibility">
+              <label htmlFor="password">Password</label>
+              <span>
+                {!visibility ? (
+                  <>
+                    <FaEye onClick={() => passwordShow()} cursor={"pointer"}/> <p>show</p>
+                  </>
+                ) : (
+                  <>
+                    <FaEyeSlash onClick={() => passwordShow()} cursor={"pointer"}/> <p>hide</p>
+                  </>
+                )}
+              </span>
+            </span>
             <input
-              type="password"
+              type={visibility ? "text" : "password"}
               id="password"
               value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
+              onChange={handlePasswordChange}
             />
+            <div className="tracker-box">
+              <div>
+                At least 8 characters
+                {validationResults.length ? (
+                  <FaRegCheckCircle color="green" />
+                ) : (
+                  <FaExclamationCircle color="orange" />
+                )}
+              </div>
+              <div>
+                At least one lowercase letter
+                {validationResults.lowercase ? (
+                  <FaRegCheckCircle color="green" />
+                ) : (
+                  <FaExclamationCircle color="orange" />
+                )}
+              </div>
+              <div>
+                At least one uppercase letter
+                {validationResults.uppercase ? (
+                  <FaRegCheckCircle color="green" />
+                ) : (
+                  <FaExclamationCircle color="orange" />
+                )}
+              </div>
+              <div>
+                At least one special character
+                {validationResults.specialChar ? (
+                  <FaRegCheckCircle color="green" />
+                ) : (
+                  <FaExclamationCircle color="orange" />
+                )}
+              </div>
+            </div>
             <p className="error-message">{error}</p>
           </div>
           <div className="check-div">
@@ -145,8 +191,19 @@ const SignUp = () => {
           </div>
           <p className="terms">
             By continuing, you agree to the{" "}
-            <span className="underlined">Terms and conditions</span> and{" "}
-            <span className="underlined">Privacy Policy</span>
+            <Link
+              target="_blank"
+              to="https://proconnectpay.com/#terms-and-conditions"
+            >
+              <span className="underlined">Terms and conditions</span>
+            </Link>{" "}
+            and{" "}
+            <Link
+              target="_blank"
+              to="https://proconnectpay.com/#terms-and-conditions"
+            >
+              <span className="underlined">Privacy Policy</span>
+            </Link>
           </p>
 
           <button

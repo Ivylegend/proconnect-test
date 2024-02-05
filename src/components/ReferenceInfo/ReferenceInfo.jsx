@@ -3,9 +3,7 @@ import Logo from "../../assets/images/elda-logo.png";
 import Background from "../Background/Background";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
 const ReferenceInfo = ({ formData, setFormData }) => {

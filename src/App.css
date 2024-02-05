@@ -22,7 +22,7 @@
   color: white;
 }
 
-a .wide-btn{
+a .wide-btn {
   max-width: 520px;
 }
 
@@ -82,6 +82,10 @@ a {
   object-fit: contain;
 }
 
+select {
+  border: 1px solid black;
+}
+
 @media screen and (max-width: 470px) {
   .wide-btn {
     width: 100%;
@@ -97,13 +101,13 @@ a {
     font-size: 14px;
   }
 
-   .form-nav-logo{
+  .form-nav-logo {
     height: 100px;
   }
 
-  .form-nav-logo img{
+  .form-nav-logo img {
     width: 300px;
     position: relative;
     left: -30px;
-  } 
+  }
 }

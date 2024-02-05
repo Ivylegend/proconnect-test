@@ -16,17 +16,25 @@ const FinanceOptions = ({ formData, setFormData }) => {
       </div>
       <div className="app_olevel">
         <h2>Financing Options</h2>
-        <p className="center" style={{marginBottom: '1rem'}}>How Do You Intend to Fund Your Education</p>
+        <p className="center" style={{ marginBottom: "1rem" }}>
+          How Do You Intend to Fund Your Education
+        </p>
         <div className="olevel_form">
-          <label htmlFor="">Financing Options</label>
+          <label htmlFor="">Choose one from the dropdown</label>
           <select name="" id="">
-            <option value="WAEC">Parents/Guardians</option>
-            <option value="WAEC">ProconnectPAY Education Loans</option>
+            <option value="WAEC">
+              Parents/Guardians (Pay in Full at once)
+            </option>
+            <option value="WAEC">
+              Parents/Guardians (Pay in installments)
+            </option>
+            <option value="WAEC">
+              ProconnectPAY Private University Education Loans
+            </option>
             <option value="WAEC">Scolarships from 3rd Parties</option>
-            <option value="WAEC">Redeemers Polytechnic</option>
             <option value="WAEC">Federal Government Student Loans</option>
             <option value="WAEC">
-              Crowdfunding from friends and acquintaince
+              Crowdfunding from Friends and Acquaintance
             </option>
           </select>
         </div>

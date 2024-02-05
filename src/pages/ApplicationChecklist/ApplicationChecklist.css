@@ -24,3 +24,17 @@
   line-height: 23px; /* 127.778% */
   letter-spacing: 0.5px;
 }
+
+.checklist{
+  display: flex;
+  align-items: center;
+  gap: 400px;
+  margin-top: 1rem;
+}
+
+.checklist div span {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}

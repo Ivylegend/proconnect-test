@@ -5,7 +5,14 @@ import UploadIcon from "../../assets/images/upload.png";
 import { Link } from "react-router-dom";
 import "./DocumentsUpload.css";
 
-const dataValue = [1, 2, 3, 4, 5, 6, 7, 8];
+const dataValue = [
+  "WAEC Certificate",
+  "NIN Slip",
+  "NECO Certificate",
+  "JAMB Result Slip",
+  "Passport Photograph - white background",
+  "State of origin affidavit / certificate",
+];
 
 const DocumentsUpload = ({ formData, setFormData }) => {
   const [picture, setPicture] = useState(false);
@@ -51,7 +58,7 @@ const DocumentsUpload = ({ formData, setFormData }) => {
             return (
               <div key={data}>
                 <img src={UploadIcon} alt="" />
-                <p>Drag or drop your document here to upload</p>
+                <p>{data}</p>
                 <button className="btn_upload">
                   Choose File
                   <input

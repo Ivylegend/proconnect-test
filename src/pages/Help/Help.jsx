@@ -6,7 +6,7 @@ const Help = () => {
     <div className="flex">
       <SideNav />
       <div style={{ marginLeft: "16rem" }}>
-        <DynamicNav title="Application School Checklist" />
+        <DynamicNav title="Help" />
         <div className="dashboard">
           <div className="dashboard_lower">
             <p className="explainer">Watch Explainer Video</p>

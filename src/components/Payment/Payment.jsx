@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 const Payment = ({ formData, setFormData, handlePayment }) => {
   const handleMakePayment = () => {
-    toast.warning("Payment not yet integrated")
+    toast.warning("Payment not yet integrated");
     handlePayment(formData); // Pass the payment data to the parent component
   };
 
@@ -50,7 +50,7 @@ const Payment = ({ formData, setFormData, handlePayment }) => {
               }
             />
           </div>
-          <div className="payment_input">
+          {/* <div className="payment_input">
             <label htmlFor="">Card Details</label>
             <input
               type="text"
@@ -66,12 +66,12 @@ const Payment = ({ formData, setFormData, handlePayment }) => {
           <div className="payment_details">
             <input type="text" placeholder="CVV" />
             <input type="text" placeholder="Expiry Date" />
-          </div>
+          </div> */}
           <button
             className="make_payment btn wide-btn"
             onClick={handleMakePayment}
           >
-            Make Payment
+            Proceed with Payment
           </button>
           <p className="payment_text">
             FINAL SUBMISSION AND ACKNOWLEDGEMENT EMAIL SENT TO LET YOU KNOW NEXT

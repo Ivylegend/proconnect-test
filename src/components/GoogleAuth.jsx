@@ -4,16 +4,32 @@ import { useAuth } from "../utils/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 const GoogleAuth = () => {
   const { signIn } = useAuth();
   const history = useNavigate();
 
   const login = useGoogleLogin({
-    onSuccess: (tokenResponse) => {
-      console.log(tokenResponse);
-      const googleToken = tokenResponse.access_token;
-      sessionStorage.setItem("googleToken", googleToken);
+    onSuccess: async (response) => {
+      try {
+        const res = await axios.get(
+          "https://www.googleapis.com/oauth3/v3/userinfo",
+          {
+            headers: {
+              Authorization: `Bearer ${response.access_token}`,
+            },
+          }
+        );
+        console.log(res);
+        const userName = res.data.name;
+
+        // Update your application state with the user's name
+        // Alternatively, you can display it directly on your dashboard
+        console.log(`Welcome, ${userName}!`);
+      } catch (err) {
+        toast.error(err);
+      }
       history("/dashboard");
     },
   });

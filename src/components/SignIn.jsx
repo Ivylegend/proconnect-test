@@ -3,13 +3,20 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../utils/AuthContext";
 import { toast } from "react-toastify";
+import Eye from "../assets/images/exclaim.png";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const SignIn = () => {
   const { signIn } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [visibility, setVisibility] = useState(false);
 
   const history = useNavigate();
+
+  const passwordShow = () => {
+    setVisibility((prev) => !prev);
+  };
 
   const handleSignIn = async (e) => {
     e.preventDefault();
@@ -104,30 +111,46 @@ const SignIn = () => {
         <p className="error-message"></p>
       </div>
       <div className="input-container">
-        <label htmlFor="password">Password</label>
+        <span className="password-visibility">
+          <label htmlFor="password">Password</label>
+          <span>
+            {!visibility ? (
+              <>
+                <FaEye onClick={() => passwordShow()} cursor={"pointer"} />{" "}
+                <p>show</p>
+              </>
+            ) : (
+              <>
+                <FaEyeSlash onClick={() => passwordShow()} cursor={"pointer"} />{" "}
+                <p>hide</p>
+              </>
+            )}
+          </span>
+        </span>
         <input
-          type="password"
+          type={visibility ? "text" : "password"}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
         <p className="error-message"></p>
       </div>
-      <div className="check-div">
-        <input type="checkbox" className="check-box" />
-        <p className="remember">Remember me</p>
+      <div className="forgot_div">
+        <div className="check-div">
+          <input type="checkbox" className="check-box" />
+          <p className="remember">Remember me</p>
+        </div>
+        <Link to="reset-password">Forgot Password</Link>
       </div>
       <div className="login-btn">
-        {/* <Link to={"/dashboard"}> */}
         <button onClick={handleSignIn} className="small-btn">
           Login
         </button>
-        {/* </Link> */}
         <p>
           Don't have an account? <br />
           <Link to="/signup" className="underlined red-text">
             Sign up
-          </Link>{" "}
+          </Link>
           here
         </p>
       </div>

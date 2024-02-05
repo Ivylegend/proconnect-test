@@ -85,7 +85,7 @@ label {
   display: flex;
   gap: 0.5rem;
   align-items: center;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .check-box {
@@ -116,6 +116,31 @@ label {
 
 .small-btn a{
   color: #ddd;
+}
+
+.password-visibility{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.password-visibility span{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+.forgot_div{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.forgot_div a{
+  font-size: 13px;
+  color: black;
 }
 
 @media screen and (max-width: 768px) {
