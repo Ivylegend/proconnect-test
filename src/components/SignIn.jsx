@@ -140,7 +140,7 @@ const SignIn = () => {
           <input type="checkbox" className="check-box" />
           <p className="remember">Remember me</p>
         </div>
-        <Link to="reset-password">Forgot Password</Link>
+        <Link to="forgot-password">Forgot Password</Link>
       </div>
       <div className="login-btn">
         <button onClick={handleSignIn} className="small-btn">
