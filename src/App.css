@@ -83,7 +83,12 @@ a {
 }
 
 select {
-  border: 1px solid black;
+  border: 1px solid #666666;
+  color: black;
+}
+
+option {
+  color: black;
 }
 
 @media screen and (max-width: 470px) {
