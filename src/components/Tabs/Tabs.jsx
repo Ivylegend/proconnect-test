@@ -18,17 +18,11 @@ const Tabs = () => {
           className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(1)}
         >
-          Account Setting
+          Login & Security
         </div>
         <div
           className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(2)}
-        >
-          Login & Security
-        </div>
-        <div
-          className={toggleState === 3 ? "tabs active-tabs" : "tabs"}
-          onClick={() => toggleTab(3)}
         >
           Notifications
         </div>
@@ -40,20 +34,13 @@ const Tabs = () => {
         <div
           className={toggleState === 1 ? "content active-content" : "content"}
         >
-          <AccountSetting />
+          <LoginSecurity />
         </div>
         <div
           className={toggleState === 2 ? "content active-content" : "content"}
         >
-          <LoginSecurity />
-        </div>
-        <div
-          className={toggleState === 3 ? "content active-content" : "content"}
-        >
           <h2>Notifications</h2>
-          <p>
-            No Notifications yet
-          </p>
+          <p>No Notifications yet</p>
         </div>
       </div>
     </div>

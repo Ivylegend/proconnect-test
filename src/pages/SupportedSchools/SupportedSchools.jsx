@@ -3,6 +3,7 @@ import DynamicNav from "../../components/DynamicNav/DynamicNav";
 import "./SupportedSchools.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import "./SupportedSchools.css";
 
 const schools = [
   "Covenant University",

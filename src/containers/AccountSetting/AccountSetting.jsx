@@ -1,35 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GalleryAdd from "../../assets/images/gallery-add.png";
 import "./AccountSetting.css";
 
 const AccountSetting = () => {
   const [picture, setPicture] = useState(false);
   const [file, setFile] = useState();
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [savedPicture, setSavedPicture] = useState(
+    localStorage.getItem("profilePicture")
+  );
 
-  // const getImage = (event) => {
-  //   setFile(URL.createObjectURL(event.target.files[0]));
-  //   setPicture(true);
-  // };
+  useEffect(() => {
+    setSavedPicture(localStorage.getItem("profilePicture"));
+  }, [file]);
 
   const getImage = (event) => {
-    const reader = new FileReader();
-    reader.onload = () => {
-      setFile(reader.result); // Store the Data URL in the state
-    };
-    reader.readAsDataURL(event.target.files[0]);
+    setFile(URL.createObjectURL(event.target.files[0]));
+    setPicture(true);
   };
 
   const handleUpdateProfile = () => {
     localStorage.setItem("profilePicture", file);
-    setFile(localStorage.getItem("profilePicture")); // Fetch and set again to trigger re-render
+    localStorage.setItem("fullName", fullName);
+    localStorage.setItem("email", email);
+    localStorage.setItem("username", username);
+    localStorage.setItem("phoneNumber", phoneNumber);
   };
 
-  // const handleUpdateProfile = () => {
-  //   localStorage.setItem("profilePicture", file)
-  //   console.log(file);
-  // };
-
-  const savedPicture = localStorage.getItem("profilePicture");
+  // const savedPicture = localStorage.getItem("profilePicture");
 
   return (
     <div>
@@ -44,7 +45,7 @@ const AccountSetting = () => {
             </div>
           ) : (
             <div className="my-pics">
-              <img src={file} alt={file} />
+              <img src={savedPicture || file} alt={file || savedPicture} />
             </div>
           )}
         </span>
@@ -53,15 +54,30 @@ const AccountSetting = () => {
       <form action="" className="app_profileForm">
         <div className="profile_form">
           <label htmlFor="name">Full name</label>
-          <input type="text" placeholder="Please enter your full name" />
+          <input
+            type="text"
+            placeholder="Please enter your full name"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+          />
         </div>
         <div className="profile_form">
           <label htmlFor="email">Email</label>
-          <input type="email" placeholder="Please enter your email" />
+          <input
+            type="email"
+            placeholder="Please enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </div>
         <div className="profile_form">
           <label htmlFor="username">Username</label>
-          <input type="text" placeholder="Please enter your username" />
+          <input
+            type="text"
+            placeholder="Please enter your username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
         </div>
         <div className="profile_form">
           <label htmlFor="number">Phone Number</label>
@@ -69,6 +85,8 @@ const AccountSetting = () => {
             type="text"
             inputMode="numeric"
             placeholder="Please enter your phone number"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
           />
         </div>
       </form>
