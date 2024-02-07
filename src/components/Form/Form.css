@@ -1,17 +1,17 @@
-.form{
-    position: relative;
+.form {
+  position: relative;
 }
 
 .prev-btn {
   width: 40px;
   position: absolute;
-  top: 12rem;
   left: 8rem;
+  top: 0;
   border: none;
   background: transparent;
 }
 
-.prev-btn img{
+.prev-btn img {
   width: 100%;
   object-fit: cover;
 }
@@ -30,23 +30,21 @@ a.next-btn {
 }
 
 @media screen and (max-width: 768px) {
-  .next-btn{
+  .next-btn {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 3rem 3rem;
   }
 
-  .prev-btn{
+  .prev-btn {
     width: 30px;
     left: 5rem;
-    top: 12rem;
   }
 }
 
 @media screen and (max-width: 500px) {
- .prev-btn{
-  left: 2rem;
-  top: 8rem;
- } 
+  .prev-btn {
+    left: 2rem;
+  }
 }

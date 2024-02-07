@@ -6,14 +6,6 @@ import { Link } from "react-router-dom";
 const CourseOptions = ({ formData, setFormData }) => {
   return (
     <div className="sign-up-container">
-      <div style={{ position: "absolute", zIndex: -1 }}>
-        <Background />
-      </div>
-      <div className="form-nav-logo">
-        <Link to="/profile">
-          <img src={Logo} alt="logo" />
-        </Link>
-      </div>
       <div className="app_apply">
         <h2>Course Options</h2>
         <div className="uniType">

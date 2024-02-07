@@ -73,14 +73,6 @@ function NIN({ formData, setFormData, onButtonClick }) {
 
   return (
     <div className="sign-up-container">
-      <div style={{ position: "absolute", zIndex: -1 }}>
-        <Background />
-      </div>
-      <div className="form-nav-logo">
-        <Link to="/profile">
-          <img src={Logo} alt="logo" />
-        </Link>
-      </div>
       <div className="app_nin">
         <div className={validated ? "none" : "nin-container"}>
           <h2>Input your NIN</h2>

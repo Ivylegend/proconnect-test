@@ -2,20 +2,12 @@ import React from "react";
 import Logo from "../../assets/images/elda-logo.png";
 import Background from "../Background/Background";
 import { Link } from "react-router-dom";
-import ChevronRight from '../../assets/images/Chevronright.png'
+import ChevronRight from "../../assets/images/Chevronright.png";
 import "./CourseRequirements.css";
 
 const CourseRequirements = () => {
   return (
     <div>
-      <div style={{ position: "absolute", zIndex: -1 }}>
-        <Background />
-      </div>
-      <div className="form-nav-logo">
-        <Link to="/profile">
-          <img src={Logo} alt="logo" />
-        </Link>
-      </div>
       <div className="app_apply">
         <h2>Requirements for this course</h2>
         <div className="uniType">

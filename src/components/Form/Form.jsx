@@ -22,6 +22,8 @@ import { toast } from "react-toastify";
 
 function Form() {
   const [page, setPage] = useState(0);
+  const [selectedCategory, setSelectedCategory] =
+    useState("Private University");
   const [formData, setFormData] = useState({
     nameOfInstitution: "",
     amount: "",
@@ -162,7 +164,12 @@ function Form() {
           </button>
           <div className="next-btn">
             {/* Existing "Next" button logic for other pages */}
-            <button onClick={handleNextButtonClick} className="btn next-btn  wide-btn">Next</button>
+            <button
+              onClick={handleNextButtonClick}
+              className="btn next-btn  wide-btn"
+            >
+              Next
+            </button>
           </div>
         </>
       );
@@ -199,9 +206,22 @@ function Form() {
     } else if (page === 3) {
       component = <Jamb formData={formData} setFormData={setFormData} />;
     } else if (page === 4) {
-      component = <ApplyingTo formData={formData} setFormData={setFormData} />;
+      component = (
+        <ApplyingTo
+          formData={formData}
+          setFormData={setFormData}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
+      );
     } else if (page === 5) {
-      component = <NameOfUni formData={formData} setFormData={setFormData} />;
+      component = (
+        <NameOfUni
+          formData={formData}
+          setFormData={setFormData}
+          selectedCategory={selectedCategory}
+        />
+      );
     } else if (page === 6) {
       component = <WatchVideo formData={formData} setFormData={setFormData} />;
     } else if (page === 7) {

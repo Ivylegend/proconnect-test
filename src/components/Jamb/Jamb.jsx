@@ -33,14 +33,6 @@ const Jamb = ({ formData, setFormData }) => {
 
   return (
     <div className="sign-up-container">
-      <div style={{ position: "absolute", zIndex: -1 }}>
-        <Background />
-      </div>
-      <div className="form-nav-logo">
-        <Link to="/profile">
-          <img src={Logo} alt="logo" />
-        </Link>
-      </div>
       {validated ? (
         <div className="app_olevel">
           <h2>Ready your JAMB Details</h2>
@@ -107,7 +99,7 @@ const Jamb = ({ formData, setFormData }) => {
           </button>
         </div>
       ) : (
-        <Results level={2} title="JAMB RESULT" courses={courses}/>
+        <Results level={2} title="JAMB RESULT" courses={courses} />
       )}
     </div>
   );

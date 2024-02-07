@@ -6,14 +6,6 @@ import { Link } from "react-router-dom";
 const FinanceOptions = ({ formData, setFormData }) => {
   return (
     <div className="sign-up-container">
-      <div style={{ position: "absolute", zIndex: -1 }}>
-        <Background />
-      </div>
-      <div className="form-nav-logo">
-        <Link to="/profile">
-          <img src={Logo} alt="logo" />
-        </Link>
-      </div>
       <div className="app_olevel">
         <h2>Financing Options</h2>
         <p className="center" style={{ marginBottom: "1rem" }}>

@@ -15,6 +15,7 @@ import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import { ToastContainer } from "react-toastify";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
+import FormLayout from "./layout/FormLayout";
 
 function App() {
   return (
@@ -34,7 +35,14 @@ function App() {
           <Route path="/settings" element={<Settings />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/help" element={<Help />} />
-          <Route path="/school-application" element={<Form />} />
+          <Route
+            path="/school-application"
+            element={
+              <FormLayout>
+                <Form />
+              </FormLayout>
+            }
+          />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
 

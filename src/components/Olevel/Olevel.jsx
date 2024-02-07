@@ -88,14 +88,6 @@ const Olevel = ({ formData, setFormData }) => {
 
   return (
     <div className="sign-up-container">
-      <div style={{ position: "absolute", zIndex: -1 }}>
-        <Background />
-      </div>
-      <div className="form-nav-logo">
-        <Link to="/profile">
-          <img src={Logo} alt="logo" />
-        </Link>
-      </div>
       {validated ? (
         <div className="app_olevel">
           <h2>Ready your O'level Details</h2>

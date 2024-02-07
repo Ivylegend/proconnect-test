@@ -58,24 +58,18 @@ const EducationLoans = ({ formData, setFormData }) => {
 
   return (
     <div className="sign-up-container">
-      <div style={{ position: "absolute", zIndex: -1 }}>
-        <Background />
-      </div>
-      <div className="form-nav-logo">
-        <Link to="/profile">
-          <img src={Logo} alt="logo" />
-        </Link>
-      </div>
       <div className="app_loan">
         <h2>Our Education Loans covers the following</h2>
         <p className="center" style={{ marginBottom: "1rem" }}>
           Choose the expenses you would love ProconnectPAY to cover
         </p>
         <div className="loan_div">
-        {dataValue.map((data, index) => (
+          {dataValue.map((data, index) => (
             <div
               key={index}
-              className={`loan_options ${clickedOptions[index] ? 'clicked' : ''}`}
+              className={`loan_options ${
+                clickedOptions[index] ? "clicked" : ""
+              }`}
               onClick={() => loanClick(index)}
             >
               <img src={data.icon} alt="" />

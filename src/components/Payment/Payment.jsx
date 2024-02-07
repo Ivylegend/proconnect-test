@@ -40,14 +40,6 @@ const Payment = ({ formData, setFormData, handlePayment }) => {
 
   return (
     <div>
-      <div style={{ position: "absolute", zIndex: -1 }}>
-        <Background />
-      </div>
-      <div className="form-nav-logo">
-        <Link to="/profile">
-          <img src={Logo} alt="logo" />
-        </Link>
-      </div>
       <div className="app_payment">
         <h2>Pay School Application Fee</h2>
         <div className="payment_form">

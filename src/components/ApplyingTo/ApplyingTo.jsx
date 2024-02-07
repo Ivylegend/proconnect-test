@@ -1,33 +1,29 @@
-import React from "react";
-import Logo from "../../assets/images/elda-logo.png";
-import Background from "../Background/Background";
+import { useState } from "react";
 import "./ApplyingTo.css";
-import { Link } from "react-router-dom";
 
-const ApplyingTo = ({ formData, setFormData }) => {
+const ApplyingTo = ({
+  selectedCategory,
+  setSelectedCategory,
+  formData,
+  setFormData,
+}) => {
+  const handleChange = (event) => {
+    setSelectedCategory(event.target.value);
+  };
+
   return (
-    <div>
-      <div style={{ position: "absolute", zIndex: -1 }}>
-        <Background />
-      </div>
-      <div className="form-nav-logo">
-        <Link to="/profile">
-          <img src={Logo} alt="logo" />
-        </Link>
-      </div>
-      <div className="app_apply">
-        <h2>Are you applying to?</h2>
-        <div className="uniType">
-          <label htmlFor="">Category</label>
-          <select name="" id="">
-            <option value="WAEC">Private University</option>
-            <option value="WAEC">Federal University</option>
-            <option value="WAEC">State University</option>
-            <option value="WAEC">Private Polytechnic</option>
-            <option value="WAEC">Federal Polytechnic</option>
-            <option value="WAEC">State Polytechnic</option>
-          </select>
-        </div>
+    <div className="app_apply">
+      <h2>Are you applying to?</h2>
+      <div className="uniType">
+        <label htmlFor="">Category</label>
+        <select name="" id="" value={selectedCategory} onChange={handleChange}>
+          <option value="Private University">Private University</option>
+          <option value="Federal University">Federal University</option>
+          <option value="State University">State University</option>
+          <option value="Private Polytechnic">Private Polytechnic</option>
+          <option value="Federal Polytechnic">Federal Polytechnic</option>
+          <option value="State Polytechnic">State Polytechnic</option>
+        </select>
       </div>
     </div>
   );
