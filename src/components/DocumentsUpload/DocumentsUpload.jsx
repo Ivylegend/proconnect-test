@@ -57,8 +57,8 @@ const DocumentsUpload = ({ formData, setFormData }) => {
             const upload = uploads[index] || {};
             return (
               <div key={data}>
+                <b>{data}</b>
                 <img src={UploadIcon} alt="" />
-                <p>{data}</p>
                 <button className="btn_upload">
                   Choose File
                   <input

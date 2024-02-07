@@ -16,6 +16,7 @@ function NIN({ formData, setFormData, onButtonClick }) {
   const [houseAddress, setHouseAddress] = useState("");
   const [gender, setGender] = useState("");
   const [selectedDate, setSelectedDate] = useState(null);
+  const [verificationOption, setVerificationOption] = useState("nin");
   const [setstateOfOrigin, setSetstateOfOrigin] = useState("");
 
   const token = localStorage.getItem("authToken");
@@ -83,13 +84,33 @@ function NIN({ formData, setFormData, onButtonClick }) {
       <div className="app_nin">
         <div className={validated ? "none" : "nin-container"}>
           <h2>Input your NIN</h2>
-          <label htmlFor="">Input your NIN number</label>
-          <input
-            type="text"
-            placeholder=""
-            value={nin}
-            onChange={(e) => setNin(e.target.value)}
-          />
+          <div>
+            <label htmlFor="verification-option">
+              Choose your form of verification
+            </label>
+            <select
+              id="verification-option"
+              value={verificationOption}
+              onChange={(e) => setVerificationOption(e.target.value)}
+            >
+              <option value="nin">NIN Number</option>
+              <option value="passport">International Passport</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="verification-input">
+              Input your{" "}
+              {verificationOption === "nin" ? "NIN number" : "Passport number"}
+            </label>
+            <input
+              type="text"
+              id="verification-input"
+              placeholder=""
+              value={nin}
+              onChange={(e) => setNin(e.target.value)}
+            />
+          </div>
+
           <label htmlFor="">Date of Birth</label>
           <input
             type="date"

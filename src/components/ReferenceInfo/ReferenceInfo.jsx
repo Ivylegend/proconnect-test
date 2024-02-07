@@ -5,27 +5,30 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+// import "react-phone-input-2/lib/material.css";
 
 const ReferenceInfo = ({ formData, setFormData }) => {
-  const [countriesData, setCountriesData] = useState([]);
-  const [age, setAge] = useState("");
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
+  const initialValues = {
+    contactno: "",
+    country_code: "",
   };
+  const [referenceData, setReferenceData] = useState(initialValues);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("https://restcountries.com/v3.1/all");
-        setCountriesData(response.data);
-      } catch (error) {
-        // console.error("Error fetching countries:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const handleChange = (e, value, name) => {
+    console.log("value", value);
+    console.log("name", name);
+    if (name === "contactno") {
+      let splitMobile = e?.split(value?.dialCode);
+      setReferenceData({
+        ...referenceData,
+        country_code: value?.dialCode,
+        contactno: splitMobile?.[1] || "",
+      });
+    } else
+      setReferenceData({ ...referenceData, [e.target.name]: e.target.value });
+  };
 
   return (
     <div className="sign-up-container">
@@ -60,33 +63,24 @@ const ReferenceInfo = ({ formData, setFormData }) => {
               }
             />
           </div>
-
-          <div className="olevel_details">
+          <div
+            className="olevel_details"
+            style={{
+              marginBottom: "1.2rem",
+            }}
+          >
             <label htmlFor="">Phone Number</label>
-            <div className="flags">
-              <div>
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  value={age}
-                  label="Age"
-                  onChange={handleChange}
-                >
-                  {countriesData.map((countriesArray, index) => (
-                    <MenuItem className="flag-item" key={index}>
-                      <img src={countriesArray.flags.png} alt="" />
-                    </MenuItem>
-                  ))}
-                </Select>
-              </div>
-              <input
-                type="text"
-                value={formData.number}
-                onChange={(event) =>
-                  setFormData({ ...formData, number: event.target.value })
-                }
-              />
-            </div>
+            <PhoneInput
+              country="ng"
+              regions={"africa"}
+              inputStyle={{
+                height: "56px",
+                width: "100%",
+                borderRadius: "10px",
+              }}
+              onChange={(e, phone) => handleChange(e, phone, "contactno")}
+              value={`${referenceData.country_code}${referenceData.contactno}`}
+            />
           </div>
           <div className="olevel_details">
             <label htmlFor="">Profession</label>
