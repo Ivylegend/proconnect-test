@@ -51,6 +51,14 @@ a .wide-btn {
   text-align: center;
 }
 
+.checkbox:checked {
+  background-color: red !important;
+}
+
+.checkbox:checked {
+  background-color: red !important;
+}
+
 .flex {
   display: flex;
   flex-direction: row;

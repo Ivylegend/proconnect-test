@@ -2,6 +2,10 @@
   color: #4c535f;
 }
 
+.account_profile{
+  width: 720px;
+}
+
 .pp{
   font-weight: 700;
   margin-bottom: 1rem;
@@ -122,5 +126,15 @@
   .app_profileForm{
     display: flex;
     flex-direction: column;
+  }
+
+  .account_profile{
+    max-width: 400px;
+  }
+}
+
+@media screen and (max-width:490px) {
+  .account_profile{
+    max-width: 300px;
   }
 }

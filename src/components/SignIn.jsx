@@ -52,7 +52,7 @@ const SignIn = () => {
           const token = userData.data.token;
 
           sessionStorage.setItem("email", email);
-          sessionStorage.setItem("authToken", token);
+          localStorage.setItem("authToken", token);
           toast.success("Sign in Successful");
 
           // Calling the signIn function from your AuthContext

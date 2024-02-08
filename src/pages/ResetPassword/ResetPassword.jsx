@@ -9,6 +9,7 @@ import {
   FaEyeSlash,
   FaRegCheckCircle,
 } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const ResetPassword = () => {
   const [visibility, setVisibility] = useState(false);
@@ -21,6 +22,8 @@ const ResetPassword = () => {
     lowercase: false,
     specialChar: false,
   });
+
+  const token = localStorage.getItem("authToken");
 
   const history = useNavigate();
 
@@ -74,8 +77,39 @@ const ResetPassword = () => {
       return;
     }
 
-    // Add your reset password logic here
-    history("/");
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", `Token ${token}`);
+
+    var raw = JSON.stringify({
+      current_password: "chelsies",
+      new_password: password,
+    });
+
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    fetch(
+      "https://dev-api.eldanic.com/api/v1/user/change-password/",
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((result) => {
+        // Check if the response indicates success
+        if (result.status === true) {
+          // If successful, display a success toast with the message
+          toast.success(result.message);
+          history("/");
+        } else {
+          // If unsuccessful, display an error toast with the message
+          toast.error(result.message);
+        }
+      })
+      .catch((error) => console.log("error", error));
   };
 
   return (

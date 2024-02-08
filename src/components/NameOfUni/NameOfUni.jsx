@@ -1,26 +1,7 @@
-const NameOfUni = ({ selectedCategory }) => {
-  const token = sessionStorage.getItem("authToken");
-  const requestOptions = {
-    method: "GET",
-    redirect: "follow",
-    headers: {
-      Authorization: `Token ${token}`,
-    },
-  };
+import { useEffect, useState } from "react";
 
-  fetch(
-    "http://localhost:3005/api/v1/fetch_school/?school_type=state_university",
-    {
-      method: "GET",
-      redirect: "follow",
-      headers: {
-        Authorization: `Token ${token}`,
-      },
-    }
-  )
-    .then((response) => response.json())
-    .then((result) => console.log(result))
-    .catch((error) => console.log("error", error));
+const NameOfUni = ({ selectedCategory }) => {
+  const token = localStorage.getItem("authToken");
 
   const universities = {
     "Private University": [
@@ -54,14 +35,56 @@ const NameOfUni = ({ selectedCategory }) => {
       // Add state polytechnics here
     ],
   };
+  const [institutionNames, setInstitutionNames] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const myHeaders = new Headers();
+        myHeaders.append("Authorization", `Token ${token}`);
+        myHeaders.append(
+          "Cookie",
+          "sessionid=jzs5i5nqdcasueaq9chtoji3c55nvpqb"
+        );
+
+        const requestOptions = {
+          method: "GET",
+          headers: myHeaders,
+          redirect: "follow",
+        };
+
+        const response = await fetch(
+          `https://dev-api.eldanic.com/api/v1/fetch_school/?school_type=${selectedCategory}`,
+          requestOptions
+        );
+        const result = await response.json();
+        const { data } = result;
+
+        // Extract names of institutions from data
+        const names = data.map((school) => school["Name of Institution"]);
+        setInstitutionNames(names);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [selectedCategory, token]);
 
   return (
     <div className="app_apply">
       <h2>Name of Institution</h2>
       <div className="uniType">
         <label htmlFor="">Name</label>
-        <select name="" id="">
+        {/* <select name="" id="">
           {universities[selectedCategory]?.map((uni, index) => (
+            <option key={index} value={uni}>
+              {uni}
+            </option>
+          ))}
+        </select> */}
+        <select name="" id="">
+          {institutionNames.map((uni, index) => (
             <option key={index} value={uni}>
               {uni}
             </option>

@@ -11,11 +11,11 @@ const DashboardLayout = ({ children, title }) => {
 
   return (
     <div>
-      <div>
-        <DynamicNav title={title} toggleSideNav={toggleSideNav}/>
+      <div className="margleft">
+        <DynamicNav title={title} toggleSideNav={toggleSideNav} />
       </div>
       <div>
-        <SideNav isOpen={isSideNavOpen} toggleSideNav={toggleSideNav}/>
+        <SideNav isOpen={isSideNavOpen} toggleSideNav={toggleSideNav} />
       </div>
       <div>{children}</div>
     </div>

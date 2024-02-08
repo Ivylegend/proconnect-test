@@ -17,12 +17,12 @@ const ApplyingTo = ({
       <div className="uniType">
         <label htmlFor="">Category</label>
         <select name="" id="" value={selectedCategory} onChange={handleChange}>
-          <option value="Private University">Private University</option>
-          <option value="Federal University">Federal University</option>
-          <option value="State University">State University</option>
-          <option value="Private Polytechnic">Private Polytechnic</option>
-          <option value="Federal Polytechnic">Federal Polytechnic</option>
-          <option value="State Polytechnic">State Polytechnic</option>
+          <option value="private_university">Private University</option>
+          <option value="federal_university">Federal University</option>
+          <option value="state_university">State University</option>
+          <option value="state_college">Private Polytechnic</option>
+          <option value="federal_college">Federal Polytechnic</option>
+          <option value="state_college">State Polytechnic</option>
         </select>
       </div>
     </div>

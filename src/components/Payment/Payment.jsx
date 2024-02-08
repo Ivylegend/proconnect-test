@@ -1,14 +1,28 @@
 import React from "react";
-import Background from "../Background/Background";
-import { Link } from "react-router-dom";
-import Logo from "../../assets/images/elda-logo.png";
 import "./Payment.css";
 import { toast } from "react-toastify";
+import PaystackPop from "@paystack/inline-js";
 
 const Payment = ({ formData, setFormData, handlePayment }) => {
   const handleMakePayment = () => {
-    toast.warning("Payment not yet integrated");
+    toast.warning("Payment Still In Test Mode");
     handlePayment(formData); // Pass the payment data to the parent component
+  };
+
+  const payWithPayStack = () => {
+    const paystack = new PaystackPop();
+    paystack.newTransaction({
+      key: "pk_test_8bf2b4700c3fcc36408da11bebbb7a1619c3f3ce", // Provide the customer's email
+      amount: formData.amount * 100, // Paystack expects amount in kobo (multiply by 100 for naira)
+      email: "my@gmail.com",
+      onSuccess(transaction) {
+        handlePayment(formData);
+        toast.success(`Payment successful ${transaction.reference}`);
+      },
+      onClose() {
+        toast.error("Payment canceled");
+      },
+    });
   };
 
   const formatAmount = (amount) => {

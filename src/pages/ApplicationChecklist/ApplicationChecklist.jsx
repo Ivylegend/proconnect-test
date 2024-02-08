@@ -47,7 +47,7 @@ const ApplicationChecklist = () => {
               {checkListData.map((data, index) => {
                 return (
                   <span key={index}>
-                    <input type="checkbox" name="" id="" />
+                    <input type="checkbox" className="checkbox" name="" id="" />
                     <p>{data}</p>
                   </span>
                 );

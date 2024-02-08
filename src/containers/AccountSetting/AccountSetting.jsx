@@ -33,7 +33,7 @@ const AccountSetting = () => {
   // const savedPicture = localStorage.getItem("profilePicture");
 
   return (
-    <div>
+    <div className="account_profile">
       <div className="profile-pics">
         <p className="pp">Your Profile Picture</p>
         <span>

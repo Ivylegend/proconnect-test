@@ -1,10 +1,11 @@
 .doc-div {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   /* background-color: aqua; */
   padding: 12px 1rem;
   border-radius: 1rem;
+  gap: 4rem;
 }
 
 .doc-div:hover{
