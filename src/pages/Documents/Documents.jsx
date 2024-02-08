@@ -16,14 +16,29 @@ const docs = [
     number: "2",
   },
   {
-    title: "O'level RESULT",
-    text: "Upload your O'level RESULT",
+    title: "WAEC Certificate",
+    text: "Upload your O'level RESULT here",
     number: "3",
   },
   {
-    title: "Passport Photograph",
-    text: "Upload your Passport Photograph",
+    title: "NECO Certificate",
+    text: "Upload your O'level Result here",
     number: "4",
+  },
+  {
+    title: "Passport Photograph",
+    text: "Upload your Passport Photograph here",
+    number: "5",
+  },
+  {
+    title: "Passport Photograph",
+    text: "Upload your original copy of your Birth Certificate here",
+    number: "6",
+  },
+  {
+    title: "Certificate of Origin",
+    text: "Upload your original copy of your Certificate here",
+    number: "7",
   },
 ];
 
@@ -40,7 +55,7 @@ const Documents = () => {
     <div className="flex">
       <div className="margleft">
         <div className="dashboard">
-          <p className="doc-header">Documents</p>
+          <p className="doc-header">Upload these Documents</p>
           <div className="documents">
             {docs.map((doc, index) => {
               return (

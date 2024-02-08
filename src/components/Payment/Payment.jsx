@@ -58,7 +58,7 @@ const Payment = ({ formData, setFormData, handlePayment }) => {
         <h2>Pay School Application Fee</h2>
         <div className="payment_form">
           <div className="payment_input">
-            <label htmlFor="">Name of Institution</label>
+            <label htmlFor="">Name of Candidate</label>
             <input
               type="text"
               value={formData.nameOfInstitution}
@@ -107,7 +107,7 @@ const Payment = ({ formData, setFormData, handlePayment }) => {
           </div> */}
           <button
             className="make_payment btn wide-btn"
-            onClick={handleMakePayment}
+            onClick={payWithPayStack}
           >
             Proceed with Payment
           </button>

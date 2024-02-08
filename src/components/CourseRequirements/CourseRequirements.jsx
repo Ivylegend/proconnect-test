@@ -12,14 +12,6 @@ const CourseRequirements = () => {
         <h2>Requirements for this course</h2>
         <div className="uniType">
           <label htmlFor="">Courses</label>
-          <select name="" id="">
-            <option value="WAEC">WAEC RESULT CERTIFICATE</option>
-            <option value="WAEC">Federal University</option>
-            <option value="WAEC">State University</option>
-            <option value="WAEC">Private Polytechnic</option>
-            <option value="WAEC">Federal Polytechnic</option>
-            <option value="WAEC">State Polytechnic</option>
-          </select>
           <div className="course_requirements">
             <div>
               <p>WAEC RESULT CERTIFICATE (ORIGINAL)</p>
@@ -38,7 +30,7 @@ const CourseRequirements = () => {
               <img className="btn" src={ChevronRight} alt="" />
             </div>
             <div>
-              <p>REFERENCE LETTER</p>
+              <p>RECOMMENDER INFORMATION</p>
               <img className="btn" src={ChevronRight} alt="" />
             </div>
             <div>
