@@ -1,6 +1,6 @@
 .dashboard {
-    padding: 1.6rem 2rem 1.6rem 4rem;
-    font-family: 'Poppins', sans-serif;
+  padding: 1.6rem 2rem 1.6rem 4rem;
+  font-family: "Poppins", sans-serif;
 }
 
 .complete-application {
@@ -38,7 +38,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #db251a;
+  color: #fff;
+  background: #db251a;
   /* font-family: Sk-Modernist; */
   font-size: 1.5rem;
   text-align: center;
@@ -46,12 +47,14 @@
   line-height: 36.523px;
 }
 
-.application_box a{
-  color: #db251a;
+.application_box a {
+  color: white;
 }
 
 .application_box:hover {
+  transition: all 0.3s;
   background-color: #f3cbc9;
+  color: #db251a;
 }
 
 .explainer {
@@ -65,13 +68,57 @@
   margin-bottom: 1rem;
 }
 
-.dashboard_lower{
-    padding: 2rem 0;
+.dashboard_lower {
+  padding: 2rem 0;
 }
 
-.explainer-video{
-    width: 100%;
-    background-color: black;
-    height: 300px;
-    border-radius: 28px;
+.explainer-video {
+  width: 100%;
+  background-color: black;
+  height: 300px;
+  border-radius: 28px;
+}
+
+.margleft {
+  margin-left: 16rem;
+}
+
+@media screen and (max-width: 1300px) {
+  .application_box {
+    max-width: 440px;
+  }
+}
+
+@media screen and (max-width: 1130px) {
+  .application_box {
+    width: 350px;
+  }
+}
+
+@media screen and (max-width: 930px) {
+  .margleft {
+    margin-left: 0;
+  }
+
+  .dashboard {
+    padding: 1.6rem 2rem;
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .application_div{
+    flex-direction: column;
+  }
+
+  .application_box{
+    width: 300px;
+  }
+
+  .explainer-video{
+    height: 200px;
+  }
+
+  .complete-application{
+    height: 60px;
+  }
 }

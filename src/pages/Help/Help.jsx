@@ -5,9 +5,7 @@ import "./Help.css";
 const Help = () => {
   return (
     <div className="flex">
-      <SideNav />
-      <div style={{ marginLeft: "16rem" }}>
-        <DynamicNav title="Help" />
+      <div className="margleft">
         <div className="dashboard">
           <div className="dashboard_lower">
             <p className="explainer">Get In touch</p>

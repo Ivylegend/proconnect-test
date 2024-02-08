@@ -25,7 +25,7 @@
   letter-spacing: 0.5px;
 }
 
-.checklist{
+.checklist {
   display: flex;
   align-items: center;
   gap: 400px;
@@ -37,4 +37,24 @@
   gap: 1rem;
   align-items: center;
   margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 1150px) {
+  .checklist {
+    gap: 10rem;
+    align-items: flex-start;
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .checklist {
+    gap: 0rem;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .application-completed {
+    font-size: 16px;
+    padding: 2rem 1rem;
+  }
 }

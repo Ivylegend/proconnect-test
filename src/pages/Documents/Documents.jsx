@@ -25,11 +25,6 @@ const docs = [
     text: "Upload your Passport Photograph",
     number: "4",
   },
-  {
-    title: "Passport Photograph",
-    text: "Upload your Passport Photograph",
-    number: "5",
-  },
 ];
 
 const Documents = () => {
@@ -43,9 +38,7 @@ const Documents = () => {
   }, []);
   return (
     <div className="flex">
-      <SideNav />
-      <div style={{ marginLeft: "16rem" }}>
-        <DynamicNav title="Documents" />
+      <div className="margleft">
         <div className="dashboard">
           <p className="doc-header">Documents</p>
           <div className="documents">

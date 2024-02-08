@@ -83,3 +83,22 @@
     width: 100%;
     height: max-content;
 }
+
+@media screen and (max-width: 790px) {
+  .doc-div{
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .btn_upload{
+    min-width: 100px;
+    max-width: 100px;
+  }
+
+  .number{
+    font-size: 14px;
+    width: 25px;
+    height: 25px;
+    padding: 5px;
+  }
+}

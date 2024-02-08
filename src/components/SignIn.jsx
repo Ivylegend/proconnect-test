@@ -150,7 +150,7 @@ const SignIn = () => {
           Don't have an account? <br />
           <Link to="/signup" className="underlined red-text">
             Sign up
-          </Link>
+          </Link>{" "}
           here
         </p>
       </div>

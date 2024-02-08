@@ -144,11 +144,10 @@ const menuItems = [
   },
 ];
 
-const SideNav = () => {
-
+const SideNav = ({ isOpen, toggleSideNav }) => {
   return (
     <>
-      <div className="side-nav">
+      <div className={`side-nav ${isOpen ? "open" : ""}`}>
         <NavLink to="/">
           <div className="side-nav_logo">
             <img src={Logo} alt="proconnect-logo" />
@@ -164,6 +163,7 @@ const SideNav = () => {
                 className={({ isActive }) => {
                   return isActive ? "active-nav" : "active";
                 }}
+                onClick={toggleSideNav}
               >
                 <div className="menu__list">
                   {item.image}

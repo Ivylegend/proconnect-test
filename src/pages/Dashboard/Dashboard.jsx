@@ -19,9 +19,9 @@ const Dashboard = () => {
 
   return (
     <div className="flex">
-      <SideNav />
-      <div style={{ marginLeft: "16rem" }}>
-        <DynamicNav title="Dashboard" />
+      {/* <SideNav /> */}
+      <div className="margleft">
+        {/* <DynamicNav title="Dashboard" /> */}
         <div className="dashboard">
           <div className="complete-application">
             <img src={Exclamation} alt="" />

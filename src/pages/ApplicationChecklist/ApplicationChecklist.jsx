@@ -35,9 +35,7 @@ const ApplicationChecklist = () => {
   }, []);
   return (
     <div className="flex">
-      <SideNav />
-      <div style={{ marginLeft: "16rem" }}>
-        <DynamicNav title="Application School Checklist" />
+      <div className="margleft">
         <div className="dashboard">
           <div className="application-completed">
             Application Completed
@@ -56,7 +54,7 @@ const ApplicationChecklist = () => {
               })}
             </div>
             <div>
-            {checkListData2.map((data2, index) => {
+              {checkListData2.map((data2, index) => {
                 return (
                   <span key={index}>
                     <input type="checkbox" name="" id="" />

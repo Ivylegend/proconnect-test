@@ -1,27 +1,27 @@
-// const NameOfUni = ({ formData, setFormData }) => {
-//   return (
-//     <div>
-//       <div className="app_apply">
-//         <h2>Name of Institution</h2>
-//         <div className="uniType">
-//           <label htmlFor="">Category</label>
-//           <select name="" id="">
-//             <option value="WAEC">Private University</option>
-//             <option value="WAEC">Covenant University</option>
-//             <option value="WAEC">Babcock University</option>
-//             <option value="WAEC">Redeemers Polytechnic</option>
-//             <option value="WAEC">Texas Polytechnic</option>
-//             <option value="WAEC">Highlanders Polytechnic</option>
-//           </select>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default NameOfUni;
-
 const NameOfUni = ({ selectedCategory }) => {
+  const token = sessionStorage.getItem("authToken");
+  const requestOptions = {
+    method: "GET",
+    redirect: "follow",
+    headers: {
+      Authorization: `Token ${token}`,
+    },
+  };
+
+  fetch(
+    "http://localhost:3005/api/v1/fetch_school/?school_type=state_university",
+    {
+      method: "GET",
+      redirect: "follow",
+      headers: {
+        Authorization: `Token ${token}`,
+      },
+    }
+  )
+    .then((response) => response.json())
+    .then((result) => console.log(result))
+    .catch((error) => console.log("error", error));
+
   const universities = {
     "Private University": [
       "Covenant University",

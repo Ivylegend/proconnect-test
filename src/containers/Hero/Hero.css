@@ -12,7 +12,7 @@
   font-family: "Montserrat", sans-serif;
 }
 
-.hero-text h1{
+.hero-text h1 {
   color: #fff;
   font-size: 5rem;
   font-weight: 700;
@@ -51,7 +51,7 @@
   border-radius: 24px;
   background: #fff;
   padding: 1.5rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .hero-form .header {
@@ -110,21 +110,21 @@ label {
   margin: 1rem auto 0.5rem;
 }
 
-.login-btn p{
+.login-btn p {
   font-size: 14px;
 }
 
-.small-btn a{
+.small-btn a {
   color: #ddd;
 }
 
-.password-visibility{
+.password-visibility {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.password-visibility span{
+.password-visibility span {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -132,31 +132,48 @@ label {
   text-transform: capitalize;
 }
 
-.forgot_div{
+.forgot_div {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.forgot_div a{
+.forgot_div a {
   font-size: 13px;
   color: black;
 }
 
-@media screen and (max-width: 768px) {
-  .hero{
-    flex-direction: column;
+@media screen and (max-width: 999px) {
+  .hero {
     padding: 5rem 3rem;
   }
 }
 
-@media screen and (max-width: 470px) {
-  .hero{
+@media screen and (max-width: 939px) {
+  .hero {
     flex-direction: column;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hero {
+    padding: 5rem 3rem;
+  }
+}
+
+@media screen and (max-width: 558px) {
+  .google{
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .hero {
     padding: 6rem 3rem;
   }
 
-  .hero-text h1{
+  .hero-text h1 {
     font-size: 4rem;
   }
 
@@ -164,8 +181,32 @@ label {
     font-size: 2.5rem;
   }
 
-  .google{
+  .google {
     max-width: 350px;
   }
 }
 
+@media screen and (max-width: 399px) {
+  .hero {
+    padding: 6rem 3rem;
+  }
+
+  .hero-text h1 {
+    font-size: 3rem;
+  }
+
+  .small-text {
+    font-size: 2rem;
+  }
+
+  .hero-form{
+    max-width: 340px;
+  }
+
+  .google {
+    max-width: 320px;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+  }
+}

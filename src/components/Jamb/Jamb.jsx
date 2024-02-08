@@ -39,10 +39,7 @@ const Jamb = ({ formData, setFormData }) => {
           <div className="olevel_form">
             <div className="olevel_details">
               <label htmlFor="">Type of Exam</label>
-              <select name="" id="">
-                <option value="WAEC">WAEC</option>
-                <option value="WAEC">NECO</option>
-              </select>
+              <input type="text" placeholder="UTME/JAMB" disabled />
             </div>
             <div className="olevel_details">
               <label htmlFor="">Examination Number</label>

@@ -16,6 +16,7 @@ import { ToastContainer } from "react-toastify";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import FormLayout from "./layout/FormLayout";
+import DashboardLayout from "./layout/DashboardLAyout";
 
 function App() {
   return (
@@ -24,17 +25,63 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/dashboard"
+            element={
+              <DashboardLayout title={"Dashboard"}>
+                <Dashboard />
+              </DashboardLayout>
+            }
+          />
           <Route path="/signup" element={<SignUp />} />
           <Route
             path="/application-checklist"
-            element={<ApplicationChecklist />}
+            element={
+              <DashboardLayout title={"Application Checklist"}>
+                <ApplicationChecklist />
+              </DashboardLayout>
+            }
           />
-          <Route path="/supported-schools" element={<SupportedSchools />} />
-          <Route path="/documents" element={<Documents />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/help" element={<Help />} />
+          <Route
+            path="/supported-schools"
+            element={
+              <DashboardLayout title={"Supported Schools"}>
+                <SupportedSchools />
+              </DashboardLayout>
+            }
+          />
+          <Route
+            path="/documents"
+            element={
+              <DashboardLayout title={"Documents"}>
+                <Documents />
+              </DashboardLayout>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <DashboardLayout title={"Settings"}>
+                <Settings />
+              </DashboardLayout>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <DashboardLayout title={"Profile"}>
+                <Profile />
+              </DashboardLayout>
+            }
+          />
+          <Route
+            path="/help"
+            element={
+              <DashboardLayout title={"Help"}>
+                <Help />
+              </DashboardLayout>
+            }
+          />
           <Route
             path="/school-application"
             element={

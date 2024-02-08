@@ -48,17 +48,17 @@
   border-radius: 50%;
 }
 
-.profile-bg img{
+.profile-bg img {
   width: 100%;
   border-radius: inherit;
 }
 
-.notifs{
+.notifs {
   position: relative;
   top: 1px;
 }
 
-.notif-circle{
+.notif-circle {
   width: 14px;
   height: 14px;
   border: 2px solid white;
@@ -67,4 +67,33 @@
   position: absolute;
   right: -7px;
   top: -5px;
+}
+
+.mobile-menu_btn{
+  display: none;
+}
+
+@media screen and (max-width: 930px) {
+  .dynamic {
+    padding: 1.6rem 2rem;
+    width: 100vw;
+  }
+
+  .mobile-menu_btn{
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .notifs{
+    display: none;
+  }
+
+  .usermail{
+    display: none;
+  }
+
+  .chevron-down{
+    display: none;
+  }
 }

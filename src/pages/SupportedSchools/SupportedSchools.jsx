@@ -25,9 +25,7 @@ const SupportedSchools = () => {
   }, []);
   return (
     <div className="flex">
-      <SideNav />
-      <div style={{ marginLeft: "16rem" }}>
-        <DynamicNav title="Application of Supported Schools" />
+      <div className="margleft">
         <div className="dashboard">
           <p className="uni_name">Name of Institutions</p>
           <div className="uni_category">
