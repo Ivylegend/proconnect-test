@@ -16,7 +16,7 @@ import { ToastContainer } from "react-toastify";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import FormLayout from "./layout/FormLayout";
-import DashboardLayout from "./layout/DashboardLAyout";
+import DashboardLayout from "./layout/DashboardLayout";
 
 function App() {
   return (
