@@ -68,7 +68,7 @@ const Documents = () => {
                     </div>
                   </div>
                   <button className="btn btn_upload">
-                    Choose File
+                    View File
                     <input type="file" />
                   </button>
                 </div>

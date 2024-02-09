@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SignUpInfo from "./SignUpInfo";
 import PersonalInfo from "./PersonalInfo";
-import OtherInfo from "./OtherInfo";
+import OtherInfo from "./src/components/OtherInfo";
 
 function Form() {
   const [page, setPage] = useState(0);

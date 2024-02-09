@@ -117,6 +117,7 @@ function Form() {
     toast.success("APPLICATION SUBMITTED");
     console.log(formData);
     handlePageChange(page + 1);
+    localStorage.setItem("profileCompleted", "true");
   };
 
   // BUTTON RENDERING

@@ -1,6 +1,6 @@
 import { jwtDecode } from "jwt-decode";
 import { useEffect } from "react";
-import { useAuth } from "../utils/AuthContext";
+import { useAuth } from "./src/utils/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const GoogleSignInButton = () => {

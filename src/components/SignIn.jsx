@@ -50,18 +50,18 @@ const SignIn = () => {
         if (response.ok) {
           const userData = await response.json();
           const token = userData.data.token;
-
+  
           sessionStorage.setItem("email", email);
           localStorage.setItem("authToken", token);
           toast.success("Sign in Successful");
-
-          // Calling the signIn function from your AuthContext
+  
+          // Call signIn function with user data and token
           signIn({
             isGoogleSignIn: false,
             localUserId: userData.id,
             localUserName: userData.name,
             localUserEmail: userData.data.email,
-          });
+          }, token);
 
           // Redirecting to the dashboard or another page upon successful sign-in
           history("/dashboard");

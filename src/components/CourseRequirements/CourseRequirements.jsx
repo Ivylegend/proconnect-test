@@ -1,7 +1,3 @@
-import React from "react";
-import Logo from "../../assets/images/elda-logo.png";
-import Background from "../Background/Background";
-import { Link } from "react-router-dom";
 import ChevronRight from "../../assets/images/Chevronright.png";
 import "./CourseRequirements.css";
 
@@ -15,6 +11,10 @@ const CourseRequirements = () => {
           <div className="course_requirements">
             <div>
               <p>WAEC RESULT CERTIFICATE (ORIGINAL)</p>
+              <img className="btn" src={ChevronRight} alt="" />
+            </div>
+            <div>
+              <p>WAEC RESULT 2ND SITTING (OPTIONAL)</p>
               <img className="btn" src={ChevronRight} alt="" />
             </div>
             <div>

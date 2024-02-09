@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SideNav from "../../containers/SideNav/SideNav";
 import DynamicNav from "../../components/DynamicNav/DynamicNav";
 import Exclamation from "../../assets/images/exclaim.png";
@@ -7,6 +7,15 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const history = useNavigate();
+  const [profileCompleted, setProfileCompleted] = useState(false);
+
+  useEffect(() => {
+    // Check if profile completion status is stored in localStorage
+    const storedProfileCompletion = localStorage.getItem("profileCompleted");
+    if (storedProfileCompletion) {
+      setProfileCompleted(true);
+    }
+  }, []);
 
   // useEffect(() => {
   //   const email = sessionStorage.getItem("email");
@@ -19,13 +28,15 @@ const Dashboard = () => {
 
   return (
     <div className="flex">
-      {/* <SideNav /> */}
       <div className="margleft">
-        {/* <DynamicNav title="Dashboard" /> */}
         <div className="dashboard">
           <div className="complete-application">
             <img src={Exclamation} alt="" />
-            <p>Complete your profile before you begin your application</p>
+            <p>
+              {profileCompleted
+                ? "Profile Completed"
+                : "Complete your profile before you begin your application"}
+            </p>
           </div>
           <div className="application_div">
             <Link to="/school-application">

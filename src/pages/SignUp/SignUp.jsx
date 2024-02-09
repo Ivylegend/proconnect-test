@@ -5,7 +5,7 @@ import "./SignUp.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { gapi } from "gapi-script";
-import GoogleSignInButton from "../../components/GoogleSignInButton";
+import GoogleSignInButton from "../../../GoogleSignInButton";
 import { toast } from "react-toastify";
 import GoogleAuth from "../../components/GoogleAuth";
 import {

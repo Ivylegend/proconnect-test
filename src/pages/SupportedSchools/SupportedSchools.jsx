@@ -4,21 +4,14 @@ import "./SupportedSchools.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./SupportedSchools.css";
-
-const schools = [
-  "Covenant University",
-  "Landmark University",
-  "Babcock University",
-  "Redeemers University",
-  "University of Texas",
-  "University of Chicago",
-];
+import { useAuth } from "../../utils/AuthContext";
 
 const SupportedSchools = () => {
   const history = useNavigate();
   const [institutionNames, setInstitutionNames] = useState([]);
   const [schoolType, setSchoolType] = useState("state_college");
-  const token = localStorage.getItem("authToken");
+  // const token = localStorage.getItem("authToken");
+  const { token } = useAuth(); // Access token from context
 
   useEffect(() => {
     let email = sessionStorage.getItem("email");
@@ -57,7 +50,7 @@ const SupportedSchools = () => {
     };
 
     fetchData();
-  }, [schoolType]); // Fetch data whenever schoolType changes
+  }, [schoolType, token]); // Fetch data whenever schoolType changes
 
   const handleSchoolTypeChange = (type) => {
     setSchoolType(type);
@@ -71,11 +64,27 @@ const SupportedSchools = () => {
           <div className="uni_category">
             <p>Select your School Category</p>
             <div style={{ display: "flex", gap: "1rem" }}>
-              <button onClick={() => handleSchoolTypeChange("state_college")}>State College</button>
-              <button onClick={() => handleSchoolTypeChange("state_university")}>State University</button>
-              <button onClick={() => handleSchoolTypeChange("private_university")}>Private University</button>
-              <button onClick={() => handleSchoolTypeChange("federal_university")}>Federal University</button>
-              <button onClick={() => handleSchoolTypeChange("federal_college")}>Federal College</button>
+              <button onClick={() => handleSchoolTypeChange("state_college")}>
+                State College
+              </button>
+              <button
+                onClick={() => handleSchoolTypeChange("state_university")}
+              >
+                State University
+              </button>
+              <button
+                onClick={() => handleSchoolTypeChange("private_university")}
+              >
+                Private University
+              </button>
+              <button
+                onClick={() => handleSchoolTypeChange("federal_university")}
+              >
+                Federal University
+              </button>
+              <button onClick={() => handleSchoolTypeChange("federal_college")}>
+                Federal College
+              </button>
             </div>
             <select>
               {institutionNames.map((name, index) => (

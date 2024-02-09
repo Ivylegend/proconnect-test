@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { useAuth } from "../../utils/AuthContext";
 
 const NameOfUni = ({ selectedCategory }) => {
-  const token = localStorage.getItem("authToken");
+  // const token = localStorage.getItem("authToken");
+  const { token } = useAuth();
 
   const universities = {
     "Private University": [

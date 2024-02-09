@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./Hero.css";
 import { Link } from "react-router-dom";
 import SignIn from "../../components/SignIn";
-import GoogleSignInButton from "../../components/GoogleSignInButton";
+import GoogleSignInButton from "../../../GoogleSignInButton";
 import GoogleAuth from "../../components/GoogleAuth";
 import axios from "axios";
 

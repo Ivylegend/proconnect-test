@@ -58,14 +58,14 @@ function App() {
               </DashboardLayout>
             }
           />
-          <Route
+          {/* <Route
             path="/settings"
             element={
               <DashboardLayout title={"Settings"}>
                 <Settings />
               </DashboardLayout>
             }
-          />
+          /> */}
           <Route
             path="/profile"
             element={

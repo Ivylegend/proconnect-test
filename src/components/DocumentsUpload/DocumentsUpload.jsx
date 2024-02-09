@@ -12,6 +12,7 @@ const dataValue = [
   "JAMB Result Slip",
   "Passport Photograph - white background",
   "State of origin affidavit / certificate",
+  "Certificate of Origin",
 ];
 
 const DocumentsUpload = ({ formData, setFormData }) => {

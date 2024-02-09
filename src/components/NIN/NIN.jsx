@@ -6,6 +6,7 @@ import "./NIN.css";
 import { Link } from "react-router-dom";
 import Loading from "../../containers/Loading";
 import { toast } from "react-toastify";
+import { useAuth } from "../../utils/AuthContext";
 
 function NIN({ formData, setFormData, onButtonClick }) {
   const [validated, setValidated] = useState(false);
@@ -19,7 +20,9 @@ function NIN({ formData, setFormData, onButtonClick }) {
   const [verificationOption, setVerificationOption] = useState("nin");
   const [setstateOfOrigin, setSetstateOfOrigin] = useState("");
 
-  const token = localStorage.getItem("authToken");
+  // const token = localStorage.getItem("authToken");
+  const { token } = useAuth(); // Access the user object from AuthContext
+
   const handleValidation = () => {
     const formattedDate = displayLocalDate();
     fetch(
