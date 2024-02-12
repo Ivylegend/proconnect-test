@@ -1,18 +1,28 @@
 import React, { useState } from "react";
-import Logo from "../../assets/images/elda-logo.png";
-import Background from "../Background/Background";
 import UploadIcon from "../../assets/images/upload.png";
-import { Link } from "react-router-dom";
 import "./DocumentsUpload.css";
 
+// const dataValue = [
+//   "WAEC Certificate",
+//   "NIN Slip",
+//   "NECO Certificate",
+//   "JAMB Result Slip",
+//   "Passport Photograph - white background",
+//   "State of origin affidavit / certificate",
+//   "Certificate of Origin",
+// ];
+
 const dataValue = [
-  "WAEC Certificate",
-  "NIN Slip",
-  "NECO Certificate",
-  "JAMB Result Slip",
-  "Passport Photograph - white background",
-  "State of origin affidavit / certificate",
-  "Certificate of Origin",
+  { name: "WAEC Certificate", type: "waec" },
+  { name: "NIN Slip", type: "nin" },
+  { name: "NECO Certificate", type: "neco" },
+  { name: "JAMB Result Slip", type: "jamb" },
+  { name: "Passport Photograph - white background", type: "passport" },
+  {
+    name: "State of origin affidavit / certificate",
+    type: "birth_certificate",
+  },
+  { name: "Certificate of Origin", type: "certificate_of_origin" },
 ];
 
 const DocumentsUpload = ({ formData, setFormData }) => {
@@ -23,6 +33,31 @@ const DocumentsUpload = ({ formData, setFormData }) => {
   const handleFileChange = async (index, event) => {
     const newUploads = [...uploads];
     const file = event.target.files[0];
+
+    var myHeaders = new Headers();
+    myHeaders.append(
+      "Authorization",
+      "Token 881e119b08c9c22234180e6193394d848aaa994d"
+    );
+    myHeaders.append("Cookie", "sessionid=jzs5i5nqdcasueaq9chtoji3c55nvpqb");
+
+    var formdata = new FormData();
+    formdata.append("file", file, "[PROXY]");
+
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: formdata,
+      redirect: "follow",
+    };
+
+    fetch(
+      "https://dev-api.eldanic.com/api/v1/edu/upload-document/?document_type=nin",
+      requestOptions
+    )
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
 
     const fileName = file.name;
     const fileSize = file.size;
@@ -49,8 +84,8 @@ const DocumentsUpload = ({ formData, setFormData }) => {
           {dataValue.map((data, index) => {
             const upload = uploads[index] || {};
             return (
-              <div key={data}>
-                <b>{data}</b>
+              <div key={data.name}>
+                <b>{data.name}</b>
                 <img src={UploadIcon} alt="" />
                 <button className="btn_upload">
                   Choose File
@@ -74,7 +109,7 @@ const DocumentsUpload = ({ formData, setFormData }) => {
                         viewBox="0 0 17 16"
                         fill="none"
                       >
-                        <g clip-path="url(#clip0_644_748)">
+                        <g clipPath="url(#clip0_644_748)">
                           <path
                             d="M8.5 0.625C4.42679 0.625 1.125 3.92703 1.125 8C1.125 12.073 4.42703 15.375 8.5 15.375C12.573 15.375 15.875 12.073 15.875 8C15.875 3.92703 12.573 0.625 8.5 0.625ZM6.78531 12.425L6.7804 12.4201L6.77622 12.425L3.3375 8.885L5.06546 7.12385L6.78064 8.88992L11.9431 3.57525L13.6625 5.34475L6.78531 12.425Z"
                             fill="#DB251A"

@@ -69,15 +69,22 @@ a {
 }
 
 .form-nav-logo {
-  height: 150px;
-  overflow-y: hidden;
+  object-fit: cover;
   display: flex;
+  height: 120px;
+  overflow-y: hidden;
   align-items: center;
+  justify-content: flex-start;
+  width: 100%;
   border-bottom: 1px solid rgba(102, 102, 102, 0.25);
 }
 
 .form-nav-logo img {
-  object-fit: contain;
+  position: relative;
+  left: -10px;
+  top: 20px;
+  width: 100%;
+  width: 400px;
 }
 
 .flags {
