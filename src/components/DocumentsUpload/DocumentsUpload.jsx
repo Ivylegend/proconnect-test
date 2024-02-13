@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import UploadIcon from "../../assets/images/upload.png";
 import "./DocumentsUpload.css";
+import { useAuth } from "../../utils/AuthContext";
 
 // const dataValue = [
 //   "WAEC Certificate",
@@ -26,38 +27,36 @@ const dataValue = [
 ];
 
 const DocumentsUpload = ({ formData, setFormData }) => {
-  const [picture, setPicture] = useState(false);
-  const [file, setFile] = useState();
   const [uploads, setUploads] = useState([]);
+  const { token } = useAuth();
 
   const handleFileChange = async (index, event) => {
     const newUploads = [...uploads];
     const file = event.target.files[0];
 
-    var myHeaders = new Headers();
-    myHeaders.append(
-      "Authorization",
-      "Token 881e119b08c9c22234180e6193394d848aaa994d"
-    );
-    myHeaders.append("Cookie", "sessionid=jzs5i5nqdcasueaq9chtoji3c55nvpqb");
+    const myHeaders = new Headers();
+    myHeaders.append("Authorization", `Token ${token}`);
 
-    var formdata = new FormData();
-    formdata.append("file", file, "[PROXY]");
+    const formData = new FormData();
+    formData.append("file", file);
 
-    var requestOptions = {
+    const requestOptions = {
       method: "POST",
       headers: myHeaders,
-      body: formdata,
+      body: formData,
       redirect: "follow",
     };
 
     fetch(
-      "https://dev-api.eldanic.com/api/v1/edu/upload-document/?document_type=nin",
+      `https://dev-api.eldanic.com/api/v1/edu/upload-document/?document_type=${dataValue[index].type}`,
       requestOptions
     )
       .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
+      .then((result) => {
+        console.log(result);
+        // Handle response if needed
+      })
+      .catch((error) => console.error("Post Error", error));
 
     const fileName = file.name;
     const fileSize = file.size;
@@ -132,16 +131,6 @@ const DocumentsUpload = ({ formData, setFormData }) => {
               </div>
             );
           })}
-          {/* {!picture ? (
-            <div className="pics-upload">
-              <input type="file" onChange={getImage} className="file-upload" />
-              <p>Upload your photo</p>
-            </div>
-          ) : (
-            <div className="my-pics">
-              <img src={file} alt={file} />
-            </div>
-          )} */}
         </div>
       </div>
     </div>
