@@ -34,46 +34,72 @@ const DocumentsUpload = ({ formData, setFormData }) => {
     const newUploads = [...uploads];
     const file = event.target.files[0];
 
-    const myHeaders = new Headers();
-    myHeaders.append("Authorization", `Token ${token}`);
+    // Validate file type (optional):
+    const allowedTypes = ["application/pdf", "image/png", "image/jpeg"]; // Adjust based on backend requirements
+    if (!allowedTypes.includes(file.type)) {
+      alert("Invalid file type! Please select a PDF, PNG, or JPEG.");
+      return;
+    }
 
-    const formData = new FormData();
-    formData.append("file", file);
+    // Prepare FormData and request details:
+    const formdata = new FormData();
+    formdata.append("file", file);
+
+    const headers = new Headers();
+    headers.append("Authorization", `Token ${token}`);
 
     const requestOptions = {
       method: "POST",
-      headers: myHeaders,
-      body: formData,
+      headers,
+      body: formdata,
       redirect: "follow",
     };
 
-    fetch(
-      `https://dev-api.eldanic.com/api/v1/edu/upload-document/?document_type=${dataValue[index].type}`,
-      requestOptions
-    )
-      .then((response) => response.text())
-      .then((result) => {
-        console.log(result);
-        // Handle response if needed
-      })
-      .catch((error) => console.error("Post Error", error));
+    try {
+      const response = await fetch(
+        `https://dev-api.eldanic.com/api/v1/edu/upload-document/?document_type=${dataValue[index].type}`,
+        requestOptions
+      );
 
-    const fileName = file.name;
-    const fileSize = file.size;
+      if (!response.ok) {
+        throw new Error(`Upload failed with status ${response.status}`);
+      }
 
-    const reader = new FileReader();
-    reader.onload = () => {
+      const result = await response.json(); // Parse JSON response if applicable
+      console.log("Upload successful:", result); // Handle response
+
+      // Update state with upload details:
+      const fileName = file.name;
+      const fileSize = file.size;
+
       newUploads[index] = {
-        file: reader.result,
+        file: result.file_url || file.name, // Use actual file URL if received from backend
         picture: true,
         fileName,
         fileSize,
       };
-      setUploads(newUploads);
-    };
 
-    reader.readAsDataURL(file);
+      setUploads(newUploads);
+    } catch (error) {
+      console.error("Upload error:", error);
+      // Handle errors gracefully (e.g., display an error message to the user)
+    }
   };
+  // const fileName = file.name;
+  // const fileSize = file.size;
+
+  // const reader = new FileReader();
+  // reader.onload = () => {
+  //   newUploads[index] = {
+  //     file: reader.result,
+  //     picture: true,
+  //     fileName,
+  //     fileSize,
+  //   };
+  //   setUploads(newUploads);
+  // };
+
+  // reader.readAsDataURL(file);
 
   return (
     <div className="sign-up-container">

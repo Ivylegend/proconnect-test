@@ -1,6 +1,6 @@
 import Background from "../../components/Background/Background";
 import { Link, useNavigate } from "react-router-dom";
-import Logo from "../../assets/images/elda-logo.png";
+import Logo from "../../assets/images/5.png";
 import "./SignUp.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
