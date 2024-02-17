@@ -84,22 +84,22 @@ const DocumentsUpload = ({ formData, setFormData }) => {
       console.error("Upload error:", error);
       // Handle errors gracefully (e.g., display an error message to the user)
     }
+    const fileName = file.name;
+    const fileSize = file.size;
+  
+    const reader = new FileReader();
+    reader.onload = () => {
+      newUploads[index] = {
+        file: reader.result,
+        picture: true,
+        fileName,
+        fileSize,
+      };
+      setUploads(newUploads);
+    };
+  
+    reader.readAsDataURL(file);
   };
-  // const fileName = file.name;
-  // const fileSize = file.size;
-
-  // const reader = new FileReader();
-  // reader.onload = () => {
-  //   newUploads[index] = {
-  //     file: reader.result,
-  //     picture: true,
-  //     fileName,
-  //     fileSize,
-  //   };
-  //   setUploads(newUploads);
-  // };
-
-  // reader.readAsDataURL(file);
 
   return (
     <div className="sign-up-container">
