@@ -61,3 +61,35 @@
   align-items: center;
   gap: 1.25rem;
 }
+
+@media screen and (max-width: 768px) {
+  .footer_top {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .footer_logo_div {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .app_footer {
+    padding: 2rem;
+  }
+
+  .footer_bottom {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.25rem;
+  }
+
+  .footer_icons{
+    justify-content: space-evenly;
+  }
+
+  .footer_logo_div {
+    width: 100%;
+  }
+}
