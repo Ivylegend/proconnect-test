@@ -3,6 +3,7 @@ import DynamicNav from "../../components/DynamicNav/DynamicNav";
 import "./Documents.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { useAuth } from "../../utils/AuthContext";
 
 const docs = [
   {
@@ -45,12 +46,28 @@ const docs = [
 const Documents = () => {
   const history = useNavigate();
 
-  useEffect(() => {
-    let email = sessionStorage.getItem("email");
-    if (email === "" || email === null) {
-      history("/");
-    }
-  }, []);
+  const { token } = useAuth();
+
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", `Token ${token}`);
+
+  const requestOptions = {
+    method: "GET",
+    headers: myHeaders,
+    redirect: "follow",
+  };
+
+  fetch(
+    "https://dev-api.eldanic.com/api/v1/user/document-uploads/",
+    requestOptions
+  )
+    .then((response) => response.json()) // Parse the JSON response
+    .then((result) => {
+      const { status, message, data } = result; // Destructure the response
+      console.log(data);
+    })
+    .catch((error) => console.error(error));
+
   return (
     <div className="flex">
       <div className="margleft">
@@ -69,7 +86,7 @@ const Documents = () => {
                   </div>
                   <button className="btn btn_upload">
                     View File
-                    <input type="file" />
+                    {/* <input type="file" /> */}
                   </button>
                 </div>
               );

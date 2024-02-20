@@ -52,11 +52,15 @@ const ApplicationForm = ({ formData, setFormData }) => {
           <div className="olevel_details">
             <label htmlFor="">Date of Birth</label>
             <input
-              width={"100%"}
-              style={{ width: "100%" }}
+              style={{
+                width: "100%",
+                maxWidth: "400px", // Set a maximum width for larger screens
+                background: "red",
+              }}
               type="date"
               name=""
               id=""
+              className="date-time"
             />
           </div>
           <div className="olevel_details">

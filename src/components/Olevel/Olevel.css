@@ -28,9 +28,16 @@
   padding: 1rem;
 }
 
+.date-time {
+  min-width: 400px;
+  height: 56px;
+  padding: 1rem;
+  background-color: red;
+  width: -webkit-fill-available;
+}
 
 @media screen and (max-width: 768px) {
-  .app_olevel{
+  .app_olevel {
     padding: 0 3rem;
   }
 }
