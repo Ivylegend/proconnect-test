@@ -84,9 +84,10 @@ const DocumentsUpload = ({ formData, setFormData }) => {
       console.error("Upload error:", error);
       // Handle errors gracefully (e.g., display an error message to the user)
     }
+    console.log(file);
     const fileName = file.name;
     const fileSize = file.size;
-  
+
     const reader = new FileReader();
     reader.onload = () => {
       newUploads[index] = {
@@ -97,7 +98,7 @@ const DocumentsUpload = ({ formData, setFormData }) => {
       };
       setUploads(newUploads);
     };
-  
+
     reader.readAsDataURL(file);
   };
 

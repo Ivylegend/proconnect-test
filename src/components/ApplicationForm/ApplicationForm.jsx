@@ -48,9 +48,16 @@ const ApplicationForm = ({ formData, setFormData }) => {
               }
             />
           </div>
+
           <div className="olevel_details">
             <label htmlFor="">Date of Birth</label>
-            <input type="text" />
+            <input
+              width={"100%"}
+              style={{ width: "100%" }}
+              type="date"
+              name=""
+              id=""
+            />
           </div>
           <div className="olevel_details">
             <label htmlFor="">Current House Address</label>

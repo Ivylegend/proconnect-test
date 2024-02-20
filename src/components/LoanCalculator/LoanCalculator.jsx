@@ -19,10 +19,6 @@ const LoanCalculator = ({ formData, setFormData }) => {
     if (isNaN(principalAmount) || principalAmount <= 0) {
       toast.error("Please enter a valid positive number");
     } else {
-      // const annualReturn = principalAmount * 0.3;
-      // setResult("$" + annualReturn.toFixed(2));
-      // setMonthly("$" + ((principalAmount + annualReturn) / 12).toFixed(2));
-      // setTotal("$" + (principalAmount + annualReturn).toFixed(2));
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
       myHeaders.append("Authorization", `Token ${token}`);
