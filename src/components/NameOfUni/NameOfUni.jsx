@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../utils/AuthContext";
 
-const NameOfUni = ({ selectedCategory }) => {
-  // const token = localStorage.getItem("authToken");
+const NameOfUni = () => {
   const { token } = useAuth();
 
   const universities = {
@@ -56,13 +55,11 @@ const NameOfUni = ({ selectedCategory }) => {
         };
 
         const response = await fetch(
-          `https://dev-api.eldanic.com/api/v1/fetch_school/?school_type=${selectedCategory}`,
+          "https://dev-api.eldanic.com/api/v1/fetch_school/?school_type=private_university", // Dynamically change the endpoint based on schoolType
           requestOptions
         );
         const result = await response.json();
         const { data } = result;
-
-        // Extract names of institutions from data
         const names = data.map((school) => school["Name of Institution"]);
         setInstitutionNames(names);
       } catch (error) {
@@ -71,20 +68,13 @@ const NameOfUni = ({ selectedCategory }) => {
     };
 
     fetchData();
-  }, [selectedCategory, token]);
+  }, [token]);
 
   return (
     <div className="app_apply">
       <h2>Name of Institution</h2>
       <div className="uniType">
         <label htmlFor="">Name</label>
-        {/* <select name="" id="">
-          {universities[selectedCategory]?.map((uni, index) => (
-            <option key={index} value={uni}>
-              {uni}
-            </option>
-          ))}
-        </select> */}
         <select name="" id="">
           {institutionNames.map((uni, index) => (
             <option key={index} value={uni}>

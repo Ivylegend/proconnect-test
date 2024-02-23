@@ -122,62 +122,56 @@ const ResetPassword = () => {
           <img src={Logo} alt="logo" />
         </Link>
       </div>
+
       <div className="app_apply">
         <h2>Reset Password</h2>
-        <div className="uniType help_form">
-          <div>
+        <form style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+          <div className="input-container">
+            <label htmlFor="password">New Password</label>
             <span className="password-visibility">
-              <label htmlFor="password">New Password</label>
-              <span>
-                {!visibility ? (
-                  <>
-                    <FaEye onClick={() => passwordShow()} cursor={"pointer"} />{" "}
-                    <p>show</p>
-                  </>
-                ) : (
-                  <>
-                    <FaEyeSlash
-                      onClick={() => passwordShow()}
-                      cursor={"pointer"}
-                    />{" "}
-                    <p>hide</p>
-                  </>
-                )}
-              </span>
+              <input
+                type={visibility ? "text" : "password"}
+                id="password"
+                value={password}
+                onChange={handlePasswordChange}
+              />
+              {!visibility ? (
+                <>
+                  <FaEye onClick={() => passwordShow()} cursor={"pointer"} />{" "}
+                </>
+              ) : (
+                <>
+                  <FaEyeSlash
+                    onClick={() => passwordShow()}
+                    cursor={"pointer"}
+                  />{" "}
+                </>
+              )}
             </span>
-            <input
-              type={visibility ? "text" : "password"}
-              id="password"
-              value={password}
-              onChange={handlePasswordChange}
-            />
           </div>
-          <div>
+          <div className="input-container">
+            <label htmlFor="password">Confirm Password</label>
             <span className="password-visibility">
-              <label htmlFor="password">Confirm Password</label>
-              <span>
-                {!visibility ? (
-                  <>
-                    <FaEye onClick={() => passwordShow()} cursor={"pointer"} />{" "}
-                    <p>show</p>
-                  </>
-                ) : (
-                  <>
-                    <FaEyeSlash
-                      onClick={() => passwordShow()}
-                      cursor={"pointer"}
-                    />{" "}
-                    <p>hide</p>
-                  </>
-                )}
-              </span>
+              <input
+                type={visibility ? "text" : "password"}
+                id="confirmPassword"
+                value={confirmPassword}
+                onChange={handleConfirmPasswordChange}
+              />
+              {!visibility ? (
+                <>
+                  <FaEye onClick={() => passwordShow()} cursor={"pointer"} />{" "}
+                </>
+              ) : (
+                <>
+                  <FaEyeSlash
+                    onClick={() => passwordShow()}
+                    cursor={"pointer"}
+                  />{" "}
+                </>
+              )}
             </span>
-            <input
-              type={visibility ? "text" : "password"}
-              id="confirmPassword"
-              value={confirmPassword}
-              onChange={handleConfirmPasswordChange}
-            />
+
             <div className="tracker-box">
               <div>
                 At least 8 characters
@@ -212,23 +206,11 @@ const ResetPassword = () => {
                 )}
               </div>
             </div>
-            {errorMessage && (
-              <p style={{ color: "red" }}>Passwords do not match</p>
-            )}
           </div>
-          <button
-            onClick={handleResetPassword}
-            className="btn wide-btn"
-            // style={{
-            //   display: "flex",
-            //   alignItems: "center",
-            //   justifyContent: "center",
-            // }}
-            // to={"/"}
-          >
+          <button onClick={handleResetPassword} className="btn wide-btn">
             Reset Password
           </button>
-        </div>
+        </form>
       </div>
     </div>
   );

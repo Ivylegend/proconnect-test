@@ -122,14 +122,21 @@ label {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(102, 102, 102, 0.35);
+  height: 56px;
+  padding: 1rem;
+  overflow: hidden;
+  background: white;
 }
 
-.password-visibility span {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 14px;
-  text-transform: capitalize;
+.password-visibility input {
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 0;
+  background: transparent;
 }
 
 .forgot_div {
@@ -163,7 +170,7 @@ label {
 }
 
 @media screen and (max-width: 558px) {
-  .google{
+  .google {
     max-width: 100%;
   }
 }
@@ -199,7 +206,7 @@ label {
     font-size: 2rem;
   }
 
-  .hero-form{
+  .hero-form {
     max-width: 340px;
   }
 

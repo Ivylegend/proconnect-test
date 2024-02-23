@@ -34,34 +34,24 @@ const SignIn = () => {
           }
         );
 
-        // console.log(JSON.stringify({ email, password }));
-
-        // if (Object.keys(response).length === 0) {
-        //   toast.error("Please enter a valid email address");
-        // } else {
-        //   if (response.password === password) {
-        //     toast.success("Log in successful");
-        //     history("/dashboard");
-        //   } else {
-        //     toast.error("Please enter a correct password");
-        //   }
-        // }
-
         if (response.ok) {
           const userData = await response.json();
           const token = userData.data.token;
-  
+
           sessionStorage.setItem("email", email);
           localStorage.setItem("authToken", token);
           toast.success("Sign in Successful");
-  
+
           // Call signIn function with user data and token
-          signIn({
-            isGoogleSignIn: false,
-            localUserId: userData.id,
-            localUserName: userData.name,
-            localUserEmail: userData.data.email,
-          }, token);
+          signIn(
+            {
+              isGoogleSignIn: false,
+              localUserId: userData.id,
+              localUserName: userData.name,
+              localUserEmail: userData.data.email,
+            },
+            token
+          );
 
           // Redirecting to the dashboard or another page upon successful sign-in
           history("/dashboard");
@@ -111,28 +101,24 @@ const SignIn = () => {
         <p className="error-message"></p>
       </div>
       <div className="input-container">
+        <label htmlFor="password">Password</label>
         <span className="password-visibility">
-          <label htmlFor="password">Password</label>
-          <span>
-            {!visibility ? (
-              <>
-                <FaEye onClick={() => passwordShow()} cursor={"pointer"} />{" "}
-                <p>show</p>
-              </>
-            ) : (
-              <>
-                <FaEyeSlash onClick={() => passwordShow()} cursor={"pointer"} />{" "}
-                <p>hide</p>
-              </>
-            )}
-          </span>
+          <input
+            type={visibility ? "text" : "password"}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          {!visibility ? (
+            <>
+              <FaEye onClick={() => passwordShow()} cursor={"pointer"} />{" "}
+            </>
+          ) : (
+            <>
+              <FaEyeSlash onClick={() => passwordShow()} cursor={"pointer"} />{" "}
+            </>
+          )}
         </span>
-        <input
-          type={visibility ? "text" : "password"}
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
         <p className="error-message"></p>
       </div>
       <div className="forgot_div">
@@ -140,7 +126,7 @@ const SignIn = () => {
           <input type="checkbox" className="check-box" />
           <p className="remember">Remember me</p>
         </div>
-        <Link to="forgot-password">Forgot Password</Link>
+        <Link to="forgot-password" className="underlined">Forgot Password</Link>
       </div>
       <div className="login-btn">
         <button onClick={handleSignIn} className="small-btn">

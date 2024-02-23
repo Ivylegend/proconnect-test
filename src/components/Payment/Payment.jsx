@@ -1,20 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Payment.css";
 import { toast } from "react-toastify";
 import PaystackPop from "@paystack/inline-js";
 
 const Payment = ({ formData, setFormData, handlePayment }) => {
-  const handleMakePayment = () => {
-    toast.warning("Payment Still In Test Mode");
-    handlePayment(formData); // Pass the payment data to the parent component
-  };
+  const [candidateName, setCandidateName] = useState("");
+  const [candidateEmail, setCandidateEmail] = useState("");
+
+  // const handleMakePayment = () => {
+  //   toast.warning("Payment Still In Test Mode");
+  //   handlePayment(formData); // Pass the payment data to the parent component
+  // };
 
   const payWithPayStack = () => {
     const paystack = new PaystackPop();
     paystack.newTransaction({
       key: "pk_test_8bf2b4700c3fcc36408da11bebbb7a1619c3f3ce", // Provide the customer's email
       amount: formData.amount * 100, // Paystack expects amount in kobo (multiply by 100 for naira)
-      email: "my@gmail.com",
+      email: candidateEmail,
       onSuccess(transaction) {
         handlePayment(formData);
         toast.success(`Payment successful ${transaction.reference}`);
@@ -61,50 +64,27 @@ const Payment = ({ formData, setFormData, handlePayment }) => {
             <label htmlFor="">Name of Candidate</label>
             <input
               type="text"
-              value={formData.nameOfInstitution}
-              onChange={(event) =>
-                setFormData({
-                  ...formData,
-                  nameOfInstitution: event.target.value,
-                })
-              }
+              value={candidateName}
+              onChange={(event) => setCandidateName(event.target.value)}
+            />
+          </div>
+          <div className="payment_input">
+            <label htmlFor="">Email of Candidate</label>
+            <input
+              type="text"
+              value={candidateEmail}
+              onChange={(event) => setCandidateEmail(event.target.value)}
             />
           </div>
           <div className="payment_input">
             <label htmlFor="">Amount</label>
-            {/* <input
-              type="number"
-              value={formData.amount}
-              onChange={(event) =>
-                setFormData({
-                  ...formData,
-                  amount: event.target.value,
-                })
-              }
-            /> */}
+
             <input
               type="text" // Change type to "text" to allow custom formatting
               value={formatAmount(formData.amount)} // Use a formatting function to display the formatted amount
               onChange={(event) => handleAmountChange(event.target.value)} // Use a custom function to handle input changes
             />
           </div>
-          {/* <div className="payment_input">
-            <label htmlFor="">Card Details</label>
-            <input
-              type="text"
-              value={formData.cardDetails}
-              onChange={(event) =>
-                setFormData({
-                  ...formData,
-                  cardDetails: event.target.value,
-                })
-              }
-            />
-          </div>
-          <div className="payment_details">
-            <input type="text" placeholder="CVV" />
-            <input type="text" placeholder="Expiry Date" />
-          </div> */}
           <button
             className="make_payment btn wide-btn"
             onClick={payWithPayStack}

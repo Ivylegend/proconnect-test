@@ -129,26 +129,27 @@ const SignUp = () => {
             <p className="error-message">{error}</p>
           </div>
           <div className="input-container">
+            <label htmlFor="">Enter a Password</label>
             <span className="password-visibility">
-              <label htmlFor="password">Password</label>
-              <span>
-                {!visibility ? (
-                  <>
-                    <FaEye onClick={() => passwordShow()} cursor={"pointer"}/> <p>show</p>
-                  </>
-                ) : (
-                  <>
-                    <FaEyeSlash onClick={() => passwordShow()} cursor={"pointer"}/> <p>hide</p>
-                  </>
-                )}
-              </span>
+              <input
+                type={visibility ? "text" : "password"}
+                id="password"
+                value={password}
+                onChange={handlePasswordChange}
+              />
+              {!visibility ? (
+                <>
+                  <FaEye onClick={() => passwordShow()} cursor={"pointer"} />{" "}
+                </>
+              ) : (
+                <>
+                  <FaEyeSlash
+                    onClick={() => passwordShow()}
+                    cursor={"pointer"}
+                  />{" "}
+                </>
+              )}
             </span>
-            <input
-              type={visibility ? "text" : "password"}
-              id="password"
-              value={password}
-              onChange={handlePasswordChange}
-            />
             <div className="tracker-box">
               <div>
                 At least 8 characters

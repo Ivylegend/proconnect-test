@@ -76,6 +76,10 @@
   border: none;
 }
 
+.btn_upload_success{
+  background-color: rgb(147, 250, 147);
+}
+
 .btn_upload input{
     position: absolute;
     left: 0;
