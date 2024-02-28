@@ -1,14 +1,10 @@
 import { useState } from "react";
 import "./ApplyingTo.css";
 
-const ApplyingTo = ({
-  selectedCategory,
-  setSelectedCategory,
-  formData,
-  setFormData,
-}) => {
+const ApplyingTo = ({ selectedCategory, setSelectedCategory }) => {
   const handleChange = (event) => {
     setSelectedCategory("private_university");
+    console.log(selectedCategory);
   };
 
   return (
