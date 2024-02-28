@@ -16,8 +16,9 @@ const Payment = ({ formData, setFormData, handlePayment }) => {
     const paystack = new PaystackPop();
     paystack.newTransaction({
       key: "pk_test_8bf2b4700c3fcc36408da11bebbb7a1619c3f3ce", // Provide the customer's email
-      amount: formData.amount * 100, // Paystack expects amount in kobo (multiply by 100 for naira)
+      amount: 280000 * 100, // Paystack expects amount in kobo (multiply by 100 for naira)
       email: candidateEmail,
+      name: candidateName,
       onSuccess(transaction) {
         handlePayment(formData);
         toast.success(`Payment successful ${transaction.reference}`);
@@ -25,33 +26,6 @@ const Payment = ({ formData, setFormData, handlePayment }) => {
       onClose() {
         toast.error("Payment canceled");
       },
-    });
-  };
-
-  const formatAmount = (amount) => {
-    // Remove any non-numeric characters from the input
-    const numericAmount = amount.replace(/[^\d.]/g, "");
-    // Convert the numeric string to a number
-    const parsedAmount = parseFloat(numericAmount);
-    // Check if the parsed amount is a valid number
-    if (!isNaN(parsedAmount)) {
-      // Use Intl.NumberFormat to format the number with commas and decimal places
-      return new Intl.NumberFormat("en-US", {
-        minimumFractionDigits: 2, // Ensure two decimal places
-        maximumFractionDigits: 2, // Ensure two decimal places
-      }).format(parsedAmount);
-    }
-    // Return an empty string if the input is not a valid number
-    return "";
-  };
-
-  const handleAmountChange = (inputValue) => {
-    // Remove any non-numeric characters from the input
-    const numericInput = inputValue.replace(/[^\d.]/g, "");
-    // Update the form data state with the numeric input
-    setFormData({
-      ...formData,
-      amount: numericInput,
     });
   };
 
@@ -81,8 +55,9 @@ const Payment = ({ formData, setFormData, handlePayment }) => {
 
             <input
               type="text" // Change type to "text" to allow custom formatting
-              value={formatAmount(formData.amount)} // Use a formatting function to display the formatted amount
-              onChange={(event) => handleAmountChange(event.target.value)} // Use a custom function to handle input changes
+              value="₦ 280,000" // Use a formatting function to display the formatted amount
+              placeholder="280,000"
+              disabled
             />
           </div>
           <button
