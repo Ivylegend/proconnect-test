@@ -29,8 +29,8 @@
 }
 
 .date-time {
-  /* min-width: 400px; */
   width: 100%;
+  min-width: 330px;
   height: 56px;
   padding: 1rem;
   background-color: white;
