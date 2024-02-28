@@ -75,7 +75,6 @@ const locationLinks = [
 
 const socialIcons = [
   { name: SocialIcons1, url: "" },
-  { name: SocialIcons2, url: "" },
   { name: SocialIcons3, url: "" },
   { name: SocialIcons4, url: "" },
   { name: SocialIcons5, url: "" },
@@ -91,7 +90,10 @@ const Footer = () => {
           <p className="footer_logo_text">
             ProconnectPAY is an African Edu-FinTech Company that works with
             other financial institutions to drive adoption of Education-oriented
-            Loans ProconnectPAY is legally registered in Nigeria and the United
+            Loans.{" "}
+          </p>
+          <p className="footer_logo_text">
+            ProconnectPAY is legally registered in Nigeria and the United
             States. RC Number in Nigeria is{" "}
             <span style={{ color: "#1E4580" }}>
               1884617 (Proconnect Tech Solutions Limited) ,

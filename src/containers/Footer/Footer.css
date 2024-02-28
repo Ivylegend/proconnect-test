@@ -50,10 +50,18 @@
   color: black;
 }
 
+.link_item:hover{
+  color: #db251a;
+}
+
 .footer_bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.footer_bottom p{
+  font-weight: 500;
 }
 
 .footer_icons {
