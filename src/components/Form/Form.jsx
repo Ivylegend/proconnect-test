@@ -19,6 +19,7 @@ import LoanCalculator from "../LoanCalculator/LoanCalculator";
 import ApplicationForm from "../ApplicationForm/ApplicationForm";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import Review from "../../containers/Review/Review";
 
 function Form() {
   const [page, setPage] = useState(0);
@@ -64,6 +65,7 @@ function Form() {
     "Finance Options",
     "Education Loan",
     "Loan Calculator",
+    "Review",
     "Application Form",
     "Success",
   ];
@@ -124,6 +126,17 @@ function Form() {
   const renderButtons = () => {
     if (page === 0) {
       return;
+    } else if (page === FormTitles.length - 3) {
+      return (
+        <>
+          <button
+            onClick={() => handlePageChange(page - 1)}
+            className="prev-btn"
+          >
+            <img src={ReturnBtn} alt="arrow left" />
+          </button>
+        </>
+      );
     } else if (page === FormTitles.length - 2) {
       return (
         <>
@@ -133,11 +146,13 @@ function Form() {
           >
             <img src={ReturnBtn} alt="return button" />
           </button>
-          <div className="next-btn">
-            <button onClick={handleFormSubmission} className="btn wide-btn">
-              Submit
-            </button>
-          </div>
+          {page === FormTitles.length - 2 && (
+            <div className="next-btn">
+              <button onClick={handleFormSubmission} className="btn wide-btn">
+                Submit
+              </button>
+            </div>
+          )}
         </>
       );
     } else if (page === FormTitles.length - 1) {
@@ -147,7 +162,7 @@ function Form() {
             onClick={() => handlePageChange(page - 1)}
             className="prev-btn"
           >
-            <img src={ReturnBtn} alt="" />
+            <img src={ReturnBtn} alt="arrow left" />
           </button>
           <Link to="/dashboard" className="next-btn">
             <button className="wide-btn btn">Return to Dashboard</button>
@@ -167,7 +182,7 @@ function Form() {
             {/* Existing "Next" button logic for other pages */}
             <button
               onClick={handleNextButtonClick}
-              className="btn next-btn  wide-btn"
+              className="btn next-btn wide-btn"
             >
               Next
             </button>
@@ -184,6 +199,10 @@ function Form() {
     // Update form state and navigate accordingly
     setPage(nextStep);
     setNextStep(1);
+  };
+
+  const handleReview = () => {
+    handlePageChange(page + 1);
   };
 
   // PAGE DISPLAY
@@ -254,6 +273,14 @@ function Form() {
         <LoanCalculator formData={formData} setFormData={setFormData} />
       );
     } else if (page === 14) {
+      component = (
+        <Review
+          formData={formData}
+          setFormData={setFormData}
+          onNextButtonClick={handleReview}
+        />
+      );
+    } else if (page === 15) {
       component = (
         <ApplicationForm formData={formData} setFormData={setFormData} />
       );
