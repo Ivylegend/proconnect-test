@@ -1,6 +1,7 @@
 import SideNav from "../../containers/SideNav/SideNav";
 import DynamicNav from "../../components/DynamicNav/DynamicNav";
 import "./Help.css";
+import { Link } from "react-router-dom";
 
 const Help = () => {
   return (
@@ -24,7 +25,9 @@ const Help = () => {
               </div>
               <button className="btn wide-btn">Send a Message</button>
               <div className="center">or</div>
-              <div className="btn outline">Contact Sales</div>
+                <a href="mailto:sales@proconnectpay.com">
+                  <div className="btn outline">Contact Sales</div>
+                </a>
             </form>
           </div>
         </div>

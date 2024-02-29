@@ -74,11 +74,11 @@ const locationLinks = [
 ];
 
 const socialIcons = [
-  { name: SocialIcons1, url: "" },
-  { name: SocialIcons3, url: "" },
-  { name: SocialIcons4, url: "" },
-  { name: SocialIcons5, url: "" },
-  { name: SocialIcons6, url: "" },
+  { name: SocialIcons1, url: "https://web.facebook.com/proconnectpay" },
+  { name: SocialIcons3, url: "https://twitter.com/ProconnectPAY" },
+  { name: SocialIcons4, url: "https://www.instagram.com/proconnectpay/" },
+  { name: SocialIcons5, url: "https://ng.linkedin.com/company/proconnectpay" },
+  // { name: SocialIcons6, url: "" },
 ];
 
 const Footer = () => {

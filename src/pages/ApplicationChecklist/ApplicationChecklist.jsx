@@ -3,7 +3,7 @@ import SideNav from "../../containers/SideNav/SideNav";
 import Checkmark from "../../assets/images/checkmark.png";
 import "./ApplicationChecklist.css";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const checkListData = [
   "Profile Update",
@@ -26,19 +26,24 @@ const checkListData2 = [
 
 const ApplicationChecklist = () => {
   const history = useNavigate();
+  const [applicationCompleted, setApplicationCompleted] = useState(false);
 
   useEffect(() => {
-    let email = sessionStorage.getItem("email");
-    if (email === "" || email === null) {
-      history("/");
+    // Check if profile completion status is stored in localStorage
+    const storedProfileCompletion = localStorage.getItem("profileCompleted");
+    if (storedProfileCompletion) {
+      setApplicationCompleted(true);
     }
   }, []);
+
   return (
     <div className="flex">
       <div className="margleft">
         <div className="dashboard">
           <div className="application-completed">
-            Application Completed
+            {applicationCompleted
+              ? "Application Completed"
+              : "Application Not Completed"}
             <img src={Checkmark} alt="checkmark" />
           </div>
           <p className="check">Checklist</p>
@@ -47,7 +52,15 @@ const ApplicationChecklist = () => {
               {checkListData.map((data, index) => {
                 return (
                   <span key={index}>
-                    <input type="checkbox" className="checkbox" name="" id="" />
+                    <input
+                      type="checkbox"
+                      className="checkbox"
+                      name=""
+                      id={data}
+                      checked={applicationCompleted}
+                      disabled={applicationCompleted}
+                      readOnly
+                    />
                     <p>{data}</p>
                   </span>
                 );
@@ -57,7 +70,14 @@ const ApplicationChecklist = () => {
               {checkListData2.map((data2, index) => {
                 return (
                   <span key={index}>
-                    <input type="checkbox" name="" id="" />
+                    <input
+                      type="checkbox"
+                      name=""
+                      id={data2}
+                      checked={applicationCompleted}
+                      disabled={applicationCompleted}
+                      readOnly
+                    />
                     <p>{data2}</p>
                   </span>
                 );

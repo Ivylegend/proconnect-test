@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import GalleryAdd from "../../assets/images/gallery-add.png";
 import "./AccountSetting.css";
+import { useAuth } from "../../utils/AuthContext";
+import { toast } from "react-toastify";
 
 const AccountSetting = () => {
   const [picture, setPicture] = useState(false);
-  const [file, setFile] = useState();
+  const [file, setFile] = useState(localStorage.getItem("profilePicture"));
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -13,24 +15,97 @@ const AccountSetting = () => {
     localStorage.getItem("profilePicture")
   );
 
+  const { token } = useAuth();
+
   useEffect(() => {
     setSavedPicture(localStorage.getItem("profilePicture"));
   }, [file]);
 
-  const getImage = (event) => {
-    setFile(URL.createObjectURL(event.target.files[0]));
-    setPicture(true);
-  };
+  async function getImage(event) {
+    const newFile = event.target.files[0];
 
-  const handleUpdateProfile = () => {
-    localStorage.setItem("profilePicture", file);
-    localStorage.setItem("fullName", fullName);
-    localStorage.setItem("email", email);
-    localStorage.setItem("username", username);
-    localStorage.setItem("phoneNumber", phoneNumber);
-  };
+    if (newFile) {
+      setFile(newFile);
+      setPicture(true);
 
-  // const savedPicture = localStorage.getItem("profilePicture");
+      const formData = new FormData();
+      formData.append("photo", newFile); // Use newFile, not file
+
+      const myHeaders = new Headers();
+      myHeaders.append("Authorization", `Token ${token}`);
+
+      try {
+        const response = await fetch(
+          "https://dev-api.eldanic.com/api/v1/user/upload-profile-photo/",
+          {
+            method: "POST",
+            headers: myHeaders,
+            body: formData,
+          }
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+          console.log("Profile picture uploaded successfully:", data);
+
+          toast.success("Updated successfully!");
+          setFile(data.data.photo);
+        } else {
+          console.error(
+            "Error uploading profile picture:",
+            response.statusText
+          );
+          toast.error("Error updating profile picture."); // Display error toast
+        }
+      } catch (error) {
+        console.error("Error uploading profile picture:", error);
+        toast.error("Error updating profile picture."); // Display error toast
+      }
+    }
+  }
+
+  const handleUpdateProfile = async () => {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", `Token ${token}`);
+  
+    const raw = JSON.stringify({
+      first_name: fullName,
+      last_name: username,
+      gender: "Male",
+      middle_name: email,
+      phone_number: phoneNumber,
+      date_of_birth: "2000-02-10",
+      customer: token,
+    });
+  
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+  
+    try {
+      const response = await fetch(
+        "https://dev-api.eldanic.com/api/v1/user/save-profile/",
+        requestOptions
+      );
+  
+      if (response.ok) {
+        const result = await response.text();
+        console.log(result);
+        toast.success("Profile updated successfully!");
+      } else {
+        const error = await response.text();
+        console.error(error);
+        toast.error("Error updating profile. Please try again.");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Error updating profile. Please try again.");
+    }
+  };
 
   return (
     <div className="account_profile">
@@ -45,7 +120,8 @@ const AccountSetting = () => {
             </div>
           ) : (
             <div className="my-pics">
-              <img src={savedPicture || file} alt={file || savedPicture} />
+              {/* <img src={savedPicture || file} alt={file || savedPicture} /> */}
+              <img src={file} alt="Uploaded Profile" />
             </div>
           )}
         </span>
