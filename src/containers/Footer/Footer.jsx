@@ -8,67 +8,67 @@ import SocialIcons2 from "../../assets/images/Social icons2.png";
 import SocialIcons3 from "../../assets/images/Social icons3.png";
 import SocialIcons4 from "../../assets/images/Social icons4.png";
 import SocialIcons5 from "../../assets/images/Social icons5.png";
-import SocialIcons6 from "../../assets/images/Social icons6.png";
+import SocialIcons6 from "../../assets/images/youtube.png";
 import "./Footer.css";
 
-const buisnessLinks = [
+const businessLinks = [
   {
-    url: "",
-    name: "Pricing",
+    url: "https://proconnectpay.com/pricing",
+    name: "Service Fee Pricing",
   },
   {
-    url: "",
+    url: "https://proconnectpay.com/supported-schools",
     name: "List of Supported Schools",
   },
   {
-    url: "",
+    url: "https://proconnectpay.com/interest",
     name: "Signify your interest",
   },
   {
-    url: "",
+    url: "https://proconnectpay.com/local-loan",
     name: "Local loan",
   },
   {
-    url: "",
+    url: "https://proconnectpay.com/global-loan",
     name: "Global Loan",
   },
   {
-    url: "",
+    url: "https://proconnectpay.com/privacy-policy",
     name: "Privacy Policy",
   },
   {
-    url: "",
-    name: "Terms and Condition",
+    url: "https://proconnectpay.com/global-loan#terms-conditions",
+    name: "Terms and Conditions",
   },
 ];
 
 const locationLinks = [
   {
-    url: "",
+    url: "https://proconnectpay.com/contact",
     name: "Global HQ US",
   },
   {
-    url: "",
+    url: "https://proconnectpay.com/contact",
     name: "Africa HQ Lagos",
   },
   {
-    url: "",
+    url: "https://proconnectpay.com/contact",
     name: "Accra Office",
   },
   {
-    url: "",
+    url: "https://proconnectpay.com/contact",
     name: "Kampala Office",
   },
   {
-    url: "",
+    url: "https://proconnectpay.com/contact",
     name: "Nairobi Office",
   },
   {
-    url: "",
+    url: "https://proconnectpay.com/contact",
     name: "Kigali Office",
   },
   {
-    url: "",
+    url: "https://proconnectpay.com/contact",
     name: "Toronto Office",
   },
 ];
@@ -78,7 +78,10 @@ const socialIcons = [
   { name: SocialIcons3, url: "https://twitter.com/ProconnectPAY" },
   { name: SocialIcons4, url: "https://www.instagram.com/proconnectpay/" },
   { name: SocialIcons5, url: "https://ng.linkedin.com/company/proconnectpay" },
-  // { name: SocialIcons6, url: "" },
+  {
+    name: SocialIcons6,
+    url: "https://www.youtube.com/channel/UCsX-weJpSWORcMUAQ-g0HdA",
+  },
 ];
 
 const Footer = () => {
@@ -110,7 +113,7 @@ const Footer = () => {
             <img src={Buisness} alt="buisness" /> BUISNESS
           </p>
           <ul className="link_list">
-            {buisnessLinks.map((footerLink) => {
+            {businessLinks.map((footerLink) => {
               return (
                 <Link key={footerLink.name} to={footerLink.url}>
                   <li className="link_item">{footerLink.name}</li>

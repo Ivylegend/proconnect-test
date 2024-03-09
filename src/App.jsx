@@ -17,6 +17,7 @@ import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import FormLayout from "./layout/FormLayout";
 import DashboardLayout from "./layout/DashboardLayout";
+import ChangePassword from "./pages/ChangePassword/ChangePassword";
 
 function App() {
   return (
@@ -92,6 +93,7 @@ function App() {
           />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/change-password" element={<ChangePassword />} />
 
           <Route path="*" element={<ErrorPage />} />
         </Routes>

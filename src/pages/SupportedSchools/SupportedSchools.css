@@ -1,7 +1,5 @@
 .uni_name {
   color: #333;
-  /* text-align: center; */
-  /* font-family: Montserrat; */
   font-size: 32px;
   font-style: normal;
   font-weight: 500;
@@ -35,5 +33,6 @@ select {
 @media screen and (max-width: 790px) {
   .uni_category{
     margin: 0;
+    width: 100%;
   }
 }

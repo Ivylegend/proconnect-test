@@ -1,5 +1,3 @@
-import SideNav from "../../containers/SideNav/SideNav";
-import DynamicNav from "../../components/DynamicNav/DynamicNav";
 import "./SupportedSchools.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -10,7 +8,6 @@ const SupportedSchools = () => {
   const history = useNavigate();
   const [institutionNames, setInstitutionNames] = useState([]);
   const [schoolType, setSchoolType] = useState("state_college");
-  // const token = localStorage.getItem("authToken");
   const { token } = useAuth(); // Access token from context
 
   useEffect(() => {

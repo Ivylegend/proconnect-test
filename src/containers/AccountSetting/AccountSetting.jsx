@@ -48,7 +48,7 @@ const AccountSetting = () => {
           const data = await response.json();
           console.log("Profile picture uploaded successfully:", data);
 
-          toast.success("Updated successfully!");
+          toast.success("Changed successfully!");
           setFile(data.data.photo);
         } else {
           console.error(
