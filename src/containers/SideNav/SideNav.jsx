@@ -147,7 +147,7 @@ const menuItems = [
 const SideNav = ({ isOpen, toggleSideNav }) => {
   return (
     <>
-      <div className={`side-nav ${isOpen ? "open" : ""}`}>
+      <div className={`side-nav ${isOpen ? "open slide-in" : ""}`}>
         <NavLink to="/">
           <div className="side-nav_logo">
             <img src={Logo} alt="proconnect-logo" />

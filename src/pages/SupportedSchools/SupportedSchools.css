@@ -19,7 +19,7 @@
   line-height: normal;
 }
 
-select {
+.uni_category select {
   height: 62px;
   width: 100%;
   border-radius: 8px;
@@ -34,5 +34,12 @@ select {
   .uni_category{
     margin: 0;
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .uni_category select{
+    margin: 0;
+    max-width: 350px;
   }
 }

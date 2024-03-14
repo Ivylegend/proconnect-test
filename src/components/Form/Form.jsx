@@ -194,9 +194,6 @@ function Form() {
 
   // HANDLE PAYMENT
   const handlePayment = (paymentData) => {
-    // Integrate with payment gateway or processing logic here
-    // Handle success or failure scenarios
-    // Update form state and navigate accordingly
     setPage(nextStep);
     setNextStep(1);
   };

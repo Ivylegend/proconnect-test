@@ -69,8 +69,9 @@
   top: -5px;
 }
 
-.mobile-menu_btn{
+.mobile-menu_btn {
   display: none;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 930px) {
@@ -79,21 +80,21 @@
     width: 100vw;
   }
 
-  .mobile-menu_btn{
+  .mobile-menu_btn {
     display: flex;
   }
 }
 
 @media screen and (max-width: 730px) {
-  .notifs{
+  .notifs {
     display: none;
   }
 
-  .usermail{
+  .usermail {
     display: none;
   }
 
-  .chevron-down{
+  .chevron-down {
     display: none;
   }
 }

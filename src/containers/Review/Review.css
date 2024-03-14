@@ -1,0 +1,141 @@
+.review_header{
+    margin-bottom: 3rem;
+    width: 70%;
+    text-align: center;
+}
+
+.app_review_nin {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.review-nin {
+  border-radius: 12px;
+  border: 1px solid rgba(102, 102, 102, 0.35);
+  height: 236px;
+  min-width: 520px;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 1rem 0;
+  background-color: white;
+}
+
+.review-btn {
+  max-width: 520px;
+  margin: auto;
+  margin-bottom: 4rem;
+  width: 100%;
+  height: 56px;
+  padding: 15.5px 0px 16.5px 0px;
+  align-items: center;
+  border: none;
+  border-radius: 13.7px;
+  background: #db251a;
+  color: white;
+}
+
+.review_results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.review-result-div {
+  width: 520px;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem 0 2rem;
+  background-color: white;
+}
+
+.review-result-div span {
+  display: flex;
+  justify-content: space-between;
+}
+
+.review_documents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.review_upload_div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-content: center;
+  justify-content: center;
+  padding: 0 8rem;
+  gap: 2rem;
+  margin: 0 auto;
+}
+
+.review_upload_div div {
+  display: flex;
+  max-width: 313px;
+  padding: 32px 22px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.8rem;
+  background-color: white;
+  border-radius: 7.867px;
+  border: 0.656px solid rgba(102, 102, 102, 0.35);
+}
+
+@media screen and (max-width: 800px) {
+  .review_upload_div {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .review-btn {
+    max-width: 400px;
+  }
+
+  .app_review_nin {
+    align-items: center;
+  }
+
+  .review-nin {
+    min-width: 0;
+    width: 400px;
+  }
+
+  .review_upload_div {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .review-result-div {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .review-btn {
+    max-width: 350px;
+  }
+
+  .review-nin {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .review-result-div {
+    width: 350px;
+  }
+}

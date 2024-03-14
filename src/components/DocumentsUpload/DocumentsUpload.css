@@ -31,12 +31,12 @@
   align-items: center;
   text-align: center;
   gap: 0.8rem;
-background-color: white;
+  background-color: white;
   border-radius: 7.867px;
   border: 0.656px solid rgba(102, 102, 102, 0.35);
 }
 
-.uploaded-doc{
+.uploaded-doc {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -44,15 +44,15 @@ background-color: white;
   margin-top: 1rem;
 }
 
-.uploaded-doc small{
+.uploaded-doc small {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 
 @media screen and (max-width: 768px) {
-  .upload_div{
+  .upload_div {
     padding: 0 2rem;
     display: flex;
     flex-wrap: wrap;

@@ -3,16 +3,6 @@ import UploadIcon from "../../assets/images/upload.png";
 import "./DocumentsUpload.css";
 import { useAuth } from "../../utils/AuthContext";
 
-// const dataValue = [
-//   "WAEC Certificate",
-//   "NIN Slip",
-//   "NECO Certificate",
-//   "JAMB Result Slip",
-//   "Passport Photograph - white background",
-//   "State of origin affidavit / certificate",
-//   "Certificate of Origin",
-// ];
-
 const dataValue = [
   { name: "WAEC Certificate", type: "waec" },
   { name: "NIN Slip", type: "nin" },

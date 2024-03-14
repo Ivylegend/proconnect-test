@@ -51,6 +51,18 @@ a .wide-btn {
   text-align: center;
 }
 
+select {
+  height: 62px;
+  width: 100%;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin: 1rem 0 2rem;
+  border: 1px solid #666666;
+  color: black;
+}
+
 .checkbox:checked {
   background-color: red !important;
 }
@@ -97,11 +109,6 @@ a {
   object-fit: contain;
 }
 
-select {
-  border: 1px solid #666666;
-  color: black;
-}
-
 option {
   color: black;
 }
@@ -112,6 +119,64 @@ input[type="password"]::-webkit-contacts-auto-fill-button {
   pointer-events: none;
   position: absolute;
   right: 0;
+}
+
+.slide-in {
+  -webkit-animation: slide-in 0.5s ease-in-out;
+  animation: slide-in 0.5s ease-in-out;
+  max-height: 100vh;
+  opacity: 1;
+}
+
+@-webkit-keyframes slide-in {
+  0% {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
+.slide-out {
+  -webkit-animation: slide-out 0.5s ease-in-out;
+  animation: slide-out 0.5s ease-in-out;
+  max-height: 100vh;
+  opacity: 1;
+}
+
+@-webkit-keyframes slide-out {
+  0% {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slide-out {
+  0% {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
 }
 
 @media screen and (max-width: 470px) {

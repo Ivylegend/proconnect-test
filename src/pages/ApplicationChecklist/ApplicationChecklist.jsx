@@ -22,17 +22,26 @@ const checkListData2 = [
   "Pay Application Fee",
 ];
 
-const ApplicationChecklist = () => {
-  const history = useNavigate();
+const ApplicationChecklist = (formData, setFormData) => {
   const [applicationCompleted, setApplicationCompleted] = useState(false);
 
   useEffect(() => {
-    // Check if profile completion status is stored in localStorage
     const storedProfileCompletion = localStorage.getItem("profileCompleted");
-    if (storedProfileCompletion) {
+    if (storedProfileCompletion === true) {
       setApplicationCompleted(true);
     }
   }, []);
+  
+
+  // Set up checkListData and checkListData2 with completion status
+  const checkListDataWithCompletion = checkListData.map((item) => ({
+    label: item,
+    completed: formData[item] !== "",
+  }));
+  const checkListData2WithCompletion = checkListData2.map((item) => ({
+    label: item,
+    completed: formData[item] !== "",
+  }));
 
   return (
     <div className="flex">
@@ -47,7 +56,7 @@ const ApplicationChecklist = () => {
           <p className="check">Checklist</p>
           <div className="checklist">
             <div>
-              {checkListData.map((data, index) => {
+              {/* {checkListData.map((data, index) => {
                 return (
                   <span key={index}>
                     <input
@@ -62,10 +71,24 @@ const ApplicationChecklist = () => {
                     <p>{data}</p>
                   </span>
                 );
-              })}
+              })} */}
+
+              {/* // In the render function, map over checklists with completion status */}
+              {checkListDataWithCompletion.map((data, index) => (
+                <span key={index}>
+                  <input
+                    type="checkbox"
+                    className="checkbox"
+                    checked={data.completed}
+                    disabled={applicationCompleted}
+                    readOnly
+                  />
+                  <p>{data.label}</p>
+                </span>
+              ))}
             </div>
             <div>
-              {checkListData2.map((data2, index) => {
+              {/* {checkListData2.map((data2, index) => {
                 return (
                   <span key={index}>
                     <input
@@ -79,7 +102,20 @@ const ApplicationChecklist = () => {
                     <p>{data2}</p>
                   </span>
                 );
-              })}
+              })} */}
+
+              {checkListData2WithCompletion.map((data, index) => (
+                <span key={index}>
+                  <input
+                    type="checkbox"
+                    className="checkbox"
+                    checked={data.completed}
+                    disabled={applicationCompleted}
+                    readOnly
+                  />
+                  <p>{data.label}</p>
+                </span>
+              ))}
             </div>
           </div>
         </div>
