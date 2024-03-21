@@ -18,6 +18,9 @@ import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import FormLayout from "./layout/FormLayout";
 import DashboardLayout from "./layout/DashboardLayout";
 import ChangePassword from "./pages/ChangePassword/ChangePassword";
+import RecommenderForm from "./pages/RecommenderForm";
+import Candidates from "./pages/Candidates";
+import ApplicationStatus from "./pages/ApplicationStatus";
 
 function App() {
   return (
@@ -59,14 +62,22 @@ function App() {
               </DashboardLayout>
             }
           />
-          {/* <Route
-            path="/settings"
+          <Route
+            path="/candidate-page"
             element={
-              <DashboardLayout title={"Settings"}>
-                <Settings />
+              <DashboardLayout title={"Candidates"}>
+                <Candidates />
               </DashboardLayout>
             }
-          /> */}
+          />
+          <Route
+            path="/student-application-details"
+            element={
+              <DashboardLayout title={"Student Application Details"}>
+                <ApplicationStatus />
+              </DashboardLayout>
+            }
+          />
           <Route
             path="/profile"
             element={
@@ -88,6 +99,14 @@ function App() {
             element={
               <FormLayout>
                 <Form />
+              </FormLayout>
+            }
+          />
+          <Route
+            path="/recommender-form"
+            element={
+              <FormLayout>
+                <RecommenderForm />
               </FormLayout>
             }
           />

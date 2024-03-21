@@ -121,64 +121,6 @@ input[type="password"]::-webkit-contacts-auto-fill-button {
   right: 0;
 }
 
-.slide-in {
-  -webkit-animation: slide-in 0.5s ease-in-out;
-  animation: slide-in 0.5s ease-in-out;
-  max-height: 100vh;
-  opacity: 1;
-}
-
-@-webkit-keyframes slide-in {
-  0% {
-    -webkit-transform: translateX(-100%);
-    transform: translateX(-100%);
-  }
-  100% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-  }
-}
-
-@keyframes slide-in {
-  0% {
-    -webkit-transform: translateX(-100%);
-    transform: translateX(-100%);
-  }
-  100% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-  }
-}
-
-.slide-out {
-  -webkit-animation: slide-out 0.5s ease-in-out;
-  animation: slide-out 0.5s ease-in-out;
-  max-height: 100vh;
-  opacity: 1;
-}
-
-@-webkit-keyframes slide-out {
-  0% {
-    -webkit-transform: translateX(0%);
-    transform: translateX(0%);
-  }
-  100% {
-    -webkit-transform: translateX(-100%);
-    transform: translateX(-100%);
-  }
-}
-
-@keyframes slide-out {
-  0% {
-    -webkit-transform: translateX(0%);
-    transform: translateX(0%);
-  }
-  100% {
-    -webkit-transform: translateX(-100%);
-    transform: translateX(-100%);
-  }
-}
-
 @media screen and (max-width: 470px) {
   .wide-btn {
     width: 100%;
