@@ -26,7 +26,7 @@ const Candidates = () => {
 
   return (
     <div className="margleft dashboard">
-      <p className="doc-header">See all Candidates</p>
+      <p className="doc-header mb-8">See all Candidates</p>
 
       <TableLayout />
     </div>

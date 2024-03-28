@@ -21,6 +21,7 @@ import ChangePassword from "./pages/ChangePassword/ChangePassword";
 import RecommenderForm from "./pages/RecommenderForm";
 import Candidates from "./pages/Candidates";
 import ApplicationStatus from "./pages/ApplicationStatus";
+import StudentDashboard from "./pages/StudentDashboard";
 
 function App() {
   return (
@@ -67,6 +68,14 @@ function App() {
             element={
               <DashboardLayout title={"Candidates"}>
                 <Candidates />
+              </DashboardLayout>
+            }
+          />
+          <Route
+            path="/school-dashboard"
+            element={
+              <DashboardLayout title={"School Dashboard"}>
+                <StudentDashboard />
               </DashboardLayout>
             }
           />

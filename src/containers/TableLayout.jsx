@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -7,37 +7,16 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
+import Button from "@mui/material/Button"; // Import Button component from Material-UI
+import Avatar from "@mui/material/Avatar"; // Import Avatar component from Material-UI
 
 const columns = [
   { id: "serial", label: "Serial Number", minWidth: 100 },
   { id: "name", label: "Student Name", minWidth: 100 },
-  {
-    id: "institution",
-    label: "Institution",
-    minWidth: 170,
-    align: "center",
-    format: (value) => value.toLocaleString("en-US"),
-  },
-  {
-    id: "course",
-    label: "Course",
-    minWidth: 170,
-    align: "right",
-    format: (value) => value.toLocaleString("en-US"),
-  },
-  {
-    id: "date",
-    label: "Date",
-    minWidth: 100,
-    align: "right",
-    // format: (value) => value.toFixed(2),
-  },
-  {
-    id: "action",
-    label: "Action",
-    minWidth: 100,
-    align: "center",
-  },
+  { id: "institution", label: "Institution", minWidth: 170, align: "center" },
+  { id: "course", label: "Course", minWidth: 170, align: "right" },
+  { id: "date", label: "Date", minWidth: 100, align: "right" },
+  { id: "action", label: "Action", minWidth: 100, align: "center" }, // Keep the action column
 ];
 
 function createData(serial, name, institution, course, date, action) {
@@ -55,7 +34,7 @@ const rows = [
   ),
   createData(
     "2",
-    "David Johnson",
+    "Victory Blessing",
     "Covenant University",
     "Computer Science",
     "8/10/24",
@@ -63,7 +42,7 @@ const rows = [
   ),
   createData(
     "3",
-    "David Johnson",
+    "Busayo First",
     "Covenant University",
     "Computer Science",
     "8/10/24",
@@ -200,16 +179,34 @@ export default function TableLayout() {
           <TableBody>
             {rows
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
+              .map((row, rowIndex) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                    {columns.map((column) => {
+                  <TableRow hover role="checkbox" tabIndex={-1} key={rowIndex}>
+                    {columns.map((column, colIndex) => {
                       const value = row[column.id];
                       return (
                         <TableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === "number"
-                            ? column.format(value)
-                            : value}
+                          {column.id === "name" ? ( // Render avatar and text for the name column
+                            <div className="flex items-center">
+                              <Avatar
+                                sx={{ mr: 1 }}
+                                alt={value}
+                                src="/path/to/image.jpg"
+                              />
+                              {value}
+                            </div>
+                          ) : column.id === "action" ? ( // Render buttons for the action column
+                            <Button
+                              variant="secondary"
+                              sx={{ bgcolor: "#db251a1a", color:"#db251a", textTransform:"capitalize" }} // Set the background color to red
+                              onClick={() => console.log("Button clicked")}
+                            >
+                              {value}
+                            </Button>
+                          ) : (
+                            // Render plain text for other columns
+                            value
+                          )}
                         </TableCell>
                       );
                     })}

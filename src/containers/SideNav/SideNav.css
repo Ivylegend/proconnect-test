@@ -49,7 +49,7 @@
 }
 
 .menu__list:hover {
-  background-color: rgba(219, 37, 26, 0.1);
+  background-color: #db251a1a;
   color: #db251a;
 }
 
