@@ -22,6 +22,7 @@ import RecommenderForm from "./pages/RecommenderForm";
 import Candidates from "./pages/Candidates";
 import ApplicationStatus from "./pages/ApplicationStatus";
 import StudentDashboard from "./pages/StudentDashboard";
+import SchoolProfile from "./pages/SchoolProfile";
 
 function App() {
   return (
@@ -92,6 +93,14 @@ function App() {
             element={
               <DashboardLayout title={"Profile"}>
                 <Profile />
+              </DashboardLayout>
+            }
+          />
+          <Route
+            path="/school-profile"
+            element={
+              <DashboardLayout title={"School Profile"}>
+                <SchoolProfile />
               </DashboardLayout>
             }
           />
