@@ -126,15 +126,17 @@ const SignIn = () => {
           <input type="checkbox" className="check-box" />
           <p className="remember">Remember me</p>
         </div>
-        <Link to="forgot-password" className="underlined">Forgot Password</Link>
+        {/* link for forgot password /forgot-password */}
+        <Link to="" className="underlined">Forgot Password</Link>
       </div>
       <div className="login-btn">
-        <button onClick={handleSignIn} className="small-btn">
+        <button onClick={handleSignIn} className="small-btn" disabled>
           Login
         </button>
         <p>
           Don't have an account? <br />
-          <Link to="/signup" className="underlined red-text">
+          {/* link to sign up /signup */}
+          <Link to="" className="underlined red-text">
             Sign up
           </Link>{" "}
           here

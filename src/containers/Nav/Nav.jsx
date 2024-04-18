@@ -9,7 +9,7 @@ const Nav = () => {
       <div className="nav-logo">
         <img src={Logo} alt="logo"  />
       </div>
-      <Link to='/signup' target="blank"><button className="small-btn">Sign Up</button></Link> 
+      <Link to='/signup' target="blank"><button className="small-btn" disabled>Sign Up</button></Link> 
     </div>
   );
 };
