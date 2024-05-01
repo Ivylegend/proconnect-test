@@ -3,6 +3,7 @@ import GalleryAdd from "../../assets/images/gallery-add.png";
 import "./AccountSetting.css";
 import { useAuth } from "../../utils/AuthContext";
 import { toast } from "react-toastify";
+import { BASE_URL } from "../../constants";
 
 const AccountSetting = () => {
   const [picture, setPicture] = useState(false);
@@ -36,7 +37,7 @@ const AccountSetting = () => {
 
       try {
         const response = await fetch(
-          "https://dev-api.eldanic.com/api/v1/user/upload-profile-photo/",
+          `${BASE_URL}user/upload-profile-photo/`,
           {
             method: "POST",
             headers: myHeaders,
@@ -88,7 +89,7 @@ const AccountSetting = () => {
   
     try {
       const response = await fetch(
-        "https://dev-api.eldanic.com/api/v1/user/save-profile/",
+        `${BASE_URL}user/save-profile/`,
         requestOptions
       );
   
@@ -138,7 +139,7 @@ const AccountSetting = () => {
           />
         </div>
         <div className="profile_form">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">Email Address</label>
           <input
             type="email"
             placeholder="Please enter your email"

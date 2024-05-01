@@ -11,6 +11,7 @@ import {
 } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { useAuth } from "../../utils/AuthContext";
+import { BASE_URL } from "../../constants";
 
 const ChangePassword = () => {
   const [visibility, setVisibility] = useState(false);
@@ -87,10 +88,7 @@ const ChangePassword = () => {
       redirect: "follow",
     };
 
-    fetch(
-      "https://dev-api.eldanic.com/api/v1/user/change-password/",
-      requestOptions
-    )
+    fetch(fetch(`${BASE_URL}user/change-password/`, requestOptions))
       .then((response) => response.json())
       .then((result) => {
         if (result.status === true) {
@@ -105,7 +103,7 @@ const ChangePassword = () => {
 
   return (
     <div>
-      <div style={{ position: "absolute", zIndex: -1 }}>
+      <div className="absolute -z-10">
         <Background />
       </div>
       <div className="form-nav-logo">
@@ -116,10 +114,7 @@ const ChangePassword = () => {
 
       <div className="app_apply">
         <h2>Change your Password</h2>
-        <form
-          style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
-          onSubmit={handleResetPassword}
-        >
+        <form onSubmit={handleResetPassword} className="flex flex-col gap-4">
           <div className="input-container">
             <label htmlFor="password">Current Password</label>
             <span className="password-visibility">

@@ -1,8 +1,6 @@
 import React from "react";
 import "./Results.css";
 
-
-
 const Results = ({ title, courses, level }) => {
   return (
     <div className="app_results">
@@ -16,7 +14,7 @@ const Results = ({ title, courses, level }) => {
           {courses.map((course, index) => {
             return (
               <span key={index}>
-                <p className="course_title">{course.title}</p>
+                <p className="course_title capitalize">{course.subject}</p>
                 <p>{course.grade}</p>
               </span>
             );

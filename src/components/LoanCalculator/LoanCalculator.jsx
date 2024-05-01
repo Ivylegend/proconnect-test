@@ -1,16 +1,14 @@
 import React, { useState } from "react";
-import Logo from "../../assets/images/elda-logo.png";
-import Background from "../Background/Background";
-import { Link } from "react-router-dom";
 import "./LoanCalculator.css";
 import { toast } from "react-toastify";
+import { BASE_URL } from "../../constants";
 import { useAuth } from "../../utils/AuthContext";
 
 const LoanCalculator = ({ formData, setFormData }) => {
   const [pricipal, setPricipal] = useState("");
-  const [result, setResult] = useState(null);
-  const [total, setTotal] = useState(null);
-  const [monthly, setMonthly] = useState(null);
+  const [result, setResult] = useState("");
+  const [total, setTotal] = useState("");
+  const [monthly, setMonthly] = useState("");
 
   const { token } = useAuth();
   const calculateReturn = () => {
@@ -35,10 +33,7 @@ const LoanCalculator = ({ formData, setFormData }) => {
         redirect: "follow",
       };
 
-      fetch(
-        "https://dev-api.eldanic.com/api/v1/loan/calculate-loan/",
-        requestOptions
-      )
+      fetch(`${BASE_URL}loan/calculate-loan/`, requestOptions)
         .then((response) => response.json()) // Parse JSON response
         .then((result) => {
           const { data } = result; // Destructure the 'data' object from the response
@@ -55,14 +50,12 @@ const LoanCalculator = ({ formData, setFormData }) => {
   return (
     <div className="sign-up-container">
       <div className="app_olevel">
-        <h2>Calculate your LOAN</h2>
-        <p className="center" style={{ marginBottom: "1rem" }}>
-          LOAN CALCULATOR
-        </p>
+        <h2 className="font-medium text-3xl">Calculate your LOAN</h2>
+        <p className="center text-lg mb-4">LOAN CALCULATOR</p>
         <div className="olevel_form">
           <div className="calculator_div">
             <div>
-              <p>TOTAL LOAN AMOUNT</p>
+              <p className="font-semibold">TOTAL LOAN AMOUNT</p>
               <input
                 type="number"
                 value={pricipal}
@@ -70,30 +63,30 @@ const LoanCalculator = ({ formData, setFormData }) => {
               />
             </div>
             <div>
-              <p>ANNUAL INTEREST RATE</p>
+              <p className="font-semibold">ANNUAL INTEREST RATE</p>
               <input type="text" placeholder="30%" disabled />
             </div>
             <div>
-              <p>TOTAL REPAYMENT DURATION</p>
+              <p className="font-semibold">TOTAL REPAYMENT DURATION</p>
               <input type="text" placeholder="72 MONTHS" />
             </div>
           </div>
           <span className="compute">
-            <button className="btn" onClick={() => calculateReturn()}>
+            <button className="btn font-semibold" onClick={() => calculateReturn()}>
               COMPUTE
             </button>
           </span>
           <div className="calculator_div">
             <div>
-              <p>YOUR MONTHLY PAYMENT</p>
+              <p className="font-semibold">YOUR MONTHLY PAYMENT</p>
               <input type="text" value={monthly} disabled />
             </div>
             <div>
-              <p>YOUR TOTAL PAYMENT</p>
+              <p className="font-semibold">YOUR TOTAL PAYMENT</p>
               <input type="text" value={total} disabled />
             </div>
             <div>
-              <p>YOUR TOTAL INTEREST PAYMENT</p>
+              <p className="font-semibold">YOUR TOTAL INTEREST PAYMENT</p>
               <input type="text" placeholder="" value={result} disabled />
             </div>
           </div>

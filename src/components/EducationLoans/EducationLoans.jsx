@@ -1,8 +1,4 @@
 import React, { useState } from "react";
-import Logo from "../../assets/images/elda-logo.png";
-import Background from "../Background/Background";
-import { Link } from "react-router-dom";
-import UploadIcon from "../../assets/images/upload.png";
 import Laptop from "../../assets/images/laptop.png";
 import bank from "../../assets/images/bank.png";
 import health from "../../assets/images/health.png";
@@ -59,8 +55,10 @@ const EducationLoans = ({ formData, setFormData }) => {
   return (
     <div className="sign-up-container">
       <div className="app_loan">
-        <h2>Our Education Loans covers the following</h2>
-        <p className="center" style={{ marginBottom: "1rem" }}>
+        <h2 className="font-medium text-3xl">
+          Our Education Loans covers the following
+        </h2>
+        <p className="center text-lg mb-4">
           Choose the expenses you would love ProconnectPAY to cover
         </p>
         <div className="loan_div">
@@ -73,7 +71,7 @@ const EducationLoans = ({ formData, setFormData }) => {
               onClick={() => loanClick(index)}
             >
               <img src={data.icon} alt="" />
-              <p>{data.name}</p>
+              <p className="font-semibold">{data.name}</p>
               {clickedOptions[index] && (
                 <span className="checked">
                   <img src={checkmark} alt="" />

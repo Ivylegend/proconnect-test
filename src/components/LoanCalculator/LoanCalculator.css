@@ -37,3 +37,9 @@
   height: 56px;
   width: 200px;
 }
+
+@media screen and (max-width: 500px) {
+  .calculator_div div input {
+    max-width: 150px;
+  }
+}

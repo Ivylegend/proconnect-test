@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Logo from "../../assets/images/elda-logo.png";
-import Background from "../Background/Background";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-// import "react-phone-input-2/lib/material.css";
+import { useAuth } from "../../utils/AuthContext";
+import { BASE_URL } from "../../constants";
 
 const ReferenceInfo = ({ formData, setFormData }) => {
   const initialValues = {
@@ -15,6 +13,8 @@ const ReferenceInfo = ({ formData, setFormData }) => {
     country_code: "",
   };
   const [referenceData, setReferenceData] = useState(initialValues);
+
+  const { token } = useAuth();
 
   const handleChange = (e, value, name) => {
     console.log("value", value);
@@ -30,13 +30,36 @@ const ReferenceInfo = ({ formData, setFormData }) => {
       setReferenceData({ ...referenceData, [e.target.name]: e.target.value });
   };
 
+  const sendReference = () => {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", `Token ${token}`);
+
+    const raw =
+      '{\r\n	"rel_name": Shirley Erdman,\r\n	"email_address": Salvatore9@yahoo.com,\r\n	"phone": 440-272-7253,\r\n	"profession": "Trader",\r\n	"relationship": "Uncle"\r\n}';
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    fetch("", requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.error(error));
+  };
+
   return (
     <div className="sign-up-container">
       <div className="app_olevel">
-        <h2>Fill Reference Information</h2>
+        <h2 className="font-medium text-3xl">Fill Reference Information</h2>
         <div className="olevel_form">
           <div className="olevel_details">
-            <label htmlFor="">Full Name</label>
+            <label htmlFor="" className="text-lg">
+              Full Name
+            </label>
             <input
               type="text"
               value={formData.fullName}
@@ -46,7 +69,9 @@ const ReferenceInfo = ({ formData, setFormData }) => {
             />
           </div>
           <div className="olevel_details">
-            <label htmlFor="">Email Address</label>
+            <label htmlFor="" className="text-lg">
+              Email Address
+            </label>
             <input
               type="email"
               value={formData.email}
@@ -55,13 +80,10 @@ const ReferenceInfo = ({ formData, setFormData }) => {
               }
             />
           </div>
-          <div
-            className="olevel_details"
-            style={{
-              marginBottom: "1.2rem",
-            }}
-          >
-            <label htmlFor="">Phone Number</label>
+          <div className="olevel_details mb-5">
+            <label htmlFor="" className="text-lg">
+              Phone Number
+            </label>
             <PhoneInput
               country="ng"
               regions={"africa"}
@@ -75,20 +97,24 @@ const ReferenceInfo = ({ formData, setFormData }) => {
             />
           </div>
           <div className="olevel_details">
-            <label htmlFor="">Profession</label>
+            <label htmlFor="" className="text-lg">
+              Profession
+            </label>
             <input type="text" />
           </div>
-          <div className="olevel_details">
-            <label htmlFor="">Relationship</label>
+          <div className="olevel_details mb-12">
+            <label htmlFor="" className="text-lg">
+              Relationship
+            </label>
             <select name="" id="">
-              <option value="state">Father</option>
-              <option value="WAEC">Mother</option>
-              <option value="WAEC">Uncle</option>
-              <option value="WAEC">Aunty</option>
+              <option value="Father">Father</option>
+              <option value="Mother">Mother</option>
+              <option value="Uncle">Uncle</option>
+              <option value="Aunty">Aunty</option>
             </select>
           </div>
         </div>
-        <button className="wide-btn btn" onClick={() => setvalidated(true)}>
+        <button className="wide-btn btn" onClick={sendReference}>
           Send Reference Request
         </button>
       </div>

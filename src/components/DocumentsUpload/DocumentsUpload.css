@@ -51,7 +51,7 @@
   gap: 0.5rem;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1025px) {
   .upload_div {
     padding: 0 2rem;
     display: flex;

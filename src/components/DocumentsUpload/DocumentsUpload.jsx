@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import UploadIcon from "../../assets/images/upload.png";
 import "./DocumentsUpload.css";
 import { useAuth } from "../../utils/AuthContext";
+import { BASE_URL } from "../../constants";
 
 const dataValue = [
   { name: "WAEC Certificate", type: "waec" },
@@ -47,7 +48,7 @@ const DocumentsUpload = ({ formData, setFormData }) => {
 
     try {
       const response = await fetch(
-        `https://dev-api.eldanic.com/api/v1/edu/upload-document/?document_type=${dataValue[index].type}`,
+        `${BASE_URL}edu/upload-document/?document_type=${dataValue[index].type}`,
         requestOptions
       );
 
@@ -95,7 +96,7 @@ const DocumentsUpload = ({ formData, setFormData }) => {
   return (
     <div className="sign-up-container">
       <div className="upload">
-        <h2>Upload Documents</h2>
+        <h2 className="font-medium text-3xl">Upload Documents</h2>
         <div className="upload_div">
           {dataValue.map((data, index) => {
             const upload = uploads[index] || {};

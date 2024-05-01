@@ -9,16 +9,13 @@ const ApplyingTo = ({ selectedCategory, setSelectedCategory }) => {
 
   return (
     <div className="app_apply">
-      <h2>Are you applying to?</h2>
-      <div className="uniType">
-        <label htmlFor="">Category</label>
+      <h2 className="font-medium text-3xl">Where are you applying to?</h2>
+      <div className="uniType flex flex-col gap-2">
+        <label htmlFor="" className="text-lg">
+          Category
+        </label>
         <select name="" id="" value={selectedCategory} onChange={handleChange}>
           <option value="private_university">Private University</option>
-          {/* <option value="federal_university">Federal University</option>
-          <option value="state_university">State University</option>
-          <option value="federal_college">Private Polytechnic</option>
-          <option value="federal_college">Federal Polytechnic</option>
-          <option value="state_college">State Polytechnic</option> */}
         </select>
       </div>
     </div>

@@ -10,6 +10,7 @@ import {
   FaRegCheckCircle,
 } from "react-icons/fa";
 import { toast } from "react-toastify";
+import { BASE_URL } from "../../constants";
 
 const ResetPassword = () => {
   const [visibility, setVisibility] = useState(false);
@@ -93,10 +94,7 @@ const ResetPassword = () => {
       redirect: "follow",
     };
 
-    fetch(
-      "https://dev-api.eldanic.com/api/v1/user/change-password/",
-      requestOptions
-    )
+    fetch(`${BASE_URL}user/change-password/`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
         // Check if the response indicates success
@@ -114,7 +112,7 @@ const ResetPassword = () => {
 
   return (
     <div>
-      <div style={{ position: "absolute", zIndex: -1 }}>
+      <div className="absolute -z-10">
         <Background />
       </div>
       <div className="form-nav-logo">
@@ -125,7 +123,7 @@ const ResetPassword = () => {
 
       <div className="app_apply">
         <h2>Reset Password</h2>
-        <form style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <form className="flex flex-col gap-4">
           <div className="input-container">
             <label htmlFor="password">New Password</label>
             <span className="password-visibility">

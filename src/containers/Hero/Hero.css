@@ -45,12 +45,6 @@
 }
 
 .hero-form {
-  width: 360px;
-  min-height: 452px;
-  flex-shrink: 0;
-  border-radius: 24px;
-  background: #fff;
-  padding: 1.5rem;
   font-family: "Poppins", sans-serif;
 }
 
@@ -172,6 +166,11 @@ label {
 @media screen and (max-width: 558px) {
   .google {
     max-width: 100%;
+    gap: 0.2rem;
+    font-size: 16px;
+    font-weight: 500;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -212,8 +211,5 @@ label {
 
   .google {
     max-width: 320px;
-    gap: 0.5rem;
-    align-items: center;
-    justify-content: center;
   }
 }

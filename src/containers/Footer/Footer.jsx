@@ -98,11 +98,11 @@ const Footer = () => {
           <p className="footer_logo_text">
             ProconnectPAY is legally registered in Nigeria and the United
             States. RC Number in Nigeria is{" "}
-            <span style={{ color: "#1E4580" }}>
+            <span className="text-[#1E4580]">
               1884617 (Proconnect Tech Solutions Limited) ,
             </span>{" "}
             Assigned Filling No in the United States is{" "}
-            <span style={{ color: "#DB251A" }}>
+            <span className="text-[#DB251A]">
               7044965 (ProconnectPAY EduFinTech Inc.)
             </span>
           </p>

@@ -29,14 +29,18 @@ const ApplicationForm = ({ formData, setFormData }) => {
   return (
     <div className="sign-up-container">
       <div className="app_olevel">
-        <h2>Fill The Application Form</h2>
+        <h2 className="font-medium text-3xl">Fill The Application Form</h2>
         <div className="olevel_form">
           <div className="olevel_details">
-            <label htmlFor="">Full name</label>
+            <label htmlFor="" className="text-lg">
+              Full name
+            </label>
             <input type="text" />
           </div>
           <div className="olevel_details">
-            <label htmlFor="">Gender</label>
+            <label htmlFor="" className="text-lg">
+              Gender
+            </label>
             <input
               type="text"
               value={formData.examinationNumber}
@@ -50,17 +54,15 @@ const ApplicationForm = ({ formData, setFormData }) => {
           </div>
 
           <div className="olevel_details">
-            <label htmlFor="">Date of Birth</label>
-            <input
-             
-              type="date"
-              name=""
-              id=""
-              className="date-time"
-            />
+            <label htmlFor="" className="text-lg">
+              Date of Birth
+            </label>
+            <input type="date" name="" id="" className="date-time" />
           </div>
           <div className="olevel_details">
-            <label htmlFor="">Current House Address</label>
+            <label htmlFor="" className="text-lg">
+              Current House Address
+            </label>
             <input
               type="text"
               value={formData.fullName}
@@ -70,15 +72,21 @@ const ApplicationForm = ({ formData, setFormData }) => {
             />
           </div>
           <div className="olevel_details">
-            <label htmlFor="">Father's Name</label>
+            <label htmlFor="" className="text-lg">
+              Father's Name
+            </label>
             <input type="text" />
           </div>
           <div className="olevel_details">
-            <label htmlFor="">Mother's Name</label>
+            <label htmlFor="" className="text-lg">
+              Mother's Name
+            </label>
             <input type="text" />
           </div>
-          <div className="olevel_details" style={{ marginBottom: "1.2rem" }}>
-            <label htmlFor="">Phone Number of One Parent</label>
+          <div className="olevel_details mb-5">
+            <label htmlFor="" className="text-lg">
+              Phone Number of One Parent
+            </label>
             <PhoneInput
               country="ng"
               regions={"africa"}
@@ -92,7 +100,9 @@ const ApplicationForm = ({ formData, setFormData }) => {
             />
           </div>
           <div className="olevel_details">
-            <label htmlFor="">Whose Number</label>
+            <label htmlFor="" className="text-lg">
+              Whose Number
+            </label>
             <select name="" id="">
               <option value="state">Mother</option>
               <option value="WAEC">Father</option>

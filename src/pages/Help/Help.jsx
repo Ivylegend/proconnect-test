@@ -1,7 +1,4 @@
-import SideNav from "../../containers/SideNav/SideNav";
-import DynamicNav from "../../components/DynamicNav/DynamicNav";
 import "./Help.css";
-import { Link } from "react-router-dom";
 
 const Help = () => {
   return (
@@ -9,15 +6,15 @@ const Help = () => {
       <div className="margleft">
         <div className="dashboard">
           <div className="dashboard_lower">
-            <p className="explainer">Get In touch</p>
+            <p className="explainer text-2xl">Get In touch</p>
             <form action="" className="help_form">
               <div className="">
-                <label htmlFor="">Full Name</label>
-                <input type="text" className="" />
+                <label htmlFor="email">Full Name</label>
+                <input type="text" id="email" name="email" className="" />
               </div>
               <div className="">
-                <label htmlFor="">Email Address</label>
-                <input type="email" className="" />
+                <label htmlFor="email">Email Address</label>
+                <input type="email" id="email" name="email" className="" />
               </div>
               <div>
                 <label htmlFor="">Message</label>
@@ -25,9 +22,9 @@ const Help = () => {
               </div>
               <button className="btn wide-btn">Send a Message</button>
               <div className="center">or</div>
-                <a href="mailto:sales@proconnectpay.com">
-                  <div className="btn outline">Contact Sales</div>
-                </a>
+              <a href="mailto:sales@proconnectpay.com">
+                <div className="btn outline">Contact Sales</div>
+              </a>
             </form>
           </div>
         </div>

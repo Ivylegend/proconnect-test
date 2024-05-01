@@ -15,6 +15,7 @@ import {
   FaRegCheckCircle,
   FaRegCircle,
 } from "react-icons/fa";
+import { BASE_URL } from "../../constants";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -85,7 +86,7 @@ const SignUp = () => {
     if (isValidated()) {
       axios
         .post(
-          "https://dev-api.eldanic.com/api/v1/auth/register/",
+          `${BASE_URL}auth/register/`,
           {
             email: email,
             password: password,
@@ -107,7 +108,7 @@ const SignUp = () => {
 
   return (
     <div>
-      <div style={{ position: "absolute" }}>
+      <div className="absolute">
         <Background />
       </div>
       <div className="form-nav-logo">
@@ -209,7 +210,7 @@ const SignUp = () => {
 
           <button
             type="button"
-            className="btn wide-btn sign__up"
+            className="btn wide-btn sign__up bg-red-600"
             onClick={postData}
           >
             Sign Up

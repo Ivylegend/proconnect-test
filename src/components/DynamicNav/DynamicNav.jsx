@@ -47,7 +47,7 @@ const DynamicNav = (props) => {
           <img src={Bell} alt="notification-bell" />
           <span className="notif-circle"></span>
         </span>
-        <button onClick={handleSignOut}>Sign Out</button>
+        <button onClick={handleSignOut} className="border rounded-md border-black">Sign Out</button>
         <div className="mobile-menu_btn">
           <MdMenu onClick={() => toggleSideNav()} />
         </div>

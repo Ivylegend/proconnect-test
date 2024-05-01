@@ -32,10 +32,12 @@ const Payment = ({ formData, setFormData, handlePayment }) => {
   return (
     <div>
       <div className="app_payment">
-        <h2>Pay School Application Fee</h2>
+        <h2 className="font-medium text-3xl">Pay School Application Fee</h2>
         <div className="payment_form">
           <div className="payment_input">
-            <label htmlFor="">Name of Candidate</label>
+            <label htmlFor="" className="text-lg">
+              Name of Candidate
+            </label>
             <input
               type="text"
               value={candidateName}
@@ -43,7 +45,9 @@ const Payment = ({ formData, setFormData, handlePayment }) => {
             />
           </div>
           <div className="payment_input">
-            <label htmlFor="">Email of Candidate</label>
+            <label htmlFor="" className="text-lg">
+              Email of Candidate
+            </label>
             <input
               type="text"
               value={candidateEmail}
@@ -51,17 +55,15 @@ const Payment = ({ formData, setFormData, handlePayment }) => {
             />
           </div>
           <div className="payment_input">
-            <label htmlFor="">Amount</label>
-
-            <input
-              type="text" // Change type to "text" to allow custom formatting
-              value="₦ 280,000" // Use a formatting function to display the formatted amount
-              placeholder="280,000"
-              disabled
-            />
+            <label htmlFor="" className="text-lg">
+              Amount
+            </label>
+            <div className="w-full mb-5 h-14 rounded-xl font-medium border border-[rgba(102, 102, 102, 0.35)] p-4">
+              ₦ 280,000
+            </div>
           </div>
           <button
-            className="make_payment btn wide-btn"
+            className="make_payment btn wide-btn font-medium"
             onClick={payWithPayStack}
           >
             Proceed with Payment

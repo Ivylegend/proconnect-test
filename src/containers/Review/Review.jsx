@@ -76,7 +76,7 @@ const Review = ({ formData, onNextButtonClick }) => {
         return (
           <div className="app_review_nin">
             {/* NIN REVIEW */}
-            <h2 style={{ textAlign: "center" }}>NIN INFORMATION</h2>
+            <h2 className="text-center text-lg">NIN INFORMATION</h2>
             <div className="review-nin">
               <div className="nin-text">
                 <p className="title">Full Name</p>
@@ -105,7 +105,7 @@ const Review = ({ formData, onNextButtonClick }) => {
         return (
           <div className="review_results">
             {/* OLEVEL REVIEW */}
-            <h2 className="result_title center">O'level Result</h2>
+            <h2 className="result_title text-center text-lg">O'level Result</h2>
 
             <div className="review-result-div">
               {courses.map((course, index) => {
@@ -141,7 +141,7 @@ const Review = ({ formData, onNextButtonClick }) => {
         return (
           <div className="review_documents">
             {/* UPLOADED DOCUMENTS REVIEW */}
-            <h2>Uploaded Documents</h2>
+            <h2 className="text-lg">Uploaded Documents</h2>
             <div className="review_upload_div">
               {dataValue.map((data, index) => {
                 const upload = uploads[index] || {};
@@ -199,16 +199,10 @@ const Review = ({ formData, onNextButtonClick }) => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        marginTop: "4rem",
-      }}
-    >
-      <h2 className="review_header">Review Your School Application Details</h2>
+    <div className="flex flex-col items-center justify-center mt-16">
+      <h2 className="review_header font-medium text-3xl">
+        Review Your School Application Details
+      </h2>
       <div>{renderReviewPage()}</div>
       <button className="btn review-btn" onClick={handleNextButtonClick}>
         {reviewPage === 3 ? "Continue" : "Next"}

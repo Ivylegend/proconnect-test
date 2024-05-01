@@ -7,10 +7,10 @@ import Logo from "../assets/images/5.png";
 const FormLayout = ({ children }) => {
   return (
     <div>
-      <div style={{ position: "absolute", zIndex: -1 }}>
+      <div className="absolute -z-10">
         <Background />
       </div>
-      <div className="form-nav-logo" style={{ backgroundColor: "white" }}>
+      <div className="form-nav-logo bg-white">
         <Link to="/profile">
           <img src={Logo} alt="logo" />
         </Link>

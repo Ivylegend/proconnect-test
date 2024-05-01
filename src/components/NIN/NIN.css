@@ -8,28 +8,27 @@
   z-index: 10;
 }
 
-.hidden{
+.hidden {
   display: none;
 }
 
 .nin-container {
   width: 100%;
-}
-
-.nin-container h2 {
-  margin-bottom: 2rem;
+  flex-direction: column;
+  display: flex;
+  gap: 2rem;
 }
 
 .nin-container input {
   width: 100%;
-  margin: 1rem 0;
+  margin: 1rem 0 0;
   height: 56px;
   border-radius: 12px;
   border: 1px solid rgba(102, 102, 102, 0.35);
   padding: 1rem;
 }
 
-.nin-container label{
+.nin-container label {
   display: block;
 }
 
@@ -76,9 +75,8 @@
   display: none;
 }
 
-
 @media screen and (max-width: 768px) {
-  .app_nin{
+  .app_nin {
     padding: 0 3rem;
   }
 }

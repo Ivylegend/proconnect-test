@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../utils/AuthContext";
 import { toast } from "react-toastify";
-import Eye from "../assets/images/exclaim.png";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const SignIn = () => {
@@ -88,9 +87,9 @@ const SignIn = () => {
   };
 
   return (
-    <form className="hero-form">
-      <p className="red-text header">Login Here</p>
-      <div className="input-container">
+    <form className="hero-form max-w-[340px] sm:w-[360px] min-h-[452px] flex-shrink-0 rounded-3xl bg-white p-6">
+      <p className="red-text text-center mb-6 font-medium text-2xl">Login Here</p>
+      <div className="input-container flex flex-col gap-2 mb-2">
         <label htmlFor="email">Email address or username</label>
         <input
           type="email"
@@ -127,16 +126,16 @@ const SignIn = () => {
           <p className="remember">Remember me</p>
         </div>
         {/* link for forgot password /forgot-password */}
-        <Link to="" className="underlined">Forgot Password</Link>
+        <Link to="/forgot-password" className="underlined">Forgot Password</Link>
       </div>
       <div className="login-btn">
-        <button onClick={handleSignIn} className="small-btn" disabled>
+        <button onClick={handleSignIn} className="small-btn" >
           Login
         </button>
         <p>
           Don't have an account? <br />
           {/* link to sign up /signup */}
-          <Link to="" className="underlined red-text">
+          <Link to="/signup" className="underlined red-text">
             Sign up
           </Link>{" "}
           here

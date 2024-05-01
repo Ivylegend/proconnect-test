@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../utils/AuthContext";
+import { BASE_URL } from "../../constants";
 
 const NameOfUni = () => {
   const { token } = useAuth();
@@ -94,7 +95,7 @@ const NameOfUni = () => {
           };
 
           const response = await fetch(
-            "https://dev-api.eldanic.com/api/v1/fetch_school/?school_type=private_university", // Dynamically change the endpoint based on schoolType
+            `${BASE_URL}fetch_school/?school_type=private_university`, // Dynamically change the endpoint based on schoolType
             requestOptions
           );
           const result = await response.json();
@@ -117,9 +118,11 @@ const NameOfUni = () => {
 
   return (
     <div className="app_apply">
-      <h2>Name of Institution</h2>
-      <div className="uniType">
-        <label htmlFor="">Name</label>
+      <h2 className="font-medium text-3xl">Name of Institution</h2>
+      <div className="uniType flex flex-col gap-2">
+        <label htmlFor="" className="text-lg">
+          Name
+        </label>
         <select name="" id="">
           {institutionNames.map((uni, index) => (
             <option key={index} value={uni}>

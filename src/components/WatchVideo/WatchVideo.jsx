@@ -8,7 +8,7 @@ const WatchVideo = ({ formData, setFormData }) => {
   return (
     <div>
       <div className="app_apply app_video">
-        <h2>Watch this video before choosing a course</h2>
+        <h2 className="font-medium text-3xl">Watch this video before choosing a course</h2>
         <video controls={true} src=""></video>
       </div>
     </div>

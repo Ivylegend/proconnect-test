@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./SupportedSchools.css";
 import { useAuth } from "../../utils/AuthContext";
+import { BASE_URL } from "../../constants";
 
 const SupportedSchools = () => {
   const history = useNavigate();
@@ -34,7 +35,7 @@ const SupportedSchools = () => {
         };
 
         const response = await fetch(
-          `https://dev-api.eldanic.com/api/v1/fetch_school/?school_type=${schoolType}`, // Dynamically change the endpoint based on schoolType
+          `${BASE_URL}fetch_school/?school_type=${schoolType}`, // Dynamically change the endpoint based on schoolType
           requestOptions
         );
         const result = await response.json();
@@ -60,26 +61,26 @@ const SupportedSchools = () => {
           <p className="uni_name">Name of Institutions</p>
           <div className="uni_category">
             <p>Select your School Category</p>
-            <div style={{ display: "flex", gap: "1rem" }}>
-              <button onClick={() => handleSchoolTypeChange("state_college")}>
+            <div className="flex gap-4 mt-4">
+              <button className="border-b border-black" onClick={() => handleSchoolTypeChange("state_college")}>
                 State College
               </button>
-              <button
+              <button className="border-b border-black"
                 onClick={() => handleSchoolTypeChange("state_university")}
               >
                 State University
               </button>
-              <button
+              <button className="border-b border-black"
                 onClick={() => handleSchoolTypeChange("private_university")}
               >
                 Private University
               </button>
-              <button
+              <button className="border-b border-black"
                 onClick={() => handleSchoolTypeChange("federal_university")}
               >
                 Federal University
               </button>
-              <button onClick={() => handleSchoolTypeChange("federal_college")}>
+              <button className="border-b border-black" onClick={() => handleSchoolTypeChange("federal_college")}>
                 Federal College
               </button>
             </div>

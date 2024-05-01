@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./NIN.css";
 import { toast } from "react-toastify";
 import { useAuth } from "../../utils/AuthContext";
+import { BASE_URL } from "../../constants";
 
 function NIN({ formData, setFormData, onButtonClick }) {
   const [validated, setValidated] = useState(false);
@@ -11,24 +12,20 @@ function NIN({ formData, setFormData, onButtonClick }) {
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [houseAddress, setHouseAddress] = useState("");
   const [gender, setGender] = useState("");
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState("");
   const [verificationOption, setVerificationOption] = useState("nin");
   const [setstateOfOrigin, setSetstateOfOrigin] = useState("");
 
-  // const token = localStorage.getItem("authToken");
   const { token } = useAuth(); // Access the user object from AuthContext
 
   const handleValidation = () => {
     const formattedDate = displayLocalDate();
-    fetch(
-      `https://dev-api.eldanic.com/api/v1/user/fetch-nin/?nin_number=${nin}&dob=${formattedDate}`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Token ${token}`,
-        },
-      }
-    )
+    fetch(`${BASE_URL}user/fetch-nin/?nin_number=${nin}&dob=${formattedDate}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Token ${token}`,
+      },
+    })
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -54,10 +51,8 @@ function NIN({ formData, setFormData, onButtonClick }) {
   };
 
   const handleDateChange = (event) => {
-    // Extract the selected date from the event
     const newDate = event.target.value;
 
-    // Update the state with the selected date
     setSelectedDate(newDate);
   };
 
@@ -73,9 +68,9 @@ function NIN({ formData, setFormData, onButtonClick }) {
     <div className="sign-up-container">
       <div className="app_nin">
         <div className={validated ? "none" : "nin-container"}>
-          <h2>Input your NIN</h2>
+          <h2 className="font-medium text-3xl">Input your NIN</h2>
           <div>
-            <label htmlFor="verification-option">
+            <label htmlFor="verification-option" className="text-lg mb-4">
               Choose your form of verification
             </label>
             <select
@@ -88,9 +83,11 @@ function NIN({ formData, setFormData, onButtonClick }) {
             </select>
           </div>
           <div>
-            <label htmlFor="verification-input">
-              Input your{" "}
-              {verificationOption === "nin" ? "NIN number" : "Passport number"}
+            <label htmlFor="verification-input" className="text-lg">
+              Input your
+              {verificationOption === "nin"
+                ? " NIN number"
+                : " Passport number"}
             </label>
             <input
               type="text"
@@ -100,17 +97,20 @@ function NIN({ formData, setFormData, onButtonClick }) {
               onChange={(e) => setNin(e.target.value)}
             />
           </div>
-
-          <label htmlFor="">Date of Birth</label>
-          <input
-            type="date"
-            id="datePicker"
-            name="datePicker"
-            value={selectedDate}
-            onChange={handleDateChange}
-            className="date-time"
-          />
-          {selectedDate && <p>Selected Date: {displayLocalDate()}</p>}
+          <div>
+            <label htmlFor="" className="text-lg">
+              Date of Birth
+            </label>
+            <input
+              type="date"
+              id="datePicker"
+              name="datePicker"
+              value={selectedDate}
+              onChange={handleDateChange}
+              className="date-time"
+            />
+            {selectedDate && <p>Selected Date: {displayLocalDate()}</p>}
+          </div>{" "}
           <p className="hidden">Wrong NIN</p>
           {!validated && (
             <button className="wide-btn btn" onClick={handleValidation}>
@@ -131,18 +131,18 @@ function NIN({ formData, setFormData, onButtonClick }) {
                 <p className="title">Date of Birth</p>
                 <p className="nin-detail">{dateOfBirth}</p>
               </div>
-              <div className="nin-text">
+              {/* <div className="nin-text">
                 <p className="title">House Address</p>
                 <p className="nin-detail">Alabata road, akoka</p>
-              </div>
+              </div> */}
               <div className="nin-text">
                 <p className="title">Gender</p>
                 <p className="nin-detail">{gender}</p>
               </div>
-              <div className="nin-text">
+              {/* <div className="nin-text">
                 <p className="title">State of Origin</p>
                 <p className="nin-detail">Kwara State</p>
-              </div>
+              </div> */}
             </div>
           </div>
         )}

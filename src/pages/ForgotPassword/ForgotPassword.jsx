@@ -3,6 +3,7 @@ import Background from "../../components/Background/Background";
 import Logo from "../../assets/images/5.png";
 import GoogleAuth from "../../components/GoogleAuth";
 import { useState } from "react";
+import { BASE_URL } from "../../constants";
 
 const PasswordReset = () => {
   const [email, setEmail] = useState("");
@@ -23,10 +24,7 @@ const PasswordReset = () => {
       redirect: "follow",
     };
 
-    fetch(
-      "https://dev-api.eldanic.com/api/v1/auth/forgot-password/",
-      requestOptions
-    )
+    fetch(`${BASE_URL}auth/forgot-password/`, requestOptions)
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.error(error));
@@ -34,7 +32,7 @@ const PasswordReset = () => {
 
   return (
     <div>
-      <div style={{ position: "absolute", zIndex: -1 }}>
+      <div className="absolute -z-10">
         <Background />
       </div>
       <div className="form-nav-logo">
@@ -57,31 +55,20 @@ const PasswordReset = () => {
             />
           </div>
           <button
-            className="btn wide-btn"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
+            className="btn wide-btn flex items-center justify-center"
             onClick={handleForgot}
           >
             Forgot Password
           </button>
-          <Link to="/" style={{ color: "black" }} className="center underlined">
+          <Link to="/" className="center underlined text-black">
             <span>Go back to Login</span>
           </Link>
-          <span className="continue-div" style={{ margin: 0 }}>
+          <span className="continue-div m-0">
             <hr />
             <p className="continue center">Or continue with</p>
             <hr />
           </span>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
+          <div className="flex items-center justify-center">
             <GoogleAuth />
           </div>
         </div>

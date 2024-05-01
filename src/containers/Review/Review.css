@@ -138,4 +138,8 @@
   .review-result-div {
     width: 350px;
   }
+
+  .review_upload_div div{
+    width: 280px;
+  }
 }

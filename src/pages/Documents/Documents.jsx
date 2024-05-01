@@ -1,9 +1,8 @@
-import SideNav from "../../containers/SideNav/SideNav";
-import DynamicNav from "../../components/DynamicNav/DynamicNav";
 import "./Documents.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../utils/AuthContext";
+import { BASE_URL } from "../../constants";
 
 const docs = [
   {
@@ -67,7 +66,7 @@ const Documents = () => {
 
   useEffect(() => {
     fetch(
-      "https://dev-api.eldanic.com/api/v1/user/document-uploads/",
+      `${BASE_URL}user/document-uploads/`,
       requestOptions
     )
       .then((response) => response.json())
@@ -82,7 +81,7 @@ const Documents = () => {
     <div className="flex">
       <div className="margleft">
         <div className="dashboard">
-          <p className="doc-header">Upload these Documents</p>
+          <p className="doc-header">Your Documents</p>
           <div className="documents">
             {docs.map((doc, index) => {
               const isSubmitted = submissionStatus[`${doc.submitted}`];
