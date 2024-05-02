@@ -107,7 +107,7 @@ function NIN({ formData, setFormData, onButtonClick }) {
               name="datePicker"
               value={selectedDate}
               onChange={handleDateChange}
-              className="date-time"
+              className="date-time w-full"
             />
             {selectedDate && <p>Selected Date: {displayLocalDate()}</p>}
           </div>{" "}
